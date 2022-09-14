@@ -1,7 +1,6 @@
 import { createApp } from "vue";
 // import './assets/main.css'
 import App from "./App.vue";
-import Login from "./Login.vue";
 import router from "./router";
 import axios from "axios";
 import VueAxios from "vue-axios";

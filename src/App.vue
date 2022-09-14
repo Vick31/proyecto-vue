@@ -1,6 +1,6 @@
 <template>
 
-  <div class="container-body" v-if="this.$route.path != '/register'">
+  <div class="container-body">
     <div class="aside">
       <div class="title-aside">
         <h4>SIGEM</h4>
