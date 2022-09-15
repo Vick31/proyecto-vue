@@ -82,44 +82,12 @@
           </div>
         </nav>
       </div>
-
       <div class="container-section">
         <router-view>
         </router-view>
       </div>
     </div>
   </div>
-
-  <!-- Modal -->
-
-
-  <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <img src="..." class="rounded me-2" alt="...">
-        <strong class="me-auto">Bootstrap</strong>
-        <small>Ahora</small>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-      <div class="toast-body">
-        Has iniciado seccion correctamente.
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </template>
 
@@ -173,33 +141,8 @@ export default {
       }
 
     },
-    mostrar_links() {
-      let a = document.getElementsByClassName('btn-nav-link')
-      for (let i = 0; i < a.length; i++) {
-        a[i].style.transform = 'translatex(1em)'
-      }
-
-      document.getElementById('btn-menu').style.transform = 'scale(0)'
-    },
-    mostrar_btn() {
-      let a = document.getElementsByClassName('btn-nav-link')
-      for (let i = 0; i < a.length; i++) {
-        a[i].style.transform = 'translate(12em)'
-      }
-
-      document.getElementById('btn-menu').style.transform = 'scale(1)'
-    }
   },
 };
 
-const toastTrigger = document.getElementById('liveToastBtn')
-const toastLiveExample = document.getElementById('liveToast')
-if (toastTrigger) {
-  toastTrigger.addEventListener('click', () => {
-    const toast = new bootstrap.Toast(toastLiveExample)
-
-    toast.show()
-  })
-}
 
 </script>
