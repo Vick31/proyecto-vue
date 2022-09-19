@@ -52,6 +52,9 @@
         Guardar
       </button>
       <br />
+      <router-link class="rotes" to="/account">
+            <button>Regresar</button>
+        </router-link>
       <p v-if="message">{{ message }}</p>
     </form>
   </div>
@@ -75,12 +78,45 @@ export default {
         password_confirmation: "",
       },
       errors: {},
+      token: '',
+      user: {},
     };
   },
   mounted() {
+    if (localStorage.token) {
+      this.token = localStorage.token;
+      this.get_user();
+    } else {
+      this.$router.push({
+        name: "Login",
+        params: {
+          message: "No estas autorizado para acceder con esta cuenta"
+        }
+      })
+    }
   },
 
   methods: {
+
+    async get_user() {
+
+      try {
+        const rs = await this.axios.get('/api/user', {
+          headers: { Authorization: `Bearer ${this.token}` },
+        });
+        this.user = rs.data.user;
+      }
+
+      catch (e) {
+        this.$router.push({
+          name: "Login",
+          params: {
+            message: "No estas autorizado para acceder con esta cuenta"
+          }
+        })
+      }
+    },
+
     async register_user() {
       try {
         const rs = await this.axios.post("/api/register", this.form);

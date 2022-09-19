@@ -14,3 +14,7 @@
         </nav>
     </div>
 </template>
+
+<style scoped>
+    @import "../assets/css/styleApp.css";
+</style>

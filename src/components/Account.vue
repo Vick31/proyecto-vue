@@ -1,12 +1,13 @@
 <template>
-    <p>Name: {{ user.name }}</p>
-        <p>Email: {{ user.email }}</p>
-        <p>Created at: {{ user.created_at }}</p>
-        <button @click="logout()">Cerrar sesión</button>
 
     <div class="container-body">
-        <h1>Bienvenido administrador Victoria</h1>
+        <h1>Bienvenido administrador {{ user.name }}</h1>
     </div>
+    <router-link class="rotes" to="/register">
+        <button @click="logout()">Cerrar sesión</button>
+        <br>
+        <button>Registrar</button>
+    </router-link>
 
 </template>
 

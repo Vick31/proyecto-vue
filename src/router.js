@@ -12,11 +12,6 @@ import NavBar from "./components/NavBar.vue";
 
 const routes = [
     {
-        path: "/register",
-        name: "Register",
-        component: Register,
-    },
-    {
         path: "/forgot-password",
         name: "ForgotPassword",
         component: ForgotPassword,
@@ -30,7 +25,12 @@ const routes = [
         path: "/",
         name: "Login",
         component: Login,
-
+        
+    },
+    {
+        path: "/register",
+        name: "Register",
+        component: Register,
     },
     {
         path: "/home",
