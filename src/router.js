@@ -7,7 +7,8 @@ import ForgotPassword from "./components/ForgotPassword.vue";
 import ResetPassword from "./components/ResetPassword.vue";
 import Citas from "./components/Citas.vue";
 import AgendarCita from "./components/AgendarCita.vue";
-
+import Aside from "./components/Aside.vue";
+import NavBar from "./components/NavBar.vue";
 
 const routes = [
     {
@@ -19,7 +20,11 @@ const routes = [
     {
         path: "/home",
         name: "Home",
-        component: Home,
+        components: {
+            defaults: Home,
+            aside: Aside,
+            navbar: NavBar,
+        }
 
     },
     {

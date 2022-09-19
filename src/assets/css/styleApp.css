@@ -8,13 +8,6 @@
 
 }
 
-.aside {
-  width: 16rem;
-  height: 100vh;
-  background-color: #566573;
-  padding: 1rem;
-  color: #fff;
-}
 
 .navbar {
   width: calc(100vw - 16rem);
@@ -36,6 +29,13 @@
   overflow-y: auto;
 }
 
+.aside {
+  width: 16rem;
+  height: 100vh;
+  background-color: #566573;
+  padding: 1rem;
+  color: #fff;
+}
 .body-aside ul {
   margin: 0;
   padding: 0;

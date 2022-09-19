@@ -1,90 +1,11 @@
 <template>
 
   <div class="container-body">
-    <div class="aside">
-      <div class="title-aside">
-        <h4>SIGEM</h4>
-      </div>
-      <div class="body-aside">
-        <ul>
-          <router-link class="rotes" to="/home">
-          <li>
-              <span class="material-symbols-outlined">home</span>
-              <p>Home</p>
-            </li>
-          </router-link>
-        </ul>
-        <ul>
-          <small>INTERFACE</small>
-          <router-link class="rotes" to="/citas">
-          <li>
-              <span class="material-symbols-outlined">
-                event
-              </span>
-              <p>Citas</p>
-            </li>
-          </router-link>
-          <li>
-            <span class="material-symbols-outlined">
-              groups
-            </span>
-            <p>Clientes</p>
-          </li>
-        </ul>
-        <ul>
-          <small>OTROS</small>
-          <li>
-            <span class="material-symbols-outlined">
-              diversity_3
-            </span>
-            <p>Medicos</p>
-          </li>
-          <li>
-            <span class="material-symbols-outlined">
-              medication_liquid
-            </span>
-            <p>Especialidades médicas</p>
-          </li>
-          <li>
-            <span class="material-symbols-outlined">
-              schedule
-            </span>
-            <p>horarios</p>
-          </li>
-          <li>
-            <span class="material-symbols-outlined">
-              group
-            </span>
-            <p>Usuarios</p>
-          </li>
-          <li>
-            <span class="material-symbols-outlined">
-              live_help
-            </span>
-            <p>Acerca de</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-
+    <router-view name="aside"></router-view>
     <div class="section">
-      <div id="nav">
-        <nav class="navbar ">
-          <div class="container-fluid">
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            <router-link class="rotes account-logo" to="/account">
-              <span>Admin</span>
-              <img src="../img/logos-cuentas/user_account_profile_admin-512.png" alt="">
-            </router-link>
-          </div>
-        </nav>
-      </div>
+      <router-view name="navbar"></router-view>
       <div class="container-section">
-        <router-view>
-        </router-view>
+        <router-view></router-view> 
       </div>
     </div>
   </div>
