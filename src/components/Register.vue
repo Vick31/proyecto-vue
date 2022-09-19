@@ -86,7 +86,7 @@ export default {
         const rs = await this.axios.post("/api/register", this.form);
 
         this.$router.push({
-          name: 'Home',
+          name: 'Login',
           params: { message: rs.data.message, },
 
         });

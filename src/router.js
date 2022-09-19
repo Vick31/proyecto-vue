@@ -12,30 +12,9 @@ import NavBar from "./components/NavBar.vue";
 
 const routes = [
     {
-        path: "/",
-        name: "Login",
-        component: Login,
-
-    },
-    {
-        path: "/home",
-        name: "Home",
-        components: {
-            defaults: Home,
-            aside: Aside,
-            navbar: NavBar,
-        }
-
-    },
-    {
         path: "/register",
         name: "Register",
         component: Register,
-    },
-    {
-        path: "/account",
-        name: "Account",
-        component: Account,
     },
     {
         path: "/forgot-password",
@@ -48,14 +27,47 @@ const routes = [
         component: ResetPassword,
     },
     {
+        path: "/",
+        name: "Login",
+        component: Login,
+
+    },
+    {
+        path: "/home",
+        name: "Home",
+        components: {
+            default: Home,
+            aside: Aside,
+            navbar: NavBar,
+        }
+
+    },
+    {
+        path: "/account",
+        name: "Account",
+        components: {
+            default: Account,
+            aside: Aside,
+            navbar: NavBar,
+        }
+    },    
+    {
         path: "/citas",
         name: "Citas",
-        component: Citas,
+        components: {
+            default: Citas,
+            aside: Aside,
+            navbar: NavBar,
+        }
     },
     {
         path: "/agendar-cita",
         name: "AgendarCita",
-        component: AgendarCita,
+        components: {
+            default: AgendarCita,
+            aside: Aside,
+            navbar: NavBar,
+        }
     },
     
 ];

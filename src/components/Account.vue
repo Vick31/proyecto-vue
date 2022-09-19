@@ -1,18 +1,12 @@
 <template>
-    <!-- <p>Name: {{ user.name }}</p>
+    <p>Name: {{ user.name }}</p>
         <p>Email: {{ user.email }}</p>
         <p>Created at: {{ user.created_at }}</p>
-        <button @click="logout()">Cerrar sesión</button> -->
+        <button @click="logout()">Cerrar sesión</button>
 
     <div class="container-body">
         <h1>Bienvenido administrador Victoria</h1>
     </div>
-
-
-
-
-
-
 
 </template>
 
@@ -22,7 +16,7 @@
     
 
 
-<!-- <script>
+<script>
 export default {
     data() {
         return {
@@ -36,7 +30,7 @@ export default {
             this.get_user();
         } else {
             this.$router.push({
-                name: "Home",
+                name: "Login",
                 params: {
                     message: "No estas autorizado para acceder con esta cuenta"
                 }
@@ -56,7 +50,7 @@ export default {
 
             catch (e) {
                 this.$router.push({
-                    name: "Home",
+                    name: "Login",
                     params: {
                         message: "No estas autorizado para acceder con esta cuenta"
                     }
@@ -75,7 +69,7 @@ export default {
 
                 this.$router.push({
 
-                    name: "Home",
+                    name: "Login",
                     params: {
                         message: rs.data.message,
                     },
@@ -92,4 +86,4 @@ export default {
         }
     },
 }
-</script> -->
+</script>

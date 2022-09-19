@@ -32,8 +32,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" @click="login()" data-bs-dismiss="modal" class="btn btn-primary btn-login"
-                id="liveToastBtn">
+            <button @click="login()">
                 Login
             </button>
         </div>
@@ -66,7 +65,7 @@ export default {
                 const rs = await this.axios.post("/api/login", this.form);
                 this.$router.push({
                     name: 'Account',
-                    //params: { token: rs.data.token, },
+                    //params: { token: rs.data.token, },                    
                 });
                 localStorage.token = rs.data.token
             }
@@ -84,33 +83,8 @@ export default {
             }
 
         },
-        mostrar_links() {
-            let a = document.getElementsByClassName('btn-nav-link')
-            for (let i = 0; i < a.length; i++) {
-                a[i].style.transform = 'translatex(1em)'
-            }
 
-            document.getElementById('btn-menu').style.transform = 'scale(0)'
-        },
-        mostrar_btn() {
-            let a = document.getElementsByClassName('btn-nav-link')
-            for (let i = 0; i < a.length; i++) {
-                a[i].style.transform = 'translate(12em)'
-            }
-
-            document.getElementById('btn-menu').style.transform = 'scale(1)'
-        }
     },
 };
-
-const toastTrigger = document.getElementById('liveToastBtn')
-const toastLiveExample = document.getElementById('liveToast')
-if (toastTrigger) {
-    toastTrigger.addEventListener('click', () => {
-        const toast = new bootstrap.Toast(toastLiveExample)
-
-        toast.show()
-    })
-}
 
 </script>

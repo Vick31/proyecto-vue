@@ -21,3 +21,49 @@
         </form>
     </div>
 </template>
+
+
+<script>
+export default {
+    data() {
+        return {
+            token: '',
+            user: {},
+        }
+    },
+    mounted() {
+        if (localStorage.token) {
+            this.token = localStorage.token;
+            this.get_user();
+        } else {
+            this.$router.push({
+                name: "Login",
+                params: {
+                    message: "No estas autorizado para acceder con esta cuenta"
+                }
+            })
+        }
+
+    },
+    methods: {
+        async get_user() {
+
+            try {
+                const rs = await this.axios.get('/api/user', {
+                    headers: { Authorization: `Bearer ${this.token}` },
+                });
+                this.user = rs.data.user;
+            }
+
+            catch (e) {
+                this.$router.push({
+                    name: "Login",
+                    params: {
+                        message: "No estas autorizado para acceder con esta cuenta"
+                    }
+                })
+            }
+        },
+    },
+}
+</script>
