@@ -1,14 +1,16 @@
 <template>
     <div class="aside">
         <div class="title-aside">
-            <h4>SIGEM</h4>
+            <router-link class="rotes" to="/">
+                <h4>SIGEM</h4>
+            </router-link>
         </div>
         <div class="body-aside">
             <ul>
-                <router-link class="rotes" to="/home">
+                <router-link class="rotes" to="/usuarios">
                     <li>
                         <span class="material-symbols-outlined">home</span>
-                        <p>Home</p>
+                        <p>usuarios</p>
                     </li>
                 </router-link>
             </ul>

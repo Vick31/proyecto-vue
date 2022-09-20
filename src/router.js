@@ -9,6 +9,7 @@ import Citas from "./components/Citas.vue";
 import AgendarCita from "./components/AgendarCita.vue";
 import Aside from "./components/Aside.vue";
 import NavBar from "./components/NavBar.vue";
+import Users from "./components/Users.vue";
 
 const routes = [
     {
@@ -26,7 +27,7 @@ const routes = [
         }
     },
     {
-        path: "/",
+        path: "/Login",
         name: "Login",
         component: Login,
         
@@ -37,10 +38,20 @@ const routes = [
         component: Register,
     },
     {
-        path: "/home",
+        path: "/",
         name: "Home",
         components: {
             default: Home,
+            aside: Aside,
+            navbar: NavBar,
+        }
+
+    },
+    {
+        path: "/usuarios",
+        name: "Users",
+        components: {
+            default: Users,
             aside: Aside,
             navbar: NavBar,
         }

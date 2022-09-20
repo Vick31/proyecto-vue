@@ -1,118 +1,118 @@
 .navbar {
-        background-color: #fff;
-        box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.7);
+    background-color: #fff;
+    box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.7);
 }
 
 .container-body {
-        display: flex;
-        flex-direction: row;
+    display: flex;
+    flex-direction: row;
 
 }
 
 
 .navbar {
-        width: calc(100vw - 16rem);
+    width: calc(100vw - 16rem);
 }
 
 .section {
-        background-color: #F2F3F4;
+    background-color: #F2F3F4;
 }
 
 .container-section {
-        margin: 2rem;
-        padding: 1rem;
-        margin-bottom: 0;
-        width: calc(100vw - 20rem);
-        height: calc(100vh - 6rem);
-        background-color: #fff;
-        box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.7);
-        border-radius: 7px;
-        overflow-y: auto;
+    margin: 2rem;
+    padding: 1rem;
+    margin-bottom: 0;
+    width: calc(100vw - 20rem);
+    height: calc(100vh - 6rem);
+    background-color: #fff;
+    box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.7);
+    border-radius: 7px;
+    overflow-y: auto;
 }
 
 .aside {
-        width: 16rem;
-        height: 100vh;
-        background-color: #566573;
-        padding: 1rem;
-        color: #fff;
+    width: 16rem;
+    height: 100vh;
+    background-color: #566573;
+    padding: 1rem;
+    color: #fff;
 }
 
 .body-aside ul {
-        margin: 0;
-        padding: 0;
-        height: max-content;
-        border-top: 1px solid #ABB2B9;
+    margin: 0;
+    padding: 0;
+    height: max-content;
+    border-top: 1px solid #ABB2B9;
 }
 
 .body-aside ul li {
-        list-style: none;
-        padding-top: 0.8rem;
-        cursor: pointer;
-        display: flex;
-        flex-direction: row;
-        text-decoration: none;
-        color: #fff;
+    list-style: none;
+    padding-top: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: #fff;
 }
 
 .rotes {
-        text-decoration: none;
-        color: #ABB2B9;
+    text-decoration: none;
+    color: #ABB2B9;
 }
 
 .body-aside ul li .rotes {
-        list-style: none;
-        padding-top: 0.8rem;
-        cursor: pointer;
-        display: flex;
-        flex-direction: row;
-        text-decoration: none;
-        color: #fff;
+    list-style: none;
+    padding-top: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: #fff;
 }
 
 .body-aside ul li span {
-        color: #ABB2B9;
-        font-size: 17px;
-        padding-top: 0.25rem;
-        margin-right: 0.5rem;
+    color: #ABB2B9;
+    font-size: 17px;
+    padding-top: 0.25rem;
+    margin-right: 0.5rem;
 }
 
 .body-aside ul small {
-        font-size: 12px;
-        font-weight: bold;
-        color: #ABB2B9;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ABB2B9;
 }
 
 .title-aside {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
 }
 
 .account-logo {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .account-logo:hover {
-        cursor: pointer;
+    cursor: pointer;
 }
 
 .account-logo img {
-        width: 1.5rem;
-        height: 1.5rem;
-        border-radius: 100%;
-        margin: 0 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 100%;
+    margin: 0 0.5rem;
 }
 
 .fade-enter-active,
 .fade-leave-active {
-        transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease;
 }
 
 .fade-enter-from,
 .fade-leave-to {
-        opacity: 0;
+    opacity: 0;
 }

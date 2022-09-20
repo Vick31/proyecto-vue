@@ -1,16 +1,16 @@
 <template>
 
-        <div class="container-body">
-                <router-view name="aside"></router-view>
-                <div class="section">
-                        <router-view name="navbar"></router-view>
-                        <div class="container-section">
-                                <transition name="fade">
-                                        <router-view></router-view>
-                                </transition>
-                        </div>
-                </div>
+    <div class="container-body">
+        <router-view name="aside"></router-view>
+        <div class="section">
+            <router-view name="navbar"></router-view>
+            <div class="container-section">
+                <transition name="fade">
+                    <router-view></router-view>
+                </transition>
+            </div>
         </div>
+    </div>
 
 </template>
 
@@ -24,18 +24,18 @@
 
 <script>
 export default {
-        data() {
-                return {
+    data() {
+        return {
 
-                };
-        },
-        mounted() {
+        };
+    },
+    mounted() {
 
-        },
+    },
 
-        methods: {
+    methods: {
 
-        },
+    },
 };
 
 
