@@ -61,7 +61,7 @@ const routes = [
         }
     },
     {
-        path: "/agendar-cita",
+        path: "/citas/agendar-citas",
         name: "AgendarCita",
         components: {
             default: AgendarCita,
