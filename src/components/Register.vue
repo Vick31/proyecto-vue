@@ -53,8 +53,8 @@
       </button>
       <br />
       <router-link class="rotes" to="/account">
-            <button>Regresar</button>
-        </router-link>
+        <button>Regresar</button>
+      </router-link>
       <p v-if="message">{{ message }}</p>
     </form>
   </div>

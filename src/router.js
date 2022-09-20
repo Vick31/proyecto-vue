@@ -17,9 +17,13 @@ const routes = [
         component: ForgotPassword,
     },
     {
-        path: "/reset-password",
+        path: "/account/reset-password",
         name: "ResetPassword",
-        component: ResetPassword,
+        components: {
+            default: ResetPassword,
+            aside: Aside,
+            navbar: NavBar,
+        }
     },
     {
         path: "/",
