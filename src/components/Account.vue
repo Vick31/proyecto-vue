@@ -6,9 +6,7 @@
 
     <button @click="logout()">Cerrar sesión</button>
 
-    <router-link class="rotes" to="/register">
-        <button>Registrar</button>
-    </router-link>
+    
     <router-link class="rotes" to="/account/reset-password">
         <button>Cambiar contraseña</button>
     </router-link>

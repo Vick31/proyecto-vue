@@ -7,5 +7,42 @@
   font-family: font-app;
   src: url(fonts/Appetite.ttf);
 }
+*{
+  text-decoration: none;
+}
+
+form {
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 1rem;
+  border-radius: 10px
+}
+form h1 {
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.div-row{
+  display: flex;
+  flex-flow: row;
+}
+
+.div-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
 
 /*# sourceMappingURL=styeRegister.css.map */

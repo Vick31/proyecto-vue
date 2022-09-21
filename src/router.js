@@ -22,8 +22,6 @@ const routes = [
         name: "ResetPassword",
         components: {
             default: ResetPassword,
-            aside: Aside,
-            navbar: NavBar,
         }
     },
     {
@@ -33,9 +31,12 @@ const routes = [
         
     },
     {
-        path: "/register",
+        path: "/users/register",
         name: "Register",
-        component: Register,
+        components: {
+            default: Register,
+            navbar: NavBar,
+        }
     },
     {
         path: "/",

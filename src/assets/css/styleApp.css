@@ -1,3 +1,7 @@
+*{
+    transition: 300ms all ease-in-out;
+}
+
 .navbar {
     background-color: #fff;
     box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.7);
@@ -6,7 +10,6 @@
 .container-body {
     display: flex;
     flex-direction: row;
-
 }
 
 
@@ -34,7 +37,7 @@
     width: 16rem;
     height: 100vh;
     background-color: #566573;
-    padding: 1rem;
+    /* padding: 1rem; */
     color: #fff;
 }
 
@@ -48,13 +51,17 @@
 .body-aside ul li {
     list-style: none;
     padding-top: 0.8rem;
+    padding-left: 1rem;
     cursor: pointer;
     display: flex;
     flex-direction: row;
     text-decoration: none;
     color: #fff;
 }
-
+.body-aside ul li:hover {
+    background-color: #4b5a68;
+    box-shadow:1px 1px 5px #4b5a68;
+}
 .rotes {
     text-decoration: none;
     color: #ABB2B9;
@@ -81,6 +88,7 @@
     font-size: 12px;
     font-weight: bold;
     color: #ABB2B9;
+    margin-left: 1rem;
 }
 
 .title-aside {

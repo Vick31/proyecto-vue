@@ -4,12 +4,15 @@
             <h6>Lista de usuarios</h6>
         </div>
         <div class="header-button">
-            <button class="color-button-one">
-                Agregar usuario
-                <span class="material-symbols-outlined">
-                    add_reaction
-                </span>
-            </button>
+            <router-link class="rotes" to="/users/register">
+                <button class="color-button-one">
+                    Agregar usuario
+                    <span class="material-symbols-outlined">
+                        add_reaction
+                    </span>
+                </button>
+            </router-link>
+
             <button class="color-button">
                 Generar reporte
                 <span class="material-symbols-outlined">
