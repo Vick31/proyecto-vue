@@ -1,15 +1,17 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Register from "./components/Register.vue";
+import Register from "./components/RegisterClients.vue";
+import Admins from "./components/RegisterAdmin.vue"
 import Login from "./components/Login.vue";
 import Account from "./components/Account.vue";
-import Home from "./components/Home.vue";
 import ForgotPassword from "./components/ForgotPassword.vue";
 import ResetPassword from "./components/ResetPassword.vue";
+import Home from "./components/Home.vue";
+import Users from "./components/Users.vue";
+import Clientes from "./components/Clients.vue";
 import Citas from "./components/Citas.vue";
 import AgendarCita from "./components/AgendarCita.vue";
 import Aside from "./components/Aside.vue";
 import NavBar from "./components/NavBar.vue";
-import Users from "./components/Users.vue";
 
 const routes = [
     {
@@ -31,7 +33,7 @@ const routes = [
         
     },
     {
-        path: "/users/register",
+        path: "/clientes/register",
         name: "Register",
         components: {
             default: Register,
@@ -77,6 +79,15 @@ const routes = [
         }
     },
     {
+        path: "/clientes",
+        name: "Clients",
+        components: {
+            default: Clientes,
+            aside: Aside,
+            navbar: NavBar,
+        }
+    },
+    {
         path: "/citas/agendar-citas",
         name: "AgendarCita",
         components: {
@@ -85,6 +96,11 @@ const routes = [
             navbar: NavBar,
         }
     },
+    {
+        path: "/account/register-admins",
+        name: "RegisterAdmin",
+        component: Admins,
+    }
     
 ];
 

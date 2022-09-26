@@ -1,7 +1,7 @@
 <template>
   <div class="div-form">
     <form>
-      <h1 class="title">Registrar</h1>
+      <h1 class="title">Registrar cliente</h1>
       <div class="form-floating pb-3">
         <input type="number" class="form-control" name="name" v-model="form.dni" />
         <label for="floatingInput">Dni</label>
@@ -21,14 +21,9 @@
 
       <div class="form-row">
         <div class="form-floating pb-3">
-          <input type="number" class="form-control" name="name" v-model="form.roles_id" />
-          <label for="floatingInput">Roles</label>
-          <span v-if="errors.roles_id">{{ errors.roles_id[0] }}</span>
-        </div>
-        <div class="form-floating pb-3">
-          <input type="number" class="form-control" name="name" v-model="form.companies_id" />
-          <label for="floatingInput">Compania</label>
-          <span v-if="errors.companies_id">{{ errors.companies_id[0] }}</span>
+          <input type="text" class="form-control" name="name" v-model="form.address" />
+          <label for="floatingInput">Addres</label>
+          <span v-if="errors.addres">{{ errors.address[0] }}</span>
         </div>
       </div>
       <div class="form-floating pb-3">
@@ -39,16 +34,9 @@
 
       <div class="div-row">
         <div class="form-floating pb-3">
-          <input type="password" class="form-control" name="password" v-model="form.password" />
-          <label for="floatingInput">Contraseña</label>
-          <span v-if="errors.password">{{ errors.password[0] }} </span>
-        </div>
-        <div class="form-floating pb-3">
-          <input type="password" class="form-control" name=" password_confirmation"
-            v-model="form.password_confirmation" />
-          <label for="floatingInput">Confirmar Contraseña</label>
-          <span v-if="errors.password_confirmation">{{ errors.password_confirmation[0] }}
-          </span>
+          <input type="text" class="form-control" name="" v-model="form.equipment_id" />
+          <label for="floatingInput">Equipo</label>
+          <span v-if="errors.equipment_id">{{ errors.equipment_id[0] }} </span>
         </div>
       </div>
       <div class="form-footer">
@@ -79,11 +67,8 @@ export default {
         dni: '',
         name: "",
         phone_number: "",
-        roles_id: "",
-        companies_id: "",
         email: "",
-        password: "",
-        password_confirmation: "",
+        equipment_id: "",
       },
       errors: {},
       token: '',
@@ -127,10 +112,10 @@ export default {
 
     async register_user() {
       try {
-        const rs = await this.axios.post("/api/register", this.form);
+        const rs = await this.axios.post("/api/clientes", this.form);
 
         this.$router.push({
-          name: 'Login',
+          name: 'Clients',
           params: { message: rs.data.message, },
 
         });
@@ -143,7 +128,7 @@ export default {
         if (e.response.data.errors)
           this.errors = e.response.data.errors;
 
-        if (e.response.data.message)
+        else if (e.response.data.message)
           this.errors = e.response.data.message;
 
         console.log(e)

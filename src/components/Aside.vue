@@ -24,12 +24,14 @@
                         <p>Citas</p>
                     </li>
                 </router-link>
-                <li>
-                    <span class="material-symbols-outlined">
-                        groups
-                    </span>
-                    <p>Clientes</p>
-                </li>
+                <router-link class="rotes" to="/clientes">
+                    <li>
+                        <span class="material-symbols-outlined">
+                            groups
+                        </span>
+                        <p>Clientes</p>
+                    </li>
+                </router-link>
             </ul>
             <ul>
                 <small>OTROS</small>
@@ -69,5 +71,5 @@
 </template>
 
 <style scoped>
-    @import "../assets/css/styleApp.css";
+@import "../assets/css/styleApp.css";
 </style>

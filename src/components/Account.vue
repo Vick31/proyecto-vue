@@ -1,7 +1,7 @@
 <template>
 
     <div class="container-body">
-        <h1>Bienvenido administrador {{ user.name }}</h1>
+        <h1>Bienvenido {{ user.name }}</h1>
     </div>
 
     <button @click="logout()">Cerrar sesión</button>
@@ -9,6 +9,9 @@
     
     <router-link class="rotes" to="/account/reset-password">
         <button>Cambiar contraseña</button>
+    </router-link>
+    <router-link class="rotes" to="/account/register-admins">
+        <button>Registrar administrator</button>
     </router-link>
 
 </template>

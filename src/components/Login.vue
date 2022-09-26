@@ -81,7 +81,7 @@ export default {
                         if (e.response.data.errors)
                               this.errors = e.response.data.errors;
 
-                        if (e.response.data.message)
+                        else if (e.response.data.message)
                               this.errors = e.response.data.message;
 
                   }
