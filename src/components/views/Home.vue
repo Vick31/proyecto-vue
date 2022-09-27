@@ -2,7 +2,7 @@
 
 </template>
 <style scoped>
-@import "../assets/css/styleHome.css";
+@import "../../assets/css/styleHome.css";
 </style>
 
 

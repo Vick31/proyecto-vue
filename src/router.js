@@ -1,15 +1,21 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Register from "./components/RegisterClients.vue";
-import Admins from "./components/RegisterAdmin.vue"
-import Login from "./components/Login.vue";
-import Account from "./components/Account.vue";
-import ForgotPassword from "./components/ForgotPassword.vue";
-import ResetPassword from "./components/ResetPassword.vue";
-import Home from "./components/Home.vue";
-import Users from "./components/Users.vue";
-import Clientes from "./components/Clients.vue";
-import Citas from "./components/Citas.vue";
-import AgendarCita from "./components/AgendarCita.vue";
+
+//Register
+import Register from "./components/admin/RegisterClients.vue";
+import RegisterAdmins from "./components/admin/RegisterAdmin.vue"
+
+//Acount
+import Login from "./components/views/Login.vue";
+import Account from "./components/views/Account.vue";
+import ForgotPassword from "./components/controllers/ForgotPassword.vue";
+import ResetPassword from "./components/controllers/ResetPassword.vue";
+
+//Inicio y componentes
+import Home from "./components/views/Home.vue";
+import Users from "./components/views/Users.vue";
+import Clientes from "./components/views/Clients.vue";
+import Citas from "./components/views/Citas.vue";
+import AgendarCita from "./components/admin/AgendarCita.vue";
 import Aside from "./components/Aside.vue";
 import NavBar from "./components/NavBar.vue";
 
@@ -99,7 +105,7 @@ const routes = [
     {
         path: "/account/register-admins",
         name: "RegisterAdmin",
-        component: Admins,
+        component: RegisterAdmins,
     }
     
 ];

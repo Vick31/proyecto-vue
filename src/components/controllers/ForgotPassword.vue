@@ -26,7 +26,7 @@
 </template>
 
 <style scoped>
-  @import "../assets/css/styleForgotPassword.css";
+  @import "../../assets/css/styleForgotPassword.css";
 </style>
 
 

@@ -58,7 +58,7 @@
   
   
 <style scoped>
-@import "../assets/css/styeRegister.css";
+@import "../../assets/css/styeRegister.css";
 </style>
   
 <script>

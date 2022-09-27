@@ -42,7 +42,7 @@
 </template>
 
 <style scoped>
-@import "../assets/css/styleLogin.css";
+@import "../../assets/css/styleLogin.css";
 </style>
 
 <script>
