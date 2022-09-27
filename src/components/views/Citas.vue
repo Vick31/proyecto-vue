@@ -23,10 +23,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Vick asd assadasdasd asd asd</td>
-                    <td>pruebas@gmail.com</td>
-                    <td>2002/04/12</td>
+                <tr v-for="p in citas_list">
+                    <td>{{p.description}}</td>
+                    <td>{{p.users_id}}</td>
+                    <td>{{p.date}}</td>
                     <td>user</td>
                     <td>
                         <span class="material-symbols-outlined color-orange">
@@ -49,6 +49,7 @@
     export default {
     data() {
         return {
+            citas_list: [],
             token: '',
             user: {},
         }
@@ -65,9 +66,14 @@
                 }
             })
         }
-
+        this.index()
     },
     methods: {
+        async index() {
+            let response = await axios.get("http://127.0.0.1:8000/api/citas")
+            this.citas_list = response.data
+        },
+        
         async get_user() {
 
             try {
@@ -86,6 +92,8 @@
                 })
             }
         },
+
+        
     },
 }
 </script>
