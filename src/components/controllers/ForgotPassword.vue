@@ -13,7 +13,7 @@
           placeholder="name@example.com"
           name="email"
           v-model="email"
-        />scoped
+        />
         <label for="floatingInput">Correo electronico</label>
         <span v-if="errors.email">{{ errors.email[0] }}</span>
       </div>
