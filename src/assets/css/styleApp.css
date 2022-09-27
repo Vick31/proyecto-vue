@@ -27,8 +27,8 @@
     margin-bottom: 0;
     width: calc(100vw - 20rem);
     height: calc(100vh - 6rem);
-    background-color: #fff;
-    box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.7);
+    /* background-color: #fff; */
+    /* box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.7); */
     border-radius: 7px;
     overflow-y: auto;
 }
