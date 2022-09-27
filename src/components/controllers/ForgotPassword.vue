@@ -4,7 +4,7 @@
     <h5>¿Olvidaste tu contraseña?</h5>
     <br>
     <form id="te">
-      <h1 class="n3 mb-3 fw">Confirma tu correo electrónico</h1>
+      <h3 class="n3 mb-3 fw">Confirma tu correo electrónico</h3>
       <div class="form-floating pb-3">
         <input
           type="email"
