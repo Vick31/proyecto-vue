@@ -1,0 +1,37 @@
+*{
+    text-decoration: none;
+}
+.header{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    padding: 0 3rem;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 15px;
+    box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.1);
+
+}
+
+.header button {
+    background: blue;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.5rem 2rem;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.7);
+}
+.table{
+    margin-top: 3rem;
+}
+.container-body {
+    background: #fff;
+    height: calc(100% - 8rem);
+    border-radius:18px;
+    margin-top: 2rem;
+    padding: 1rem;
+    box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.1);
+}

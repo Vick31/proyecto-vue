@@ -1,11 +1,9 @@
 <template>
     <div class="aside">
-        <div class="title-aside">
-            <router-link class="rotes" to="/">
-                <h4>SIGEM</h4>
-            </router-link>
-        </div>
         <div class="body-aside">
+            <div class="logo">
+                <img src="../../img/logo.png" alt="" class="logo-aside">
+            </div>
             <ul>
                 <router-link class="rotes" to="/usuarios">
                     <li>
@@ -15,7 +13,6 @@
                 </router-link>
             </ul>
             <ul>
-                <small>INTERFACE</small>
                 <router-link class="rotes" to="/citas">
                     <li>
                         <span class="material-symbols-outlined">
@@ -24,6 +21,8 @@
                         <p>Citas</p>
                     </li>
                 </router-link>
+            </ul>
+            <ul>
                 <router-link class="rotes" to="/clientes">
                     <li>
                         <span class="material-symbols-outlined">
@@ -34,31 +33,40 @@
                 </router-link>
             </ul>
             <ul>
-                <small>OTROS</small>
                 <li>
                     <span class="material-symbols-outlined">
                         diversity_3
                     </span>
                     <p>Medicos</p>
                 </li>
+            </ul>
+            <ul>
                 <li>
                     <span class="material-symbols-outlined">
                         medication_liquid
                     </span>
                     <p>Especialidades médicas</p>
                 </li>
+            </ul>
+            <ul>
                 <li>
                     <span class="material-symbols-outlined">
                         schedule
                     </span>
                     <p>horarios</p>
                 </li>
+
+            </ul>
+            <ul>
                 <li>
                     <span class="material-symbols-outlined">
                         group
                     </span>
                     <p>Usuarios</p>
                 </li>
+            </ul>
+            <ul>
+
                 <li>
                     <span class="material-symbols-outlined">
                         live_help

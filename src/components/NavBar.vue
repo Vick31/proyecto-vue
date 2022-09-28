@@ -1,20 +1,23 @@
 <template>
     <div id="nav">
-        <nav class="navbar ">
+        <nav class="navbar">
             <div class="container-fluid">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                <router-link class="rotes account-logo" to="/account">
-                    <span>Admin</span>
-                    <img src="../img/logos-cuentas/user_account_profile_admin-512.png" alt="">
-                </router-link>
+                <h4>SIGEM</h4>
+                <div>
+                    <span class="material-symbols-outlined icon-nav">
+                        notifications
+                    </span>
+                    <router-link class="rotes account-logo" to="/account">
+                        <span class="material-symbols-outlined icon-nav">
+                            person
+                        </span>
+                    </router-link>
+                </div>
             </div>
         </nav>
     </div>
 </template>
 
 <style scoped>
-    @import "../assets/css/styleApp.css";
+@import "../assets/css/styleApp.css";
 </style>

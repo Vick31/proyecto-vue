@@ -1,23 +1,24 @@
-@font-face {
-  font-family: font-unique;
-  src: url(fonts/ProductSansRegular.ttf);
-}
 
-@font-face {
-  font-family: font-app;
-  src: url(fonts/Appetite.ttf);
-}
-
-#body-login div input:focus {
+#body div input:focus {
   -webkit-box-shadow: 0px 0px 3px #566573;
   box-shadow: 0px 0px 3px #566573;
   border-color: #566573;
 }
 
-#body-login div label {
+#body div label {
   text-align: left;
 }
 
+input {
+ width: 25rem;
+ border-radius: 15px;
+ background: #fff;
+ box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.7);
+
+}
+h1{
+  color: blue;
+}
 button:focus {
   -webkit-box-shadow: 0px 0px 3px #566573;
   box-shadow: 0px 0px 3px #566573;
@@ -37,20 +38,25 @@ button:focus {
 }
 
 .modal-body {
-  background-color: rgb(252, 251, 251);
-  width: 27rem;
-  height: 23rem;
-  padding: 1rem;
   position: absolute;
-  top: calc(50vh - 12rem);
-  right: 7rem;
+  right: 0;
+  background-color: #fff;
+  width: 40%;
+  height: 100vh;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
-  border-radius: 10px;
 }
-
+#body{
+  height: 20rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  text-align: left;
+}
 .modal-body h2 {
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
@@ -81,5 +87,27 @@ button:focus {
   border-radius: 5px;
   font-size: 17px;
 }
+.button-login{
+  background: blue;
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.5rem 2rem;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.7);
+}
 
+.contraseña{
+  color: #000;
+  display: flex;
+  align-items: center;
+}
+.contraseña span{
+  margin-right: 0.5rem;
+}
+.footer-text{
+  color: #d6d6d6;
+}
 /*# sourceMappingURL=styleLogin.css.map */

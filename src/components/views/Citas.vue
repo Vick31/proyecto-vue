@@ -1,18 +1,15 @@
 <template>
     <div class="header">
-        <h3>Citas agendadas</h3>
+        <h4>Citas agendadas</h4>
         <router-link class="rotes" to="/citas/agendar-citas">
             <button>
                 Nueva cita
-                <span class="material-symbols-outlined">
-                    note_add
-                </span>
             </button>
         </router-link>
     </div>
 
     <div class="container-body">
-        <table class="table table-bordered">
+        <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Name</th>
@@ -43,7 +40,9 @@
     </div>
 </template>
 
-
+<style scoped>
+@import "../../assets/css/styleCitas.css";
+</style>
 
 <script>
     export default {
