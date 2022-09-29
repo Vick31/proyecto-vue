@@ -40,7 +40,7 @@
         </div>
       </div>
       <div class="form-footer">
-        <router-link class="rotes" to="/usuarios">
+        <router-link class="rotes" to="/registros">
           Regresar
         </router-link>
         <button type="button" @click="register_user()" class="btn btn-primary save">

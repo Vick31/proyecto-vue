@@ -1,8 +1,10 @@
 import { createWebHistory, createRouter } from "vue-router";
 
 //Register
-import Register from "./components/admin/RegisterClients.vue";
+import RegisterClients from "./components/admin/RegisterClients.vue";
 import RegisterAdmins from "./components/admin/RegisterAdmin.vue"
+import AgendarCita from "./components/admin/AgendarCita.vue";
+import Register from "./components/admin/Register.vue"
 
 //Acount
 import Login from "./components/views/Login.vue";
@@ -15,9 +17,10 @@ import Home from "./components/views/Home.vue";
 import Users from "./components/views/Users.vue";
 import Clientes from "./components/views/Clients.vue";
 import Citas from "./components/views/Citas.vue";
-import AgendarCita from "./components/admin/AgendarCita.vue";
 import Aside from "./components/Aside.vue";
 import NavBar from "./components/NavBar.vue";
+
+import Reports from "./components/admin/Reports.vue"
 
 const routes = [
     {
@@ -39,11 +42,20 @@ const routes = [
         
     },
     {
-        path: "/clientes/register",
+        path: "/registros/registrar-cliente",
+        name: "RegisterClients",
+        components: {
+            default: RegisterClients,
+            navbar: NavBar,
+        }
+    },
+    {
+        path: "/registros",
         name: "Register",
         components: {
             default: Register,
             navbar: NavBar,
+            aside: Aside,
         }
     },
     {
@@ -106,8 +118,16 @@ const routes = [
         path: "/account/register-admins",
         name: "RegisterAdmin",
         component: RegisterAdmins,
-    }
-    
+    },
+    {
+        path: "/registros/reporte",
+        name: "Reports",
+        components: {
+            default: Reports,
+            aside: Aside,
+            navbar: NavBar,
+        }
+    },    
 ];
 
 const _router = createRouter({
