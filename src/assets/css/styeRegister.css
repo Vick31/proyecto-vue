@@ -1,15 +1,23 @@
-@font-face {
-  font-family: font-unique;
-  src: url(fonts/ProductSansBold.ttf);
-}
-
-@font-face {
-  font-family: font-app;
-  src: url(fonts/Appetite.ttf);
-}
 *{
   text-decoration: none;
 }
+
+.container-body{
+  background: #fff;
+  padding: 1rem;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+
+}
+
+.container-body .body {
+  display: flex;
+  flex-flow: column;
+  
+}
+
+
 
 form {
   border: 1px solid rgba(0,0,0,0.1);

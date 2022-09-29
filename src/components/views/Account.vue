@@ -1,23 +1,56 @@
 <template>
 
-    <div class="container-body">
-        <h1>Bienvenido {{ user.name }}</h1>
+    <div class="section">
+        <div class="container-body">
+            <h2>Datos de usuario</h2>
+
+            <div class="body-content">
+
+                <div class="body">
+
+                    <div class="cards">
+                        <b>Rol</b>
+                        <p>{{ user.roles_id }}</p>
+                    </div>
+
+                    <div class="cards">
+                        <b>Compania</b>
+                        <p>{{ user.companies_id }}</p>
+                    </div>
+
+                    <div class="cards">
+                        <b>Correo electronico</b>
+                        <p>{{ user.email }}</p>
+                    </div>
+
+                    <div class="cards">
+                        <b>Número de contacto</b>
+                        <p>{{ user.phone_number }}</p>
+                    </div>
+
+                    <div class="cards">
+                        <b>Fecha de creación</b>
+                        <p>{{ user.created_at }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="body-aside">
+
+            <h3>{{ user.name }}</h3>
+            <h5>{{ user.dni }}</h5>
+            <router-link class="rotes" to="/account/reset-password">
+                <button>Cambiar contraseña</button>
+            </router-link>
+            <button @click="logout()">Cerrar sesión</button>
+        </div>
     </div>
-
-    <button @click="logout()">Cerrar sesión</button>
-
-    
-    <router-link class="rotes" to="/account/reset-password">
-        <button>Cambiar contraseña</button>
-    </router-link>
-    <router-link class="rotes" to="/account/register-admins">
-        <button>Registrar administrator</button>
-    </router-link>
 
 </template>
 
 <style scoped>
-/* @import "../assets/css/styleAccount.css"; */
+@import "../../assets/css/styleAccount.css";
 </style>
     
 

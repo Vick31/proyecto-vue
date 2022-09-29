@@ -71,7 +71,7 @@ export default {
             try {
                 const rs = await this.axios.post("/api/login", this.form);
                 this.$router.push({
-                    name: 'Account',
+                    name: 'Citas',
                     //params: { token: rs.data.token, },                    
                 });
                 localStorage.token = rs.data.token

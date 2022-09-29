@@ -5,14 +5,6 @@
                 <img src="../../img/logo.png" alt="" class="logo-aside">
             </div>
             <ul>
-                <router-link class="rotes" to="/usuarios">
-                    <li>
-                        <span class="material-symbols-outlined">home</span>
-                        <p>usuarios</p>
-                    </li>
-                </router-link>
-            </ul>
-            <ul>
                 <router-link class="rotes" to="/citas">
                     <li>
                         <span class="material-symbols-outlined">
@@ -22,6 +14,24 @@
                     </li>
                 </router-link>
             </ul>
+            <ul>
+                <router-link class="rotes" to="/registros">
+                    <li>
+                        <span class="material-symbols-outlined">
+                            event
+                        </span>
+                        <p>Registros</p>
+                    </li>
+                </router-link>
+            </ul>
+            <ul>
+                <router-link class="rotes" to="/usuarios">
+                    <li>
+                        <span class="material-symbols-outlined">home</span>
+                        <p>usuarios</p>
+                    </li>
+                </router-link>
+            </ul>            
             <ul>
                 <router-link class="rotes" to="/clientes">
                     <li>
@@ -40,14 +50,7 @@
                     <p>Medicos</p>
                 </li>
             </ul>
-            <ul>
-                <li>
-                    <span class="material-symbols-outlined">
-                        medication_liquid
-                    </span>
-                    <p>Especialidades médicas</p>
-                </li>
-            </ul>
+
             <ul>
                 <li>
                     <span class="material-symbols-outlined">
