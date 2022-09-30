@@ -1,45 +1,53 @@
 <template>
-
-    <div class="section">
-        <div class="body">
-            <div class="cards">
-                <b>Rol</b>
-                <p>{{ user.roles_id }}</p>
+    <div class="form-body">
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Compania perteneciente</label>
+                <input v-model="user.companies_id" type="text" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
+            </div>
+            
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Rol de usuario</label>
+                <input v-model="user.roles_id" type="number" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
             </div>
 
-            <div class="cards">
-                <b>Compania</b>
-                <p>{{ user.companies_id }}</p>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nombre de usuario</label>
+                <input v-model="user.name" type="text" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
             </div>
 
-            <div class="cards">
-                <b>Correo electronico</b>
-                <p>{{ user.email }}</p>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Dirección de correo</label>
+                <input v-model="user.email" type="email" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
             </div>
 
-            <div class="cards">
-                <b>Número de contacto</b>
-                <p>{{ user.phone_number }}</p>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Número de contacto</label>
+                <input v-model="user.phone_number" type="number" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
             </div>
 
-            <div class="cards">
-                <b>Fecha de creación</b>
-                <p>{{ user.created_at }}</p>
-            </div>
-        </div>
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
 
 </template>
 
 <style scoped>
-@import "../../assets/css/styleAccount.css";
-</style>
-    
+    @import "../../assets/css/styleAccount.css";
+    </style>
+            
 
 
 <script>
 export default {
-    
+
     data() {
         return {
             token: '',

@@ -1,5 +1,6 @@
 * {
     transition: 100ms all ease-in-out;
+    font-family: "San Francisco";
 }
 
 .navbar {
@@ -62,8 +63,7 @@
     display: flex;
     flex-flow: column;
     border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-    
+    border-bottom-right-radius: 25px;    
 }
 .logo {
     display: flex;
@@ -161,3 +161,9 @@
 .fade-leave-to {
     opacity: 0;
 }
+
+@font-face {
+    font-family: "San Francisco";
+    font-weight: 600;
+    src: url("../../../fonts/GOTHIC.TTF");
+  }

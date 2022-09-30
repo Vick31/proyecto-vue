@@ -5,9 +5,9 @@
         <div class="section">
             <router-view name="navbar"></router-view>
             <div class="container-section">
-                <transition name="fade">
+                <!-- <transition name="fade"> -->
                     <router-view></router-view>
-                </transition>
+                <!-- </transition> -->
             </div>
         </div>
     </div>

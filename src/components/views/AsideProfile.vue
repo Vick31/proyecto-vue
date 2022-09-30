@@ -1,45 +1,65 @@
 <template>
 
-    <div class="section">
+    <h2>Datos de usuario</h2>
+
+    <div class="container-body">
+
         <div class="body">
-            <div class="cards">
-                <b>Rol</b>
-                <p>{{ user.roles_id }}</p>
-            </div>
-
-            <div class="cards">
-                <b>Compania</b>
-                <p>{{ user.companies_id }}</p>
-            </div>
-
-            <div class="cards">
-                <b>Correo electronico</b>
-                <p>{{ user.email }}</p>
-            </div>
-
-            <div class="cards">
-                <b>Número de contacto</b>
-                <p>{{ user.phone_number }}</p>
-            </div>
-
-            <div class="cards">
-                <b>Fecha de creación</b>
-                <p>{{ user.created_at }}</p>
-            </div>
+            <router-view></router-view>
         </div>
-    </div>
 
+        <div class="body-aside">
+            <img src="../../../img/logos-cuentas/AccountIcon2.png" alt="">
+            <h3>{{ user.name }}</h3>
+            <h5>{{ user.roles_id }}</h5>
+
+            <div class="buttons">
+                <router-link class="rotes" to="/account">
+                    <span class="material-symbols-outlined">
+                        person
+                    </span>
+                    <button>Información personal</button>
+                </router-link>
+            </div>
+
+            <div class="buttons">
+                <router-link class="rotes" to="/account/edit">
+                    <span class="material-symbols-outlined">
+                        manage_accounts
+                    </span>
+                    <button>Editar información</button>
+                </router-link>
+            </div>
+
+            <div class="buttons">
+                <router-link class="rotes" to="/account/password">
+                    <span class="material-symbols-outlined">
+                        lock_reset
+                    </span>
+                    <button>Cambiar contraseña</button>
+                </router-link>
+            </div>
+
+            <div class="buttons">
+                <span class="material-symbols-outlined">
+                    logout
+                </span>
+                <button @click="logout()">Cerrar sesión</button>
+            </div>
+
+        </div>
+
+    </div>
 </template>
 
 <style scoped>
 @import "../../assets/css/styleAccount.css";
 </style>
+        
     
-
-
+    
 <script>
 export default {
-    
     data() {
         return {
             token: '',

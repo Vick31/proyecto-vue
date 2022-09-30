@@ -20,7 +20,9 @@ import Citas from "./components/views/Citas.vue";
 import Aside from "./components/Aside.vue";
 import NavBar from "./components/NavBar.vue";
 
-import Reports from "./components/admin/Reports.vue"
+import Reports from "./components/admin/Reports.vue";
+import AsideProfile from "./components/views/AsideProfile.vue";
+import EditProfile from "./components/controllers/EditProfile.vue"
 
 const routes = [
     {
@@ -28,18 +30,12 @@ const routes = [
         name: "ForgotPassword",
         component: ForgotPassword,
     },
-    {
-        path: "/account/reset-password",
-        name: "ResetPassword",
-        components: {
-            default: ResetPassword,
-        }
-    },
+    
     {
         path: "/Login",
         name: "Login",
         component: Login,
-        
+
     },
     {
         path: "/registros/registrar-cliente",
@@ -80,13 +76,29 @@ const routes = [
     },
     {
         path: "/account",
-        name: "Account",
+        name: "AccountProfile",
         components: {
-            default: Account,
-            aside: Aside,
-            navbar: NavBar,
-        }
-    },    
+            default: AsideProfile,
+            aside: Aside
+        },
+        children: [
+            {
+                path: "",
+                name: "Account",
+                component: Account,
+            },
+            {
+                path: "edit",
+                name: "EditProfile",
+                component: EditProfile,
+            },
+            {
+                path: "password",
+                name: "ResetPassword",
+                component: ResetPassword,
+            },
+        ]
+    },
     {
         path: "/citas",
         name: "Citas",
@@ -127,13 +139,14 @@ const routes = [
             aside: Aside,
             navbar: NavBar,
         }
-    },    
+    },
+
 ];
 
 const _router = createRouter({
     history: createWebHistory(),
     routes,
-}); 
+});
 
 export default _router;
 
