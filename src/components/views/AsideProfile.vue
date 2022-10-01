@@ -1,54 +1,59 @@
 <template>
+    <div class="section">
 
-    <h2>Datos de usuario</h2>
+        <h2>Datos de usuario</h2>
 
-    <div class="container-body">
+        <div class="container-body">
 
-        <div class="body">
-            <router-view></router-view>
+            <div class="body">
+                <div v-if="loading">
+                    <h1>cargando...</h1>
+                </div>
+                <router-view v-else></router-view>
+            </div>
+
+            <div class="body-aside">
+                <img src="../../../img/logos-cuentas/AccountIcon2.png" alt="">
+                <h3>{{ user.name }}</h3>
+                <h5>{{ user.roles_id }}</h5>
+
+                <div class="buttons">
+                    <router-link class="rotes" to="/account">
+                        <span class="material-symbols-outlined">
+                            person
+                        </span>
+                        <button>Información personal</button>
+                    </router-link>
+                </div>
+
+                <div class="buttons">
+                    <router-link class="rotes" to="/account/edit">
+                        <span class="material-symbols-outlined">
+                            manage_accounts
+                        </span>
+                        <button>Editar información</button>
+                    </router-link>
+                </div>
+
+                <div class="buttons">
+                    <router-link class="rotes" to="/account/password">
+                        <span class="material-symbols-outlined">
+                            lock_reset
+                        </span>
+                        <button>Cambiar contraseña</button>
+                    </router-link>
+                </div>
+
+                <div class="buttons">
+                    <span class="material-symbols-outlined">
+                        logout
+                    </span>
+                    <button @click="logout()">Cerrar sesión</button>
+                </div>
+
+            </div>
+
         </div>
-
-        <div class="body-aside">
-            <img src="../../../img/logos-cuentas/AccountIcon2.png" alt="">
-            <h3>{{ user.name }}</h3>
-            <h5>{{ user.roles_id }}</h5>
-
-            <div class="buttons">
-                <router-link class="rotes" to="/account">
-                    <span class="material-symbols-outlined">
-                        person
-                    </span>
-                    <button>Información personal</button>
-                </router-link>
-            </div>
-
-            <div class="buttons">
-                <router-link class="rotes" to="/account/edit">
-                    <span class="material-symbols-outlined">
-                        manage_accounts
-                    </span>
-                    <button>Editar información</button>
-                </router-link>
-            </div>
-
-            <div class="buttons">
-                <router-link class="rotes" to="/account/password">
-                    <span class="material-symbols-outlined">
-                        lock_reset
-                    </span>
-                    <button>Cambiar contraseña</button>
-                </router-link>
-            </div>
-
-            <div class="buttons">
-                <span class="material-symbols-outlined">
-                    logout
-                </span>
-                <button @click="logout()">Cerrar sesión</button>
-            </div>
-
-        </div>
-
     </div>
 </template>
 
@@ -64,9 +69,14 @@ export default {
         return {
             token: '',
             user: {},
+            loading: true
         }
     },
     mounted() {
+
+        
+        this.get_token()
+        
         if (localStorage.token) {
             this.token = localStorage.token;
             this.get_user();
@@ -79,8 +89,15 @@ export default {
             })
         }
 
+        this.loading = false
+
     },
     methods: {
+
+        async get_token() {
+            await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
+        },
+
         async get_user() {
 
             try {

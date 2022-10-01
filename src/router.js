@@ -79,7 +79,8 @@ const routes = [
         name: "AccountProfile",
         components: {
             default: AsideProfile,
-            aside: Aside
+            aside: Aside,
+            navbar: NavBar
         },
         children: [
             {

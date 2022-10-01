@@ -1,5 +1,5 @@
 <template>
-
+    
     <div class="container-body">
         <router-view name="aside"></router-view>
         <div class="section">
@@ -26,15 +26,16 @@
 export default {
     data() {
         return {
-
         };
     },
-    mounted() {
-
+    async mounted() {
+        this.get_token();
     },
 
     methods: {
-
+        async get_token() {
+            await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
+        },
     },
 };
 

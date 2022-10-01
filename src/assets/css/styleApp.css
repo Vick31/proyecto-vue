@@ -1,11 +1,15 @@
 * {
     transition: 100ms all ease-in-out;
-    font-family: "San Francisco";
+    /* font-family: "San Francisco"; */
 }
+
+
 
 .navbar {
     background-color: #fff;
 }
+
+
 
 .container-body {
     display: flex;
