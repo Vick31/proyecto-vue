@@ -1,35 +1,33 @@
 <template>
-    <div class="body">
-        <h4>Restablecer contraseña</h4>
-        <div class="form-body">
-            <form>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
-                    <input v-model="form.email" type="email" class="form-control" id="exampleInputEmail1"
-                        aria-describedby="emailHelp">
-                    <span v-if="errors.email">{{ errors.email[0] }}</span>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                    <input v-model="form.password" type="password" class="form-control" id="exampleInputPassword1">
-                    <span v-if="errors.password">{{ errors.password[0] }} </span>
-                </div>
+    <h4>Restablecer contraseña</h4>
+    <div class="form-body">
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
+                <input v-model="form.email" type="email" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
+                <span v-if="errors.email">{{ errors.email[0] }}</span>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                <input v-model="form.password" type="password" class="form-control" id="exampleInputPassword1">
+                <span v-if="errors.password">{{ errors.password[0] }} </span>
+            </div>
 
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Confirmar contraseña</label>
-                    <input v-model="form.password_confirmation" type="password" class="form-control"
-                        id="exampleInputPassword1">
-                    <span v-if="errors.password_confirmation">{{ errors.password_confirmation[0] }}
-                    </span>
-                </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Confirmar contraseña</label>
+                <input v-model="form.password_confirmation" type="password" class="form-control"
+                    id="exampleInputPassword1">
+                <span v-if="errors.password_confirmation">{{ errors.password_confirmation[0] }}
+                </span>
+            </div>
 
-                <button type="button" @click="change_password" class="btn btn-primary">
-                    Restablecer contraseña
-                </button>
-                <br />
-                <p v-if="message">{{ message }}</p>
-            </form>
-        </div>
+            <button type="button" @click="change_password" class="btn btn-primary">
+                Restablecer contraseña
+            </button>
+            <br />
+            <p v-if="message">{{ message }}</p>
+        </form>
     </div>
 </template>
 

@@ -4,18 +4,12 @@
         <h2>Datos de usuario</h2>
 
         <div class="container-body">
-
-            <div class="body">
-                <div v-if="loading">
-                    <h1>cargando...</h1>
-                </div>
-                <router-view v-else></router-view>
-            </div>
-
             <div class="body-aside">
-                <img src="../../../img/logos-cuentas/AccountIcon2.png" alt="">
-                <h3>{{ user.name }}</h3>
-                <h5>{{ user.roles_id }}</h5>
+                <div class="profile">
+                    <img src="../../../img/logos-cuentas/AccountIcon2.png" alt="">
+                    <h3>{{ user.name }}</h3>
+                    <h5>{{ user.roles_id }}</h5>
+                </div>
 
                 <div class="buttons">
                     <router-link class="rotes" to="/account">
@@ -44,14 +38,19 @@
                     </router-link>
                 </div>
 
-                <div class="buttons">
+                <div @click="logout()" class="buttons">
                     <span class="material-symbols-outlined">
                         logout
                     </span>
-                    <button @click="logout()">Cerrar sesión</button>
+                    <button>Cerrar sesión</button>
                 </div>
 
             </div>
+            <div class="form-body">
+                <router-view></router-view>
+            </div>
+
+
 
         </div>
     </div>
@@ -69,14 +68,13 @@ export default {
         return {
             token: '',
             user: {},
-            loading: true
         }
     },
     mounted() {
 
-        
+
         this.get_token()
-        
+
         if (localStorage.token) {
             this.token = localStorage.token;
             this.get_user();

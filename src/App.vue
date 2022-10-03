@@ -1,13 +1,14 @@
 <template>
-    
+
     <div class="container-body">
-        <router-view name="aside"></router-view>
+        <div id="aside-app">
+            <router-view name="aside"></router-view>
+        </div>
         <div class="section">
             <router-view name="navbar"></router-view>
+
             <div class="container-section">
-                <!-- <transition name="fade"> -->
-                    <router-view></router-view>
-                <!-- </transition> -->
+                <router-view></router-view>
             </div>
         </div>
     </div>

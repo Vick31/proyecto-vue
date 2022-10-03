@@ -1,6 +1,7 @@
 * {
     transition: 100ms all ease-in-out;
     /* font-family: "San Francisco"; */
+    box-sizing: content-box;
 }
 
 
@@ -12,22 +13,24 @@
 
 
 .container-body {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 16rem auto;
+    gap: 1rem;
 }
 
 
 .navbar {
-    width: calc(100vw - 16rem);
     background: none !important;
     box-shadow: none !important;    
+}
+
+.navbar #btn-menu {
+    display: none;
 }
 .container-fluid{
     display: flex;
     flex-flow: row;
     justify-content: space-between;
-    padding: 0 2rem;
-    padding-left:  3rem;
     padding-top: 0.5rem;
 }
 .container-fluid h4 {
@@ -49,19 +52,13 @@
     box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.4);
 }
 
-.container-section {
-    margin: 0 1.5rem;
-    margin-bottom: 0;
-    width: calc(100vw - 17.5rem);
-    height: calc(100vh - 4rem);
-    background-color: #F2F3F4;
-    /* box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.4); */
+.container-section { 
     border-radius: 10px;
     overflow-y: auto;
 }
 
 .aside {
-    width: 16rem;
+    position: relative;
     height: 100vh;
     background-color: #fff;
     display: flex;
@@ -69,6 +66,17 @@
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;    
 }
+
+.aside #close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: none;
+}
+.aside #close:hover{
+    cursor: pointer;
+}
+
 .logo {
     display: flex;
     justify-content: center;
@@ -165,6 +173,35 @@
 .fade-leave-to {
     opacity: 0;
 }
+
+
+@media (max-width: 1000px){
+
+    #aside-app {
+        z-index: 10;
+        position: absolute;
+        min-width: 16rem;
+        transform: scale(0);
+    }
+    .container-body {
+        grid-template-columns: auto;
+    }
+    .aside #close, 
+    .navbar #btn-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 500px) {
+
+}
+    
+
+
+
+
+
+
 
 @font-face {
     font-family: "San Francisco";
