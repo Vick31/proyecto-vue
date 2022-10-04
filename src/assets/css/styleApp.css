@@ -13,6 +13,8 @@
 
 
 .container-body {
+    margin: 0 auto;
+    max-width: 1300px;
     display: grid;
     grid-template-columns: 16rem auto;
     gap: 1rem;
@@ -63,8 +65,7 @@
     background-color: #fff;
     display: flex;
     flex-flow: column;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;    
+    border-radius: 10px;
 }
 
 .aside #close {

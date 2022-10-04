@@ -59,14 +59,19 @@ export default {
         this.get_token()
 
         if (localStorage.token) {
+
             this.token = localStorage.token;
             this.get_user();
+
         } else {
             this.$router.push({
+
                 name: "Login",
+                
                 params: {
                     message: "No estas autorizado para acceder con esta cuenta"
                 }
+
             })
         }
 
