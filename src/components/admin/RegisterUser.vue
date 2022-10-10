@@ -1,7 +1,7 @@
 <template>
     <div class="div-form">
         <form>
-            <h1 class="title">Registrar Admin</h1>
+            <h1 class="title">Registrar usuario</h1>
             <div class="form-floating pb-3">
                 <input type="number" class="form-control" name="name" v-model="form.dni" />
                 <label for="floatingInput">Dni</label>
@@ -24,12 +24,12 @@
                 <label for="floatingInput">Correo electronico</label>
                 <span v-if="errors.email">{{ errors.email[0] }}</span>
             </div>
-            <div class="form-floating pb-3">
+            <!-- <div class="form-floating pb-3">
                 <input type="text" class="form-control" name="email" v-model="form.companies_id" />
                 <label for="floatingInput">compania</label>
                 <span v-if="errors.companies_id">{{ errors.companies_id[0] }}</span>
-            </div>
-            
+            </div> -->
+
             <div class="div-row">
                 <div class="form-floating pb-3">
                     <input type="password" class="form-control" name="" v-model="form.password" />
@@ -43,8 +43,10 @@
                 </div>
             </div>
             <div class="form-footer">
-                <router-link class="rotes" to="/account">
-                    Regresar
+                <router-link class="rotes" to="/usuarios">
+                    <button type="button" class="btn btn-primary save">
+                        Regresar
+                    </button>
                 </router-link>
                 <button type="button" @click="register_admin()" class="btn btn-primary save">
                     Guardar
@@ -58,7 +60,7 @@
   
   
 <style scoped>
-@import "../../assets/css/styeRegister.css";
+/* @import "../../assets/css/styeRegister.css"; */
 </style>
   
 <script>
@@ -75,8 +77,8 @@ export default {
                 email: "",
                 password: "",
                 password_confirmation: "",
-                companies_id: "",
-                roles_id: "1",
+                companies_id: "2",
+                roles_id: "2",
             },
             errors: {},
             token: '',
@@ -135,7 +137,7 @@ export default {
                 const rs = await this.axios.post("/api/register-admins", this.form);
 
                 this.$router.push({
-                    name: 'Account',
+                    name: 'Users',
                     params: { message: rs.data.message, },
 
                 });

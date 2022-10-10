@@ -2,7 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 
 //Register
 import RegisterClients from "./components/admin/RegisterClients.vue";
-import RegisterAdmins from "./components/admin/RegisterAdmin.vue"
+import RegisterUser from "./components/admin/RegisterUser.vue"
 import AgendarCita from "./components/admin/AgendarCita.vue";
 import Register from "./components/admin/Register.vue"
 
@@ -128,9 +128,13 @@ const routes = [
         }
     },
     {
-        path: "/account/register-admins",
-        name: "RegisterAdmin",
-        component: RegisterAdmins,
+        path: "/usuarios/register-user",
+        name: "RegisterUser",
+        components: {
+            default: RegisterUser,
+            aside: Aside,
+            navbar: NavBar,
+        }
     },
     {
         path: "/registros/reporte",

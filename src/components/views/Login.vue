@@ -52,7 +52,7 @@
 export default {
     data() {
         return {
-            message: null,
+            message: '',
             form: {
                 email: "",
                 password: "",
@@ -70,11 +70,29 @@ export default {
         async login() {
             try {
                 const rs = await this.axios.post("/api/login", this.form);
-                this.$router.push({
-                    name: 'Citas',
-                    //params: { token: rs.data.token, },                    
-                });
                 localStorage.token = rs.data.token
+                switch (rs.data.user.roles_id) {
+                    case 1:
+                        this.$router.push({
+                            name: "Citas",
+                        });
+                        break;
+
+                    case 2:
+                        this.$router.push({
+                            name: "Account",
+                        });
+                        break;
+                    default:
+                        this.$router.push({
+                            name: "Login",
+                            params: {
+                                message:
+                                    "Ups! algo salión mal, por favor intentalo de nuevo.",
+                            },
+                        });
+                }
+
             }
             catch (e) {
 
@@ -90,7 +108,6 @@ export default {
             }
 
         },
-
     },
 };
 

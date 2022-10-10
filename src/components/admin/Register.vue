@@ -14,7 +14,7 @@
                     </span>
                 </button>
             </router-link>
-            <button>registrar usuarios</button>
+            
         </div>
     </div>
 </template>

@@ -1,9 +1,11 @@
 <template>
 
     <div class="container-body">
+
         <div id="aside-app">
             <router-view name="aside"></router-view>
         </div>
+
         <div class="section">
             <router-view name="navbar"></router-view>
 

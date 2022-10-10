@@ -14,7 +14,7 @@
 
 .container-body {
     margin: 0 auto;
-    max-width: 1300px;
+    /* max-width: 1300px; */
     display: grid;
     grid-template-columns: 16rem auto;
     gap: 1rem;
