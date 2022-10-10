@@ -29,14 +29,47 @@
                         <span class="material-symbols-outlined color-orange">
                             edit_square
                         </span>
-                        <span class="material-symbols-outlined color-red">
-                            delete
-                        </span>
+                        <button type="button" @click="cita_destroy(p)" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            <span class="material-symbols-outlined color-red">
+                                delete
+                            </span>
+                        </button>
                     </td>
                 </tr>
 
             </tbody>
         </table>
+    </div>
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h3> ¿Está seguro de eliminar? </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" @click="destroy()" class="btn btn-primary" data-bs-dismiss="modal"
+                        id="liveToastBtn">aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Cita</strong>
+                <small>Ahora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Eliminada correctamente
+            </div>
+        </div>
     </div>
 </template>
 
@@ -49,6 +82,7 @@ export default {
     data() {
         return {
             citas_list: [],
+            cita_delete: {},
             token: '',
             user: {},
         }
@@ -69,6 +103,7 @@ export default {
             })
         }
         this.index()
+        this.iniciador()
     },
     methods: {
 
@@ -99,8 +134,31 @@ export default {
             let response = await axios.get("http://127.0.0.1:8000/api/citas")
             this.citas_list = response.data
         },
+
+        cita_destroy(p) {
+            this.cita_delete = p
+        },
+
+        async destroy() {
+            let id = this.cita_delete.id
+            let response = await axios.delete("http://127.0.0.1:8000/api/citas/" + id)
+            this.index()
+        },
+        iniciador() {
+            const toastTrigger = document.getElementById('liveToastBtn')
+            const toastLiveExample = document.getElementById('liveToast')
+            if (toastTrigger) {
+                toastTrigger.addEventListener('click', () => {
+                    const toast = new bootstrap.Toast(toastLiveExample)
+
+                    toast.show()
+                })
+            }
+        }
     },
 }
+
+
 
 </script>
 
