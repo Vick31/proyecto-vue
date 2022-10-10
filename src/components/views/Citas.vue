@@ -45,7 +45,7 @@
 </style>
 
 <script>
-    export default {
+export default {
     data() {
         return {
             citas_list: [],
@@ -72,15 +72,6 @@
     },
     methods: {
 
-        async get_token() {
-            await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
-        },
-
-        async index() {
-            let response = await axios.get("http://127.0.0.1:8000/api/citas")
-            this.citas_list = response.data
-        },
-        
         async get_user() {
 
             try {
@@ -100,7 +91,17 @@
             }
         },
 
-        
+        async get_token() {
+            await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
+        },
+
+        async index() {
+            let response = await axios.get("http://127.0.0.1:8000/api/citas")
+            this.citas_list = response.data
+        },
     },
 }
+
 </script>
+
+

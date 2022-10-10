@@ -12,12 +12,16 @@
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Biomedico</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" v-model="form.users_id">
+
+                    <select name="" id="co">
+                    </select>
                 </div>
             </div>
             <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">fecha</label>
-                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" v-model="form.date">
-                </div>
+                <label for="exampleInputEmail1" class="form-label">fecha</label>
+                <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    v-model="form.date">
+            </div>
             <div class="form-floating">
                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
                     style="height: 100px" v-model="form.description"></textarea>
@@ -26,7 +30,8 @@
 
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Reporte</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" v-model="form.reports_id">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    v-model="form.reports_id">
             </div>
             <button type="button" class="btn btn-primary" @click="register_cita()">Submit</button>
         </form>
@@ -34,10 +39,10 @@
 </template>
 
 <style>
-    .div-row {
-        display: flex;
-        flex-direction: row
-    }
+.div-row {
+    display: flex;
+    flex-direction: row
+}
 </style>
 
 
@@ -71,7 +76,7 @@ export default {
                 }
             })
         }
-
+        // this.buscar()
     },
     methods: {
 
@@ -122,6 +127,48 @@ export default {
             }
 
         },
+
+        buscar() {
+            let con = document.getElementById("co")
+
+            const carro = [
+                {
+                    id: 1,
+                    nombre: 'a'
+                },
+                {
+                    id: 2,
+                    nombre: 'b'
+                },
+                {
+                    id: 3,
+                    nombre: 'c'
+                }
+            ]
+
+            carro.forEach((p) => {
+                let select = document.createElement("option")
+                select.innerHTML = `
+
+                    <p>${p.nombre}</p>
+
+                    `
+                con.append(select)
+
+                var nomre = []
+
+                select.addEventListener("click", () => {
+                    console.log('si')
+                    nomre.push({ id: p.id, nombre: p.nombre })
+
+                    console.log(nomre)
+
+                    alert('si')
+                })
+
+            })
+
+        }
     },
 }
 </script>
