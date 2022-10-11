@@ -48,9 +48,11 @@
                         Regresar
                     </button>
                 </router-link>
-                <button type="button" @click="register_admin()" class="btn btn-primary save">
-                    Guardar
-                </button>
+                <router-link to="/usuarios">
+                    <button type="button" @click="register_admin()" class="btn btn-primary save">
+                        Guardar
+                    </button>
+                </router-link>
             </div>
             <p v-if="message">{{ message }}</p>
         </form>

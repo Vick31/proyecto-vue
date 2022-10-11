@@ -11,7 +11,7 @@ import Login from "./components/views/Login.vue";
 import Account from "./components/views/Account.vue";
 import ForgotPassword from "./components/controllers/ForgotPassword.vue";
 import ResetPassword from "./components/controllers/ResetPassword.vue";
-import AccountProfileUser from "./components/views/AccountUser.vue";
+import AccountProfileUser from "./components/users/AccountUser.vue";
 import AsideUser from "./components/AsideUser.vue";
 
 //Inicio y componentes
@@ -27,18 +27,21 @@ import AsideProfile from "./components/views/AsideProfile.vue";
 import EditProfile from "./components/controllers/EditProfile.vue"
 
 const routes = [
+
+
+    // -- -- USERS CONTROLLERS -- --
+
     {
         path: "/forgot-password",
         name: "ForgotPassword",
         component: ForgotPassword,
     },
-    
-    {
-        path: "/Login",
-        name: "Login",
-        component: Login,
 
-    },
+
+    // -- -- ADMIN CONTROLLERS -- -- 
+
+
+    // REGISTER CLIENT
     {
         path: "/registros/registrar-cliente",
         name: "RegisterClients",
@@ -47,35 +50,43 @@ const routes = [
             navbar: NavBar,
         }
     },
-    {
-        path: "/registros",
-        name: "Register",
-        components: {
-            default: Register,
-            navbar: NavBar,
-            aside: Aside,
-        }
-    },
-    {
-        path: "/",
-        name: "Home",
-        components: {
-            default: Home,
-            aside: Aside,
-            navbar: NavBar,
-        }
 
-    },
+    // REGISTER REPORTS
     {
-        path: "/usuarios",
-        name: "Users",
+        path: "/registros/reporte",
+        name: "Reports",
         components: {
-            default: Users,
+            default: Reports,
             aside: Aside,
             navbar: NavBar,
         }
-
     },
+
+    // REGISTER USERS
+    {
+        path: "/usuarios/register-user",
+        name: "RegisterUser",
+        components: {
+            default: RegisterUser,
+            aside: Aside,
+            navbar: NavBar,
+        }
+    },
+
+    // REGISTER CITAS 
+    {
+        path: "/citas/agendar-citas",
+        name: "AgendarCita",
+        components: {
+            default: AgendarCita,
+            aside: Aside,
+            navbar: NavBar,
+        }
+    },
+
+
+    // -- -- ADMIN ACCOUNT -- -- 
+
     {
         path: "/account",
         name: "AccountProfile",
@@ -102,6 +113,9 @@ const routes = [
             },
         ]
     },
+
+    // -- -- USER ACCOUNT -- -- 
+
     {
         path: "/accountUser",
         name: "AccountProfileUser",
@@ -116,17 +130,51 @@ const routes = [
                 name: "Account",
                 component: Account,
             },
-            // {
-            //     path: "edit",
-            //     name: "EditProfile",
-            //     component: EditProfile,
-            // },
             {
                 path: "password",
                 name: "ResetPassword",
                 component: ResetPassword,
             },
         ]
+    },
+
+
+    // -- -- VIEWS -- -- 
+
+    {
+        path: "/",
+        name: "Home",
+        components: {
+            default: Home,
+            aside: Aside,
+            navbar: NavBar,
+        }
+
+    },
+    {
+        path: "/Login",
+        name: "Login",
+        component: Login,
+
+    },
+    {
+        path: "/registros",
+        name: "Register",
+        components: {
+            default: Register,
+            navbar: NavBar,
+            aside: Aside,
+        }
+    },
+    {
+        path: "/usuarios",
+        name: "Users",
+        components: {
+            default: Users,
+            aside: Aside,
+            navbar: NavBar,
+        }
+
     },
     {
         path: "/citas",
@@ -146,33 +194,14 @@ const routes = [
             navbar: NavBar,
         }
     },
-    {
-        path: "/citas/agendar-citas",
-        name: "AgendarCita",
-        components: {
-            default: AgendarCita,
-            aside: Aside,
-            navbar: NavBar,
-        }
-    },
-    {
-        path: "/usuarios/register-user",
-        name: "RegisterUser",
-        components: {
-            default: RegisterUser,
-            aside: Aside,
-            navbar: NavBar,
-        }
-    },
-    {
-        path: "/registros/reporte",
-        name: "Reports",
-        components: {
-            default: Reports,
-            aside: Aside,
-            navbar: NavBar,
-        }
-    },
+
+
+
+
+
+
+
+
 
 ];
 
