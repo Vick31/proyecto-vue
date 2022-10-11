@@ -11,6 +11,8 @@ import Login from "./components/views/Login.vue";
 import Account from "./components/views/Account.vue";
 import ForgotPassword from "./components/controllers/ForgotPassword.vue";
 import ResetPassword from "./components/controllers/ResetPassword.vue";
+import AccountProfileUser from "./components/views/AccountUser.vue";
+import AsideUser from "./components/AsideUser.vue";
 
 //Inicio y componentes
 import Home from "./components/views/Home.vue";
@@ -93,6 +95,32 @@ const routes = [
                 name: "EditProfile",
                 component: EditProfile,
             },
+            {
+                path: "password",
+                name: "ResetPassword",
+                component: ResetPassword,
+            },
+        ]
+    },
+    {
+        path: "/accountUser",
+        name: "AccountProfileUser",
+        components: {
+            default: AsideProfile,
+            aside: AsideUser,
+            navbar: NavBar
+        },
+        children: [
+            {
+                path: "",
+                name: "Account",
+                component: Account,
+            },
+            // {
+            //     path: "edit",
+            //     name: "EditProfile",
+            //     component: EditProfile,
+            // },
             {
                 path: "password",
                 name: "ResetPassword",
