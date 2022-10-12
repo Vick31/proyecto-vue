@@ -116,27 +116,27 @@ const routes = [
 
     // -- -- USER ACCOUNT -- -- 
 
-    {
-        path: "/accountUser",
-        name: "AccountProfileUser",
-        components: {
-            default: AsideProfile,
-            aside: AsideUser,
-            navbar: NavBar
-        },
-        children: [
-            {
-                path: "",
-                name: "Account",
-                component: Account,
-            },
-            {
-                path: "password",
-                name: "ResetPassword",
-                component: ResetPassword,
-            },
-        ]
-    },
+    // {
+    //     path: "/accountUser",
+    //     name: "AccountProfileUser",
+    //     components: {
+    //         default: AsideProfile,
+    //         aside: AsideUser,
+    //         navbar: NavBar
+    //     },
+    //     children: [
+    //         {
+    //             path: "",
+    //             name: "Account",
+    //             component: Account,
+    //         },
+    //         {
+    //             path: "password",
+    //             name: "ResetPassword",
+    //             component: ResetPassword,
+    //         },
+    //     ]
+    // },
 
 
     // -- -- VIEWS -- -- 
