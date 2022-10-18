@@ -1,46 +1,51 @@
 <template>
     <div class="content">
         <div class="modal-body">
-            <h1>SIGEM</h1>
-            <div id="body">
-                <h3>Welcome to login system</h3>
-                <form id="form-login">
-                    <div class="form-floating pb-3">
-                        <input type="email" class="form-control" id="floatingInput" name="email" v-model="form.email" />
-                        <label for="floatingInput">Correo electronico</label>
-                        <span class="errors-message" v-if="errors.email">{{
-                        errors.email[0] }}</span>
+            <div>
+
+                <h1>SIGEM</h1>
+                <div id="body">
+                    <h3>Welcome to login system</h3>
+                    <form id="form-login">
+                        <div class="form-floating pb-3">
+                            <input type="email" class="form-control" id="floatingInput" name="email"
+                                v-model="form.email" />
+                            <label for="floatingInput">Correo electronico</label>
+                            <span class="errors-message" v-if="errors.email">{{
+                            errors.email[0] }}</span>
+                        </div>
+
+                        <div class="form-floating pb-3">
+                            <input type="password" class="form-control" id="floatingPassword" name="password"
+                                v-model="form.password" />
+                            <label for="floatingPassword">Password</label>
+                            <span class="errors-message" v-if="errors.password">{{
+                            errors.password[0] }} </span>
+                        </div>
+
+
+                        <p v-if="message">{{ message }}</p>
+                    </form>
+                    <div class="modal-footer">
+                        <button class="forgotPassword">
+                            <router-link to="/forgot-password" class="contraseña">
+                                <span class="material-symbols-outlined">
+                                    login
+                                </span>
+                                ¿Olvidaste tu contraseña?
+                            </router-link>
+                        </button>
+                        <button class="button-login" @click="login()">
+                            Login
+                        </button>
                     </div>
-
-                    <div class="form-floating pb-3">
-                        <input type="password" class="form-control" id="floatingPassword" name="password"
-                            v-model="form.password" />
-                        <label for="floatingPassword">Password</label>
-                        <span class="errors-message" v-if="errors.password">{{
-                        errors.password[0] }} </span>
-                    </div>
-
-
-                    <p v-if="message">{{ message }}</p>
-                </form>
-                <div class="modal-footer">
-                    <button class="forgotPassword">
-                        <router-link to="/forgot-password" class="contraseña">
-                            <span class="material-symbols-outlined">
-                                login
-                            </span>
-                            ¿Olvidaste tu contraseña?
-                        </router-link>
-                    </button>
-                    <button class="button-login" @click="login()">
-                        Login
-                    </button>
+                </div>
+                <div class="footer-text">
+                    RESERVED FOR THE BEST BIOMEDICS IN THE COUNTRY.
                 </div>
             </div>
-            <div class="footer-text">
-                RESERVED FOR THE BEST BIOMEDICS IN THE COUNTRY.
-            </div>
         </div>
+
     </div>
 </template>
 
