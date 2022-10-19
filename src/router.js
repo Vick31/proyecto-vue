@@ -26,8 +26,15 @@ import Reports from "./components/admin/Reports.vue";
 import AsideProfile from "./components/views/AsideProfile.vue";
 import EditProfile from "./components/controllers/EditProfile.vue"
 
+import Calendar from "./components/EventCalendar.vue"
+
 const routes = [
 
+    {
+        path: "/calendar",
+        name: "Calendar",
+        component: Calendar
+    },
 
     // -- -- USERS CONTROLLERS -- --
 
