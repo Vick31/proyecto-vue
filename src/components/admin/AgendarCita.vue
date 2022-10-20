@@ -13,9 +13,6 @@
                     <label for="exampleInputEmail1" class="form-label">Biomedico</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                         v-model="form.users_id">
-
-                    <select name="" id="co">
-                    </select>
                 </div>
             </div>
             <div class="mb-3">

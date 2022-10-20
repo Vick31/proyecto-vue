@@ -1,6 +1,4 @@
-
-
-<script>
+<script setup>
 
 import { ref, reactive, watch } from 'vue'
 import '@fullcalendar/core/vdom'
@@ -10,12 +8,48 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import listPlugin from '@fullcalendar/list'
 import interactionPlugin from '@fullcalendar/interaction'
 
+const id = ref(0)
+let title = 'Nuevo evento'
+const options = reactive({
+    plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
+    initialView: 'dayGridMonth',
+    editable: true,
+    selectable: true,
+    weekends: true,
+    select: (arg) => {
 
+        // document.getElementById('modal-cita').style.display = "flex"
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
 
-export default {
-    components: {
-        FullCalendar // make the <FullCalendar> tag available
+        id.value = id.value + 1
+
+        const cal = arg.view.calendar
+        cal.unselect()
+        cal.addEvent({
+            id: `${id.value}`,
+            title: `${title + id.value}`,
+            start: arg.start,
+            end: arg.end,
+            allDay: true,
+            color: color,
+        })
     },
+    eventClick: (arg) => {
+        // console.log('editar')
+    },
+
+
+
+})
+
+</script>
+
+<script>
+export default {
     data() {
         return {
             form: {
@@ -27,27 +61,10 @@ export default {
             },
             token: '',
             user: {},
-
-            calendarOptions: {
-                plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
-                initialView: 'dayGridMonth',
-                headerToolbar: {
-                    left: 'prev,next today',
-                    certer: 'title',
-                    right: 'dayGridMonth,dayGridWeek,listDay'
-
-                },
-                editable: true,
-                selectable: true,
-                weekends: true,
-                dateClick: this.select,
-                events: []
-            }
         }
     },
     mounted() {
         this.get_token()
-
         if (localStorage.token) {
             this.token = localStorage.token;
             this.get_user();
@@ -94,40 +111,6 @@ export default {
                 console.log(e)
             }
         },
-
-        select: (arg) => {
-            alert(`que quiere perroooo`)
-            const id = ref(0)
-            let title = 'hola'
-
-            // document.getElementById('modal-cita').style.display = "flex"
-
-            var letters = '0123456789ABCDEF'.split('');
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-
-            id.value = id.value + 1
-
-            const cal = arg.view.calendar
-
-            cal.unselect()
-            cal.addEvent({
-                id: `${id.value}`,
-                title: `${title}`,
-                start: arg.start,
-                end: arg.end,
-                allDay: true,
-                color: color,
-            })
-
-        },
-        eventClick: (arg) => {
-            console.log('editar')
-        },
-
-
         cerrar() {
             document.getElementById('modal-cita').style.display = "none"
         }
@@ -159,11 +142,7 @@ export default {
 
 <template>
 
-    <FullCalendar :options="calendarOptions" />
-
-
-
-
+    <FullCalendar v-bind:options="options" />
 
     <div class="modal-cita" id="modal-cita">
         <div class="modal-dialog">

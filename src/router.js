@@ -27,13 +27,18 @@ import AsideProfile from "./components/views/AsideProfile.vue";
 import EditProfile from "./components/controllers/EditProfile.vue"
 
 import Calendar from "./components/EventCalendar.vue"
-
+import Calendar2 from "./components/Calendario.vue"
 const routes = [
 
     {
         path: "/calendar",
         name: "Calendar",
         component: Calendar
+    },
+    {
+        path: "/calendar2",
+        name: "Calendar2",
+        component: Calendar2
     },
 
     // -- -- USERS CONTROLLERS -- --
