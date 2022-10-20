@@ -9,7 +9,9 @@ import listPlugin from '@fullcalendar/list'
 import interactionPlugin from '@fullcalendar/interaction'
 
 const id = ref(0)
+
 let title = 'Nuevo evento'
+
 const options = reactive({
     plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
     initialView: 'dayGridMonth',
@@ -17,6 +19,7 @@ const options = reactive({
     selectable: true,
     weekends: true,
     select: (arg) => {
+        console.log(arg)
 
         // document.getElementById('modal-cita').style.display = "flex"
         var letters = '0123456789ABCDEF'.split('');
@@ -37,6 +40,7 @@ const options = reactive({
             allDay: true,
             color: color,
         })
+
     },
     eventClick: (arg) => {
         // console.log('editar')

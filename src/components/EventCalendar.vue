@@ -40,13 +40,46 @@ export default {
                 editable: true,
                 selectable: true,
                 weekends: true,
-                dateClick: this.select,
-                events: []
+                // dateClick: this.select ,               
+                // events: []
+                select: (arg) => {
+                    console.log(arg)
+
+                    document.getElementById('modal-cita').style.display = "flex"
+
+                    var letters = '0123456789ABCDEF'.split('');
+                    var color = '#';
+                    for (var i = 0; i < 6; i++) {
+                        color += letters[Math.floor(Math.random() * 16)];
+                    }
+
+                    let id = { value: 0 }
+                    let title = "hola"
+                    id.value = id.value + 1
+
+                    const cal = arg.view.calendar
+                    cal.unselect()
+                    cal.addEvent({
+                        id: `${id.value}`,
+                        title: `${title + id.value}`,
+                        start: arg.start,
+                        end: arg.end ,
+                        allDay: true,
+                        color: color,
+                    })
+
+                    this.test()
+
+                },
+                eventClick: (arg) => {
+                    console.log('editar')
+                },
             }
         }
     },
     mounted() {
         this.get_token()
+        this.index()
 
         if (localStorage.token) {
             this.token = localStorage.token;
@@ -60,6 +93,21 @@ export default {
         }
     },
     methods: {
+
+        async index() {
+            let response = await axios.get("http://127.0.0.1:8000/api/citas")
+
+            let test_events = [];
+            response.data.forEach(item => {
+
+                test_events.push({
+                    id: item.id,
+                    title: item.description,
+                    start: item.date
+                });
+            });
+            this.calendarOptions.events = test_events
+        },
 
         async get_token() {
             await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
@@ -81,10 +129,14 @@ export default {
         async register_cita() {
             try {
                 const rs = await this.axios.post("/api/citas", this.form);
+
+                document.getElementById('modal-cita').style.display = "none"
+
                 this.$router.push({
-                    name: 'Citas',
+                    name: 'Calendar',
                     params: { message: rs.data.message, },
                 });
+                this.index()
             }
             catch (e) {
                 this.errors = {},
@@ -95,41 +147,12 @@ export default {
             }
         },
 
-        select: (arg) => {
-            alert(`que quiere perroooo`)
-            const id = ref(0)
-            let title = 'hola'
-
-            // document.getElementById('modal-cita').style.display = "flex"
-
-            var letters = '0123456789ABCDEF'.split('');
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-
-            id.value = id.value + 1
-
-            const cal = arg.view.calendar
-
-            cal.unselect()
-            cal.addEvent({
-                id: `${id.value}`,
-                title: `${title}`,
-                start: arg.start,
-                end: arg.end,
-                allDay: true,
-                color: color,
-            })
-
-        },
-        eventClick: (arg) => {
-            console.log('editar')
-        },
-
-
         cerrar() {
             document.getElementById('modal-cita').style.display = "none"
+        },
+
+        test() {
+            alert('')
         }
     },
 }
@@ -212,8 +235,7 @@ export default {
                 <div class="modal-footer">
                     <button @click="cerrar()" type="button" class="btn btn-secondary"
                         data-bs-dismiss="modal">Close</button>
-                    <button type="button" @click="destroy()" class="btn btn-primary" data-bs-dismiss="modal"
-                        id="liveToastBtn">aceptar</button>
+                    <button type="button" @click="register_cita()">aceptar</button>
                 </div>
             </div>
         </div>

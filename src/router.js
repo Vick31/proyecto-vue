@@ -28,6 +28,7 @@ import EditProfile from "./components/controllers/EditProfile.vue"
 
 import Calendar from "./components/EventCalendar.vue"
 import Calendar2 from "./components/Calendario.vue"
+
 const routes = [
 
     {
@@ -193,6 +194,7 @@ const routes = [
         name: "Citas",
         components: {
             default: Citas,
+
             aside: Aside,
             navbar: NavBar,
         }

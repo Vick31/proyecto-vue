@@ -71,6 +71,8 @@
             </div>
         </div>
     </div>
+
+    <FullCalendar v-bind:options="options" />
 </template>
 
 <style scoped>
@@ -161,6 +163,3 @@ export default {
 
 
 </script>
-
-
-
