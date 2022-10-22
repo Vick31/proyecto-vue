@@ -1,6 +1,9 @@
 *{
     text-decoration: none;
 }
+::-webkit-scrollbar {
+    display: none;
+}
 .header{
     display: flex;
     flex-flow: row;
@@ -24,11 +27,42 @@
     align-items: center;
     box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.7);
 }       
-.container-body {
+
+.container-body{
     background: #fff;
-    height: calc(100% - 7rem);
+    height: calc(100vh - 10rem);
     border-radius:18px;
     margin-top: 2rem;
     padding: 1rem;
     box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.1);
+    overflow-y: auto;
+
+}
+.container-table{
+    height: 100%;
+}
+
+.calendario {
+    height: calc(100vh - 4.5rem);
+    overflow-y: auto;
+    margin-right: 1rem;
+}
+.contenedor {
+    height: 100%;
+    
+}
+#modal-cita {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: none;
+
+    background-color: rgb(165, 162, 162);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }

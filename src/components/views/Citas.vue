@@ -9,37 +9,39 @@
     </div>
 
     <div class="container-body">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Date created</th>
-                    <th scope="col">Rol</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="p in citas_list">
-                    <td>{{p.description}}</td>
-                    <td>{{p.users_id}}</td>
-                    <td>{{p.date}}</td>
-                    <td>user</td>
-                    <td>
-                        <span class="material-symbols-outlined color-orange">
-                            edit_square
-                        </span>
-                        <button type="button" @click="cita_destroy(p)" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            <span class="material-symbols-outlined color-red">
-                                delete
+        <div class="container-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Date created</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="p in citas_list">
+                        <td>{{p.description}}</td>
+                        <td>{{p.users_id}}</td>
+                        <td>{{p.date}}</td>
+                        <td>user</td>
+                        <td>
+                            <span class="material-symbols-outlined color-orange">
+                                edit_square
                             </span>
-                        </button>
-                    </td>
-                </tr>
+                            <button type="button" @click="cita_destroy(p)" class="btn btn-primary"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <span class="material-symbols-outlined color-red">
+                                    delete
+                                </span>
+                            </button>
+                        </td>
+                    </tr>
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
     <!-- Button trigger modal -->
 
