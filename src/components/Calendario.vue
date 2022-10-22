@@ -37,7 +37,7 @@ const options = reactive({
             title: `${title + id.value}`,
             start: arg.start,
             end: arg.end,
-            allDay: undefined,
+            allDay: true,
             color: color,
         })
 

@@ -19,14 +19,11 @@ export default {
     data() {
         return {
             form: {
-                name: "",
-                date_start: "",
-                date_end: "",
+                date: "",
                 description: "",
                 users_id: "",
                 clients_id: "",
                 reports_id: "",
-                color: "",
             },
             token: '',
             user: {},
@@ -43,17 +40,36 @@ export default {
                 editable: true,
                 selectable: true,
                 weekends: true,
-                allDay: false,
                 // dateClick: this.select ,               
                 // events: []
                 select: (arg) => {
-
-                    document.getElementById('modal-cita').style.display = 'flex';
-
-                    this.form.date_start = arg.startStr
-                    this.form.date_end = arg.endStr
-                    
                     console.log(arg)
+
+                    document.getElementById('modal-cita').style.display = "flex"
+
+                    var letters = '0123456789ABCDEF'.split('');
+                    var color = '#';
+                    for (var i = 0; i < 6; i++) {
+                        color += letters[Math.floor(Math.random() * 16)];
+                    }
+
+                    let id = { value: 0 }
+                    let title = "hola"
+                    id.value = id.value + 1
+
+                    const cal = arg.view.calendar
+                    cal.unselect()
+                    cal.addEvent({
+                        id: `${id.value}`,
+                        title: `${title + id.value}`,
+                        start: arg.start,
+                        end: arg.end ,
+                        allDay: true,
+                        color: color,
+                    })
+
+                    this.test()
+
                 },
                 eventClick: (arg) => {
                     console.log('editar')
@@ -83,12 +99,11 @@ export default {
 
             let test_events = [];
             response.data.forEach(item => {
+
                 test_events.push({
                     id: item.id,
-                    title: item.name,
-                    start: item.date_start,
-                    end: item.date_end,
-                    color: item.color
+                    title: item.description,
+                    start: item.date
                 });
             });
             this.calendarOptions.events = test_events
@@ -198,30 +213,22 @@ export default {
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">nombre del evento</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" v-model="form.name">
+                                <label for="exampleInputEmail1" class="form-label">fecha</label>
+                                <input type="date" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" v-model="form.date">
                             </div>
                             <div class="form-floating">
                                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
                                     style="height: 100px" v-model="form.description"></textarea>
                                 <label for="floatingTextarea2">Description</label>
                             </div>
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                                    style="height: 100px" v-model="form.description"></textarea>
-                                <label for="floatingTextarea2">Description</label>
-                            </div>
+
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Reporte</label>
                                 <input type="text" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp" v-model="form.reports_id">
                             </div>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">color</label>
-                                <input type="color" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" v-model="form.color">
-                            </div>
+                            <button type="button" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
