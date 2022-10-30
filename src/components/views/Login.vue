@@ -58,11 +58,8 @@ export default {
     data() {
         return {
             message: '',
-            form: {
-                email: "",
-                password: "",
-            },
             errors: {},
+            form: { email: "",  password: "" },
         };
     },
     mounted() {
@@ -78,23 +75,17 @@ export default {
                 localStorage.token = rs.data.token
                 switch (rs.data.user.roles_id) {
                     case 1:
-                        this.$router.push({
-                            name: "Citas",
-                        });
+                        this.$router.push({ name: "Citas" });
                         break;
 
                     case 2:
-                        this.$router.push({
-                            name: "Account",
-                        });
+                        this.$router.push({ name: "Account", });
                         break;
+
                     default:
                         this.$router.push({
                             name: "Login",
-                            params: {
-                                message:
-                                    "Ups! algo salión mal, por favor intentalo de nuevo.",
-                            },
+                            params: { message: "Ups! algo salión mal, por favor intentalo de nuevo." },
                         });
                 }
 

@@ -26,21 +26,8 @@ import Reports from "./components/admin/Reports.vue";
 import AsideProfile from "./components/views/AsideProfile.vue";
 import EditProfile from "./components/controllers/EditProfile.vue"
 
-import Calendar from "./components/EventCalendar.vue"
-import Calendar2 from "./components/Calendario.vue"
 
 const routes = [
-
-    {
-        path: "/calendar",
-        name: "Calendar",
-        component: Calendar
-    },
-    {
-        path: "/calendar2",
-        name: "Calendar2",
-        component: Calendar2
-    },
 
     // -- -- USERS CONTROLLERS -- --
 
@@ -159,8 +146,8 @@ const routes = [
         name: "Home",
         components: {
             default: Home,
-            aside: Aside,
-            navbar: NavBar,
+            // aside: Aside,
+            // navbar: NavBar,
         }
 
     },
@@ -194,7 +181,6 @@ const routes = [
         name: "Citas",
         components: {
             default: Citas,
-
             aside: Aside,
             navbar: NavBar,
         }
