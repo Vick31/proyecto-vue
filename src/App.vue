@@ -10,6 +10,7 @@
             <router-view name="navbar"></router-view>
 
             <div class="container-section">
+                
                 <router-view></router-view>
             </div>
         </div>

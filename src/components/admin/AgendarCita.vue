@@ -14,11 +14,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
 
-
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
 
 export default {
+    
     components: {
-        FullCalendar // make the <FullCalendar> tag available
+        Loading,
+        FullCalendar, // make the <FullCalendar> tag available
     },
     data() {
         return {
@@ -35,6 +38,8 @@ export default {
             },
             token: '',
             user: {},
+            isLoading: true,
+            fullPage: true,
 
             calendarOptions: {
                 plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin, bootstrap5Plugin],
@@ -71,9 +76,10 @@ export default {
             }
         }
     },
-    mounted() {
+    mounted: async function () {
         this.get_token()
-        this.index()
+        await this.index()
+        this.isLoading = false
         this.clients()
 
         if (localStorage.token) {
@@ -172,6 +178,7 @@ export default {
 <template>
 
     <div class="calendario">
+        <Loading v-model:active="isLoading" :can-cancel="false" :is-full-page=true />
         <div class="contenedor">
             <FullCalendar :options="calendarOptions" />
         </div>

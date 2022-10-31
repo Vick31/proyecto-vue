@@ -1,4 +1,6 @@
 <template>
+
+
     <div class="header">
         <h4>Citas agendadas</h4>
         <router-link class="rotes" to="/citas/agendar-citas">
@@ -9,6 +11,8 @@
     </div>
 
     <div class="container-body">
+        <Loading v-model:active="isLoading" :can-cancel="false" :is-full-page=true />
+
         <div class="container-table">
             <table class="table">
                 <thead>
@@ -22,9 +26,9 @@
                 </thead>
                 <tbody>
                     <tr v-for="p in citas_list">
-                        <td>{{p.description}}</td>
-                        <td>{{p.users_id}}</td>
-                        <td>{{p.date}}</td>
+                        <td>{{ p.description }}</td>
+                        <td>{{ p.users_id }}</td>
+                        <td>{{ p.date }}</td>
                         <td>user</td>
                         <td>
                             <span class="material-symbols-outlined color-orange">
@@ -82,6 +86,10 @@
 </style>
 
 <script>
+
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
+
 export default {
     data() {
         return {
@@ -89,11 +97,18 @@ export default {
             cita_delete: {},
             token: '',
             user: {},
+            isLoading: true,
+            fullPage: true
         }
     },
-    mounted() {
+    components: {
+        Loading
+    },
+    mounted: async function () {
 
         this.get_token()
+        await this.index()
+        this.isLoading = false
 
         if (localStorage.token) {
             this.token = localStorage.token;
@@ -106,7 +121,6 @@ export default {
                 }
             })
         }
-        this.index()
         this.iniciador()
     },
     methods: {
