@@ -74,8 +74,19 @@ const routes = [
     },
 
     // REGISTER CITAS 
+
     {
-        path: "/citas/agendar-citas",
+        path: "/listado/citas",
+        name: "Citas",
+        components: {
+            default: Citas,
+            aside: Aside,
+            navbar: NavBar,
+        }
+    },
+
+    {
+        path: "/agendar/citas",
         name: "AgendarCita",
         components: {
             default: AgendarCita,
@@ -176,15 +187,7 @@ const routes = [
         }
 
     },
-    {
-        path: "/citas",
-        name: "Citas",
-        components: {
-            default: Citas,
-            aside: Aside,
-            navbar: NavBar,
-        }
-    },
+    
     {
         path: "/clientes",
         name: "Clients",

@@ -8,7 +8,7 @@
                 <img src="../../img/logo.png" alt="" class="logo-aside">
             </div>
             <ul>
-                <router-link class="rotes" to="/citas">
+                <router-link class="rotes" to="/agendar/citas">
                     <li>
                         <span class="material-symbols-outlined">
                             event

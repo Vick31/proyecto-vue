@@ -98,6 +98,10 @@ export default {
         async index() {
             let response = await axios.get("http://127.0.0.1:8000/api/citas")
             this.calendarOptions.events = response.data;
+
+            for (let index = 0; index < this.calendarOptions.events.length; index++) {
+                this.calendarOptions.events[index].title = this.calendarOptions.events[index].title + ' ' + this.calendarOptions.events[index].time
+            }
         },
 
         async clients() {
@@ -179,6 +183,7 @@ export default {
 
     <div class="calendario">
         <Loading v-model:active="isLoading" :can-cancel="false" :is-full-page=true />
+        
         <div class="contenedor">
             <FullCalendar :options="calendarOptions" />
         </div>

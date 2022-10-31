@@ -45,9 +45,9 @@
 
 .container-body{
     background: #fff;
-    height: calc(100vh - 5rem);
+    height: calc(100vh - 9rem);
     border-radius:18px;
-    /* margin-top: 2rem; */
+    margin-top: 1rem;
     padding: 1rem;
     box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.1);
     overflow-y: auto;

@@ -1,4 +1,7 @@
 <template>
+
+    <Loading v-model:active="isLoading" :can-cancel="false" :is-full-page=true />
+
     <div class="form-body">
         <form>
             <div class="mb-3">
@@ -46,22 +49,29 @@
 
 
 <script>
-export default {
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
 
+export default {
+    components: {
+        Loading,
+    },
     data() {
         return {
             token: '',
             user: {},
+            isLoading: true,
+            fullPage: true,
         }
     },
-    mounted() {
+    mounted: async function () {
         
         this.get_token()
+        // await this.get_user();
+        this.isLoading = false
 
         if (localStorage.token) {
-
             this.token = localStorage.token;
-            this.get_user();
 
         } else {
             this.$router.push({

@@ -3,7 +3,7 @@
 
     <div class="header">
         <h4>Citas agendadas</h4>
-        <router-link class="rotes" to="/citas/agendar-citas">
+        <router-link class="rotes" to="/agendar/citas">
             <button>
                 Nueva cita
             </button>
