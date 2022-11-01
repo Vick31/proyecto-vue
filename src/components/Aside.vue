@@ -55,12 +55,14 @@
             </ul>
 
             <ul>
+                <router-link class="rotes" to="/equipos">
                 <li>
                     <span class="material-symbols-outlined">
                         schedule
                     </span>
                     <p>Equipos</p>
                 </li>
+            </router-link>
 
             </ul>
             <ul>
