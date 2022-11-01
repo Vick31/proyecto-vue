@@ -18,7 +18,7 @@ import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
 
 export default {
-    
+
     components: {
         Loading,
         FullCalendar, // make the <FullCalendar> tag available
@@ -59,12 +59,30 @@ export default {
                     right: 'dayGridMonth,dayGridWeek,timeGridDay,listDay'
                 },
 
+                
                 select: (arg) => {
-                    document.getElementById('modal-cita').style.display = 'flex';
 
-                    this.form.start = arg.startStr
-                    this.form.end = arg.endStr
+                    // leemos las fechas de inicio de evento y hoy
+                    var check = (arg.start);
+                    check = check.toLocaleDateString("en-US");
+                    var today = (new Date());
+                    today = today.toLocaleDateString("en-US");
 
+
+
+                    // si el inicio de evento ocurre hoy o en el futuro mostramos el modal
+                    if (check >= today) {
+
+                        
+                        document.getElementById('modal-cita').style.display = 'flex';
+
+                        this.form.start = arg.startStr
+                        this.form.end = arg.endStr
+                    }
+                    // si no, mostramos una alerta de error
+                    else {
+                        alert("No se pueden crear eventos en el pasado!");
+                    }
                 },
                 eventClick: (arg) => {
                     // console.log(this.events[p])
@@ -115,7 +133,7 @@ export default {
             this.clients_list = response.data
 
             let select = document.getElementById('clients')
-            
+
             // for (let index = 0; index < this.clients_list.length; index++) {
 
             //     let content_client = document.createElement('option')
@@ -123,7 +141,7 @@ export default {
             //     content_client.text = this.clients_list[index].name
             //     select.appendChild(content_client)
             // }
-            
+
         },
         async biomedics() {
             let response = await axios.get("http://127.0.0.1:8000/api/user")
@@ -190,7 +208,7 @@ export default {
 
     <div class="calendario">
         <Loading v-model:active="isLoading" :can-cancel="false" :is-full-page=true />
-        
+
         <div class="contenedor">
             <FullCalendar :options="calendarOptions" />
         </div>
