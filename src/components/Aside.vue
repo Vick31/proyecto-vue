@@ -59,7 +59,7 @@
                     <span class="material-symbols-outlined">
                         schedule
                     </span>
-                    <p>horarios</p>
+                    <p>Equipos</p>
                 </li>
 
             </ul>

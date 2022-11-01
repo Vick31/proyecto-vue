@@ -25,6 +25,7 @@ import NavBar from "./components/NavBar.vue";
 import Reports from "./components/admin/Reports.vue";
 import AsideProfile from "./components/views/AsideProfile.vue";
 import EditProfile from "./components/controllers/EditProfile.vue"
+import Equipos from "./components/admin/Equipos.vue"
 
 
 const routes = [
@@ -197,6 +198,16 @@ const routes = [
             navbar: NavBar,
         }
     },
+    {
+        path: "/equipos",
+        name: "Equipos",
+        components: {
+            default: Equipos,
+            aside: Aside,
+            navbar: NavBar,
+        }
+    },
+
 
 
 
