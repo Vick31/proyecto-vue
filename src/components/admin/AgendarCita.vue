@@ -77,9 +77,13 @@ export default {
         }
     },
     mounted: async function () {
+
         this.get_token()
+
         await this.index()
+
         this.isLoading = false
+
         this.clients()
 
         if (localStorage.token) {
@@ -96,7 +100,9 @@ export default {
     methods: {
 
         async index() {
+
             let response = await axios.get("http://127.0.0.1:8000/api/citas")
+
             this.calendarOptions.events = response.data;
 
             for (let index = 0; index < this.calendarOptions.events.length; index++) {
@@ -110,13 +116,13 @@ export default {
 
             let select = document.getElementById('clients')
             
-            for (let index = 0; index < this.clients_list.length; index++) {
+            // for (let index = 0; index < this.clients_list.length; index++) {
 
-                let content_client = document.createElement('option')
-                content_client.value = this.clients_list[index].id
-                content_client.text = this.clients_list[index].name
-                select.appendChild(content_client)
-            }
+            //     let content_client = document.createElement('option')
+            //     content_client.value = this.clients_list[index].id
+            //     content_client.text = this.clients_list[index].name
+            //     select.appendChild(content_client)
+            // }
             
         },
         async biomedics() {
@@ -127,6 +133,7 @@ export default {
         async get_token() {
             await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
         },
+
         async get_user() {
             try {
                 const rs = await this.axios.get('/api/user', {

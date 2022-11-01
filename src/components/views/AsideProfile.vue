@@ -5,8 +5,14 @@
 
         <div class="container-body">
 
-            <div class="body-aside">
+            <div class="form-body">
+                <router-view></router-view>
+            </div>
 
+            <div class="body-aside">
+                <div>
+                    <img src="../../../img/logos-cuentas/AccountIcon2.png" alt="">
+                </div>
                 <div class="buttons">
                     <router-link class="rotes" to="/account">
                         <span class="material-symbols-outlined">
@@ -41,10 +47,6 @@
                     <button>Cerrar sesión</button>
                 </div>
 
-            </div>
-
-            <div class="form-body">
-                <router-view></router-view>
             </div>
 
         </div>

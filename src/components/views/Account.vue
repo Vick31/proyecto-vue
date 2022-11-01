@@ -3,6 +3,11 @@
     <div class="section">
         <div class="body">
             <div class="cards">
+                <b>Nombre de usuario</b>
+                <p>{{ user.name }}</p>
+            </div>
+
+            <div class="cards">
                 <b>Rol</b>
                 <p>{{ user.roles_id }}</p>
             </div>
@@ -39,17 +44,18 @@
 
 <script>
 export default {
-    
+
     data() {
         return {
             token: '',
             user: {},
+            roles: []
         }
     },
     mounted() {
 
         this.get_token();
-
+        this.get_roles()
         if (localStorage.token) {
             this.token = localStorage.token;
             this.get_user();
@@ -62,8 +68,24 @@ export default {
             })
         }
 
+
+
+
+        for (let index = 0; index < this.roles.length; index++) {
+            // if(this.roles[index].id == this.user.roles_id) {
+            //     alert('si')
+            //     console.log('si')
+            // }
+            console.log('this.user.roles_id')
+
+        }
+
+
+
+
     },
     methods: {
+
 
         async get_token() {
             await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
@@ -87,7 +109,18 @@ export default {
                 })
             }
         },
+        async get_roles() {
+            try {
+                const response = await axios.get("http://127.0.0.1:8000/api/roles")
+                this.roles = response.data
 
+
+            }
+
+            catch (e) {
+                alert('falla')
+            }
+        },
         async logout() {
             try {
 
