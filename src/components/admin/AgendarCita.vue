@@ -63,16 +63,16 @@ export default {
                 select: (arg) => {
 
                     // leemos las fechas de inicio de evento y hoy
-                    var check = (arg.start);
+                    var check = arg.start;
                     check = check.toLocaleDateString("en-US");
-                    var today = (new Date());
+                    var today = new Date();
                     today = today.toLocaleDateString("en-US");
 
 
 
                     // si el inicio de evento ocurre hoy o en el futuro mostramos el modal
                     if (check >= today) {
-
+                        
 
                         document.getElementById('modal-cita').style.display = 'flex';
 
@@ -84,13 +84,44 @@ export default {
                         alert("No se pueden crear eventos en el pasado!");
                     }
                 },
-                eventClick: (arg) => {
-                    // console.log(this.events[p])
-                    // for (let index = 0; index < this.events.length; index++) {
-                    //     console.log(this.events[index])
+                eventClick: function (info) {
 
-                    // }
-                },
+                    var eventObj = info.event;
+
+                    if (eventObj.title) {
+
+                        
+                        const event_modal = document.getElementById('event-modal')
+                        event_modal.style.display = 'flex'
+
+                        const cont_modal = document.getElementById('cont')
+                        cont_modal.innerHTML = ''
+
+                        const content_event_modal = document.createElement('div')
+                        content_event_modal.innerHTML = ""
+
+                        content_event_modal.className = 'event-content'
+
+                        content_event_modal.innerHTML = `
+
+                            <h2>${ eventObj.title }</h2>
+
+                            <div class="content-modal">   
+
+                                <p class="text-event"> <b> Biomedico </b>: ${ eventObj.extendedProps.user } </p>
+                                <p class="text-event"> <b> Nombre del cliente: </b> ${ eventObj.extendedProps.client } </p>
+                                <p class="text-event"> <b>Fecha de inicio: </b> ${ eventObj.start.toLocaleDateString("en-US") } </p>
+                                <p class="text-event"> <b>Fecha de fin: </b> ${ eventObj.end.toLocaleDateString("en-US") } </p>
+                                <p class="text-event"> <b>Hora inicial: </b> ${ eventObj.extendedProps.time } </p>
+
+                            </div>
+                        `   
+                        cont_modal.appendChild(content_event_modal)
+
+                    } else {
+                        alert('a ocurrido un error')
+                    }
+                }
             }
         }
     },
@@ -121,30 +152,24 @@ export default {
 
             let response = await axios.get("http://127.0.0.1:8000/api/citas")
 
-            this.calendarOptions.events = response.data;
+            this.calendarOptions.events = response.data.events_list;
 
-            for (let index = 0; index < this.calendarOptions.events.length; index++) {
-                this.calendarOptions.events[index].title = this.calendarOptions.events[index].title + ' ' + this.calendarOptions.events[index].time
-            }
+            // for (let index = 0; index < this.calendarOptions.events.length; index++) {
+            //     this.calendarOptions.events[index].title = this.calendarOptions.events[index].title + ' ' + this.calendarOptions.events[index].time
+            // }
         },
 
         async clients() {
+
             let response = await axios.get("http://127.0.0.1:8000/api/clientes")
+
             this.clients_list = response.data
-
-            let select = document.getElementById('clients')
-
-            // for (let index = 0; index < this.clients_list.length; index++) {
-
-            //     let content_client = document.createElement('option')
-            //     content_client.value = this.clients_list[index].id
-            //     content_client.text = this.clients_list[index].name
-            //     select.appendChild(content_client)
-            // }
-
         },
+
         async biomedics() {
+
             let response = await axios.get("http://127.0.0.1:8000/api/user")
+
             this.biomedics_list = response.data
         },
 
@@ -173,10 +198,12 @@ export default {
         },
         cerrar() {
             document.getElementById('modal-cita').style.display = "none"
+            document.getElementById('event-modal').style.display = 'none'
+
         },
-        valor() {
-            var cod = document.getElementById("clients").value;
-            alert(cod);
+
+        datos(){
+
         }
     },
 }
@@ -184,6 +211,7 @@ export default {
 
 <style scoped>
 @import "../../assets/css/styleCitas.css";
+
 </style>
 
 <template>
@@ -194,6 +222,11 @@ export default {
         <div class="contenedor">
             <FullCalendar :options="calendarOptions" />
         </div>
+    </div>
+
+    <div id="event-modal" class="event-modal">
+        <button @click="cerrar()">X</button>
+        <div id="cont"></div>
     </div>
 
     <div class="modal-cita" id="modal-cita">
