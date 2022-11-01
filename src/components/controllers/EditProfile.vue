@@ -64,14 +64,16 @@ export default {
             fullPage: true,
         }
     },
-    mounted: async function () {
+    mounted() {
         
-        this.get_token()
-        // await this.get_user();
-        this.isLoading = false
-
+        
         if (localStorage.token) {
+
             this.token = localStorage.token;
+
+            this.get_user()
+            
+            this.isLoading = false
 
         } else {
             this.$router.push({
@@ -87,10 +89,6 @@ export default {
 
     },
     methods: {
-
-        async get_token() {
-            await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
-        },
 
         async get_user() {
 

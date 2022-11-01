@@ -59,7 +59,7 @@ export default {
                     right: 'dayGridMonth,dayGridWeek,timeGridDay,listDay'
                 },
 
-                
+
                 select: (arg) => {
 
                     // leemos las fechas de inicio de evento y hoy
@@ -73,7 +73,7 @@ export default {
                     // si el inicio de evento ocurre hoy o en el futuro mostramos el modal
                     if (check >= today) {
 
-                        
+
                         document.getElementById('modal-cita').style.display = 'flex';
 
                         this.form.start = arg.startStr
@@ -96,17 +96,17 @@ export default {
     },
     mounted: async function () {
 
-        this.get_token()
 
-        await this.index()
-
-        this.isLoading = false
-
-        this.clients()
 
         if (localStorage.token) {
+
             this.token = localStorage.token;
-            this.get_user();
+
+            await this.index()
+            this.clients()
+
+            this.isLoading = false
+
         }
         else {
             this.$router.push({
@@ -148,24 +148,6 @@ export default {
             this.biomedics_list = response.data
         },
 
-        async get_token() {
-            await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
-        },
-
-        async get_user() {
-            try {
-                const rs = await this.axios.get('/api/user', {
-                    headers: { Authorization: `Bearer ${this.token}` },
-                });
-                this.user = rs.data.user;
-            }
-            catch (e) {
-                this.$router.push({
-                    name: "Login",
-                    params: { message: "No estas autorizado para acceder con esta cuenta" }
-                })
-            }
-        },
         async register_cita() {
             try {
                 const rs = await this.axios.post("/api/citas", this.form);

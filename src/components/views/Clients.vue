@@ -81,10 +81,12 @@ export default {
         };
     },
     mounted() {
-        this.get_token();
         if (localStorage.token) {
+
             this.token = localStorage.token;
-            this.get_user();
+            
+            this.index();
+
         } else {
             this.$router.push({
                 name: "Login",
@@ -93,32 +95,10 @@ export default {
                 }
             })
         }
-        this.index();
     },
 
     methods: {
-        async get_token() {
-            await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
-        },
 
-        async get_user() {
-
-            try {
-                const rs = await this.axios.get('/api/user', {
-                    headers: { Authorization: `Bearer ${this.token}` },
-                });
-                this.user = rs.data.user;
-            }
-
-            catch (e) {
-                this.$router.push({
-                    name: "Login",
-                    params: {
-                        message: "No estas autorizado para acceder con esta cuenta"
-                    }
-                })
-            }
-        },
         async index() {
             let response = await axios.get("http://127.0.0.1:8000/api/clientes")
             this.clients_list = response.data

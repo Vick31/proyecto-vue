@@ -32,14 +32,10 @@ export default {
         return {
         };
     },
-    async mounted() {
-        this.get_token();
+    mounted() {
     },
 
     methods: {
-        async get_token() {
-            await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
-        },
     },
 };
 
