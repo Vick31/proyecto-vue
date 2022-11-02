@@ -5,7 +5,8 @@
     <div class="body">
       <router-link class="rotes" to="/registros/reporte">
         <button type="button" id="rotess" class="toggle-btn">
-          Generar reporte</button>
+          Generar reporte
+        </button>
       </router-link>
 
       <br />
@@ -17,13 +18,8 @@
         </button>
       </router-link>
     </div>
-<<<<<<< HEAD
-    
-  </template>
-=======
   </div>
 </template>
->>>>>>> 4d0efbbba4cc8c1f75cbb38695d9bdde292b37d1
   
   <style scoped>
 @import "../../assets/css/styeRegister.css";

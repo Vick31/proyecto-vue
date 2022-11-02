@@ -4,7 +4,7 @@
             <div>
                 <h1>SIGEM</h1>
                 <div id="body">
-                    <h3>Welcome to login system</h3>
+                    <h3>Iniciar Sesión</h3>
                     <form id="form-login">
                         <div class="form-floating pb-3">
                             <input type="email" class="form-control" id="floatingInput" name="email"
@@ -17,7 +17,7 @@
                         <div class="form-floating pb-3">
                             <input type="password" class="form-control" id="floatingPassword" name="password"
                                 v-model="form.password" />
-                            <label for="floatingPassword">Password</label>
+                            <label for="floatingPassword">Constraseña</label>
                             <span class="errors-message" v-if="errors.password">{{
                             errors.password[0] }} </span>
                         </div>
@@ -28,13 +28,14 @@
                     <div class="modal-footer">
                         <button class="forgotPassword">
                             <router-link to="/forgot-password" class="contraseña">
+                                ¿Olvidaste tu contraseña?
                                 <span class="material-symbols-outlined">
                                     login
                                 </span>
-                                ¿Olvidaste tu contraseña?
                             </router-link>
                         </button>
-                        <button class="button-login" @click="login()">
+
+                        <button class="button-login" id="rotesss" @click="login()">
                             Login
                         </button>
                     </div>
