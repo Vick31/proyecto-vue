@@ -3,7 +3,7 @@
       <h4>Lista de ususarios</h4>
       <div class="body">
         <router-link class="rotes" to="/usuarios/register-user">
-          <button type="button">Registrar usuario</button>
+          <button type="button" id="rotes" >Registrar usuario</button>
         </router-link>
       </div>
     </div>

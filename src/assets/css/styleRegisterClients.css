@@ -6,7 +6,6 @@ body button {
   display: inline-block;
   transition-duration: 0.2s;
   cursor: pointer;
-  border: 1px solid blue;
 }
 
 form {
@@ -50,6 +49,63 @@ form h1 {
   flex-direction: row;
   justify-content: space-between;
 }
+.form-footer .rotes {
+  overflow: hidden;
+  transition: 0.2s;
+}
+.form-footer .rotes:hover{
+  border-radius: 0.5rem;
+  box-shadow: 0 0 15px #86b7fe, 0 0 30px #86b7fe, 0 0 60px #86b7fe; 
+  transition-delay: 0s;
+}
+
+.form-footer #rote {
+  overflow: hidden;
+  transition: 0.2s;
+}
+.form-footer #rote:hover{
+  border-radius: 0.5rem;
+  box-shadow: 0 0 15px #86b7fe, 0 0 30px #86b7fe, 0 0 60px #86b7fe; 
+  transition-delay: 0s;
+}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .form-control:focus {
+  border-color: none;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.9);
+} */
+
+/* .form-footer  span{
+  position: absolute;
+  display: block;
+  border: 2px solid red;
+}
+.form-footer #span1{
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,red);
+  border: 2px solid red;  
+}
+.form-footer .rotes:hover #span1{
+  left: 100%;
+  transition: 0s;
+} */
 /*# sourceMappingURL=styeRegister.css.map */

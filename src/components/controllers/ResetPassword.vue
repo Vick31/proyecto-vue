@@ -22,7 +22,7 @@
                 </span>
             </div>
 
-            <button type="button" @click="change_password" class="btn btn-primary">
+            <button type="button" @click="change_password" >
                 Restablecer contraseña
             </button>
             <br />
