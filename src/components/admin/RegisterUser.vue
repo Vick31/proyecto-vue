@@ -2,6 +2,7 @@
     <div class="div-form">
         <form>
             <h1 class="title">Registrar usuario</h1>
+            
             <div class="form-floating pb-3">
                 <input type="number" class="form-control" name="name" v-model="form.dni" />
                 <label for="floatingInput">Dni</label>
@@ -48,8 +49,9 @@
                         Regresar
                     </button>
                 </router-link>
-                <router-link to="/usuarios">
-                    <button type="button" @click="register_admin()" class="btn btn-primary save">
+
+                <router-link class="rotes" to="/usuarios" >
+                    <button type="button" id="rot" @click="register_admin()" class="btn btn-primary save">
                         Guardar
                     </button>
                 </router-link>

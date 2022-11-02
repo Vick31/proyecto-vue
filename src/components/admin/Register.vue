@@ -1,29 +1,30 @@
 <template>
-    <div class="container-body">
-      <h2>Registrar</h2>
-  
-      <div class="body">
-  
-        <router-link to="/registros/reporte" class="rotes">
-          <button type="button" class="toggle-btn">
-            Generar reporte
-          </button>
-        </router-link>
-  
-        <br/>
-  
-        <router-link class="rotes" to="/registros/registrar-cliente">
-          <button type="button" class="rotes  toggle-btn">
-            Agregar cliente
-            <span class="material-symbols-outlined"> add_reaction </span>
-          </button>
-        </router-link>
-  
-      </div>
+  <div class="container-body">
+    <h2>Registrar</h2>
+
+    <div class="body">
+      <router-link class="rotes" to="/registros/reporte">
+        <button type="button" id="rotess" class="toggle-btn">
+          Generar reporte</button>
+      </router-link>
+
+      <br />
+
+      <router-link class="rotes" to="/registros/registrar-cliente">
+        <button type="button" id="rotess" class="toggle-btn">
+          Agregar cliente
+          <span class="material-symbols-outlined"> add_reaction </span>
+        </button>
+      </router-link>
     </div>
+<<<<<<< HEAD
     
   </template>
+=======
+  </div>
+</template>
+>>>>>>> 4d0efbbba4cc8c1f75cbb38695d9bdde292b37d1
   
   <style scoped>
-  @import "../../assets/css/styeRegister.css";
-  </style>
+@import "../../assets/css/styeRegister.css";
+</style>

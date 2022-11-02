@@ -43,7 +43,7 @@
                 <router-link class="rotes" to="/registros">
                     <button class="btn btn-primary save"> Regresar </button>
                 </router-link>
-                <button type="button" @click="register_user()" class="btn btn-primary save">
+                <button type="button" id="rote" @click="register_user()" class="btn btn-primary save">
                     Guardar
                 </button>
             </div>

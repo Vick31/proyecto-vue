@@ -5,6 +5,9 @@
     display: flex;
     flex-flow: column;
 }
+.body #rotes {
+    border: 1.8px solid #86b7fe;
+}
 .body .rotes :hover {
     background-color: blue;
     color: white;
