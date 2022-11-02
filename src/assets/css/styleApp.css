@@ -110,17 +110,17 @@
 
 .body-aside ul li:hover {
     box-shadow: 1px 1px 5px rgba(240, 240, 247, 0.2);
-    color: blue !important;
+    color: black !important;
     margin-left: 0.8rem;
     border-left: 3px solid blue;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     font-weight: 600;
-    background: #fafafa;
+    background-color: #86b6fe81;
 }
 
 .rotes {
-    text-decoration: none;
+    text-decoration: none;    
     /* color: #ABB2B9; */
 }
 
@@ -135,7 +135,7 @@
 }
 
 .body-aside ul li span {
-    color: #979ea5;
+    color: black;
     font-size: 17px;
     padding-top: 0.25rem;
     margin-right: 0.5rem;
