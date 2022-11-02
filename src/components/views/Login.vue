@@ -74,11 +74,11 @@ export default {
                 localStorage.token = rs.data.token
                 switch (rs.data.user.roles_id) {
                     case 1:
-                        this.$router.push({ name: "AgendarCita" });
+                        this.$router.push({ path: "/agendar/citas" });
                         break;
 
                     case 2:
-                        this.$router.push({ name: "Account", });
+                        this.$router.push({ path: "/account/user", });
                         break;
 
                     default:

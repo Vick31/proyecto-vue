@@ -21,14 +21,76 @@ import Clientes from "./components/views/Clients.vue";
 import Citas from "./components/views/Citas.vue";
 import Aside from "./components/Aside.vue";
 import NavBar from "./components/NavBar.vue";
+import NavBarUser from "./components/users/NavBarUser.vue"
 
 import Reports from "./components/admin/Reports.vue";
 import AsideProfile from "./components/views/AsideProfile.vue";
+import AsideProfileUser from "./components/users/AsideProfileUser.vue"
 import EditProfile from "./components/controllers/EditProfile.vue"
 import Equipos from "./components/admin/Equipos.vue"
 
 
 const routes = [
+
+
+    // -- -- ACCOUNT -- -- 
+
+    { //admin
+        path: "/account",
+        name: "AccountProfile",
+        components: {
+            default: AsideProfile,
+            aside: Aside,
+            navbar: NavBar
+        },
+        children: [
+            {
+                path: "",
+                name: "Account",
+                component: Account,
+            },
+            {
+                path: "edit",
+                name: "EditProfile",
+                component: EditProfile,
+            },
+            {
+                path: "password",
+                name: "ResetPassword",
+                component: ResetPassword,
+            },
+        ]
+    },
+
+    // -- --- --- -- --- --- -- -- -- ---- -- -
+
+    { //user
+        path: "/account/user/",
+        name: "UserAccount",
+        components: {
+            default: AsideProfileUser,
+            aside: AsideUser,
+            navbar: NavBarUser
+        },
+        children: [
+            {
+                path: "",
+                name: "Account",
+                component: Account,
+            },
+            {
+                path: "edit",
+                name: "EditProfile",
+                component: EditProfile,
+            },
+            {
+                path: "password",
+                name: "ResetPassword",
+                component: ResetPassword,
+            },
+        ]
+    },
+
 
     // -- -- USERS CONTROLLERS -- --
 
@@ -97,58 +159,6 @@ const routes = [
     },
 
 
-    // -- -- ADMIN ACCOUNT -- -- 
-
-    {
-        path: "/account",
-        name: "AccountProfile",
-        components: {
-            default: AsideProfile,
-            aside: Aside,
-            navbar: NavBar
-        },
-        children: [
-            {
-                path: "",
-                name: "Account",
-                component: Account,
-            },
-            {
-                path: "edit",
-                name: "EditProfile",
-                component: EditProfile,
-            },
-            {
-                path: "password",
-                name: "ResetPassword",
-                component: ResetPassword,
-            },
-        ]
-    },
-
-    // -- -- USER ACCOUNT -- -- 
-
-    // {
-    //     path: "/accountUser",
-    //     name: "AccountProfileUser",
-    //     components: {
-    //         default: AsideProfile,
-    //         aside: AsideUser,
-    //         navbar: NavBar
-    //     },
-    //     children: [
-    //         {
-    //             path: "",
-    //             name: "Account",
-    //             component: Account,
-    //         },
-    //         {
-    //             path: "password",
-    //             name: "ResetPassword",
-    //             component: ResetPassword,
-    //         },
-    //     ]
-    // },
 
 
     // -- -- VIEWS -- -- 
@@ -188,7 +198,7 @@ const routes = [
         }
 
     },
-    
+
     {
         path: "/clientes",
         name: "Clients",
