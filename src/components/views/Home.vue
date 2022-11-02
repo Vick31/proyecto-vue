@@ -15,10 +15,12 @@ export default {
         };
     },
     mounted() {
-        
+
         if (localStorage.token) {
 
             this.token = localStorage.token;
+
+            this.$router.push({ path: "/account" })
 
         } else {
             this.$router.push({

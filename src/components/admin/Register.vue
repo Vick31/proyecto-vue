@@ -21,6 +21,7 @@
   </div>
 </template>
   
-  <style scoped>
+  
+<style scoped>
 @import "../../assets/css/styeRegister.css";
 </style>
