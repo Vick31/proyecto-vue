@@ -2,7 +2,6 @@
     <div class="content">
         <div class="modal-body">
             <div>
-
                 <h1>SIGEM</h1>
                 <div id="body">
                     <h3>Welcome to login system</h3>

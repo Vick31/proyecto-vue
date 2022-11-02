@@ -1,0 +1,55 @@
+body button {
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.842);
+  color: black;
+  text-align: center;
+  display: inline-block;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  border: 1px solid blue;
+}
+
+form {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  opacity: 10;
+  background-color: rgba(255, 255, 255, 0.438);
+  -webkit-box-shadow: 15px 14px 5px 0px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: 15px 14px 5px 0px rgba(0, 0, 0, 0.67);
+  box-shadow: 15px 14px 5px 0px rgba(0, 0, 0, 0.67);
+}
+
+form h1 {
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.div-row {
+  display: flex;
+  flex-flow: row;
+}
+
+.div-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2) url(../../../img/fr.jpg);
+}
+
+.form-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+/*# sourceMappingURL=styeRegister.css.map */

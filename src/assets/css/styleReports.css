@@ -1,4 +1,3 @@
-
 .container-body {
     background: #fff;
     padding: 1rem;
@@ -6,15 +5,11 @@
     display: flex;
     flex-flow: column;
 }
-
-.container-body .body {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+.button{
+    border-radius: 4px;
 }
 
-
-.body .rotes :hover {
+.body .rote :hover {
     background-color: blue;
     color: white;
     text-align: center;
@@ -23,9 +18,4 @@
     transition-duration: 0.2s;
     cursor: pointer;
     border-radius: 4px;
-}
-
-.body button span {
-    position: relative;
-    top: 5px;
 }

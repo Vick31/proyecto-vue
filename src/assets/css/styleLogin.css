@@ -33,7 +33,7 @@ button:focus {
   width: 100vw;
   height: 100vh;
 
-  background: rgba(0, 0, 0, 0.2) url(../../../img/6738.jpg);
+  background: rgba(0, 0, 0, 0.2) url(../../../img/re.jpg);
   background-size: cover;
   background-position: center;
   background-blend-mode: darken;
@@ -56,9 +56,12 @@ button:focus {
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  
+
   background-color: rgba(255,255,255, 0.9);
-  box-shadow: 0px 0px 15px rgba(214, 214, 214, 0.7)
+  -webkit-box-shadow: 15px 14px 5px 0px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: 15px 14px 5px 0px rgba(0, 0, 0, 0.67);
+  box-shadow: 15px 14px 5px 0px rgba(0, 0, 0, 0.67);
+  
 }
 #body{
   height: 20rem;
@@ -66,6 +69,7 @@ button:focus {
   flex-flow: column;
   justify-content: space-around;
   text-align: left;
+  
 }
 .modal-body h2 {
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
@@ -107,6 +111,7 @@ button:focus {
   flex-flow: row;
   align-items: center;
   box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.7);
+  
 }
 
 .contraseña{

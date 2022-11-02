@@ -8,7 +8,7 @@
             </div>
 
             <div class="cards">
-                <b>Compania</b>
+                <b>Compañia</b>
                 <p>{{ user.companies_id }}</p>
             </div>
 

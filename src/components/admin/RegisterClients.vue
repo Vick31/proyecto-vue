@@ -15,14 +15,14 @@
 
             <div class="form-floating pb-3">
                 <input type="number" class="form-control" name="name" v-model="form.phone_number" />
-                <label for="floatingInput">phone_number</label>
+                <label for="floatingInput">Numero de telefono</label>
                 <span v-if="errors.phone_number">{{ errors.phone_number[0] }}</span>
             </div>
 
             <div class="form-row">
                 <div class="form-floating pb-3">
                     <input type="text" class="form-control" name="name" v-model="form.address" />
-                    <label for="floatingInput">Addres</label>
+                    <label for="floatingInput">Direccion</label>
                     <span v-if="errors.addres">{{ errors.address[0] }}</span>
                 </div>
             </div>
@@ -41,7 +41,7 @@
             </div>
             <div class="form-footer">
                 <router-link class="rotes" to="/registros">
-                    Regresar
+                    <button class="btn btn-primary save"> Regresar </button>
                 </router-link>
                 <button type="button" @click="register_user()" class="btn btn-primary save">
                     Guardar
@@ -54,7 +54,7 @@
 
 
 <style scoped>
-@import "../../assets/css/styeRegister.css";
+@import "../../assets/css/styleRegisterClients.css";
 </style>
 
 <script>
@@ -77,10 +77,11 @@ export default {
     },
     mounted() {
 
+        this.get_token()
 
         if (localStorage.token) {
             this.token = localStorage.token;
-
+            this.get_user();
         } else {
             this.$router.push({
                 name: "Login",
@@ -92,6 +93,29 @@ export default {
     },
 
     methods: {
+
+        async get_token() {
+            await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
+        },
+
+        async get_user() {
+
+            try {
+                const rs = await this.axios.get('/api/user', {
+                    headers: { Authorization: `Bearer ${this.token}` },
+                });
+                this.user = rs.data.user;
+            }
+
+            catch (e) {
+                this.$router.push({
+                    name: "Login",
+                    params: {
+                        message: "No estas autorizado para acceder con esta cuenta"
+                    }
+                })
+            }
+        },
 
         async register_user() {
             try {
