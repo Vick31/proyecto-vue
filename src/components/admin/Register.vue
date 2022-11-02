@@ -17,14 +17,10 @@
         </button>
       </router-link>
     </div>
-<<<<<<< HEAD
-    
-  </template>
-=======
   </div>
 </template>
->>>>>>> 4d0efbbba4cc8c1f75cbb38695d9bdde292b37d1
   
-  <style scoped>
+  
+<style scoped>
 @import "../../assets/css/styeRegister.css";
 </style>
