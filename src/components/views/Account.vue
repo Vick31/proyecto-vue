@@ -67,22 +67,6 @@ export default {
                 }
             })
         }
-
-
-
-
-        for (let index = 0; index < this.roles.length; index++) {
-            // if(this.roles[index].id == this.user.roles_id) {
-            //     alert('si')
-            //     console.log('si')
-            // }
-            console.log('this.user.roles_id')
-
-        }
-
-
-
-
     },
     methods: {
 

@@ -3,6 +3,7 @@ import { createWebHistory, createRouter } from "vue-router";
 //Register
 import RegisterClients from "./components/admin/RegisterClients.vue";
 import RegisterUser from "./components/admin/RegisterUser.vue"
+import AgendarCitaUser from "./components/users/AgendarCitaUser.vue"
 import AgendarCita from "./components/admin/AgendarCita.vue";
 import Register from "./components/admin/Register.vue"
 
@@ -12,7 +13,7 @@ import Account from "./components/views/Account.vue";
 import ForgotPassword from "./components/controllers/ForgotPassword.vue";
 import ResetPassword from "./components/controllers/ResetPassword.vue";
 import AccountProfileUser from "./components/users/AccountUser.vue";
-import AsideUser from "./components/AsideUser.vue";
+import AsideUser from "./components/users/AsideUser.vue";
 
 //Inicio y componentes
 import Home from "./components/views/Home.vue";
@@ -35,7 +36,7 @@ const routes = [
 
     // -- -- ACCOUNT -- -- 
 
-    { //admin
+    { //admin account
         path: "/account",
         name: "AccountProfile",
         components: {
@@ -62,9 +63,7 @@ const routes = [
         ]
     },
 
-    // -- --- --- -- --- --- -- -- -- ---- -- -
-
-    { //user
+    { //user account
         path: "/account/user/",
         name: "UserAccount",
         components: {
@@ -90,6 +89,29 @@ const routes = [
             },
         ]
     },
+
+    // -- -- EVENTS -- -- 
+
+    { //admin
+        path: "/agendar/citas",
+        name: "AgendarCita",
+        components: {
+            default: AgendarCita,
+            aside: Aside,
+            navbar: NavBar,
+        }
+    },
+
+    { //user
+        path: "/user/agendar/citas",
+        name: "AgendarCitaUser",
+        components: {
+            default: AgendarCita,
+            aside: AsideUser,
+            navbar: NavBarUser
+        }
+    },
+
 
 
     // -- -- USERS CONTROLLERS -- --
@@ -148,15 +170,7 @@ const routes = [
         }
     },
 
-    {
-        path: "/agendar/citas",
-        name: "AgendarCita",
-        components: {
-            default: AgendarCita,
-            aside: Aside,
-            navbar: NavBar,
-        }
-    },
+    
 
 
 
@@ -168,8 +182,6 @@ const routes = [
         name: "Home",
         components: {
             default: Home,
-            // aside: Aside,
-            // navbar: NavBar,
         }
 
     },

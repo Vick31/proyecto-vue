@@ -8,7 +8,7 @@
                 <img src="../../img/logo.png" alt="" class="logo-aside">
             </div>
             <ul>
-                <router-link class="rotes" to="/citas">
+                <router-link class="rotes" to="/user/agendar/citas">
                     <li>
                         <span class="material-symbols-outlined">
                             event
@@ -18,12 +18,10 @@
                 </router-link>
             </ul>
             <ul>
-                <router-link class="rotes" to="/registros">
+                <router-link class="rotes" to="/usuarios">
                     <li>
-                        <span class="material-symbols-outlined">
-                            event
-                        </span>
-                        <p>Registros</p>
+                        <span class="material-symbols-outlined">home</span>
+                        <p>usuarios</p>
                     </li>
                 </router-link>
             </ul>
@@ -85,7 +83,7 @@
 </template>
 
 <style scoped>
-@import "../assets/css/styleApp.css";
+@import "../../assets/css/styleApp.css";
 </style>
 
 <script>
