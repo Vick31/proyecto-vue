@@ -30,7 +30,9 @@
             <ul>
                 <router-link class="rotes" to="/usuarios">
                     <li>
-                        <span class="material-symbols-outlined">home</span>
+                        <span class="material-symbols-outlined">
+                            group
+                        </span>
                         <p>usuarios</p>
                     </li>
                 </router-link>
@@ -46,15 +48,6 @@
                 </router-link>
             </ul>
             <ul>
-                <li>
-                    <span class="material-symbols-outlined">
-                        diversity_3
-                    </span>
-                    <p>Medicos</p>
-                </li>
-            </ul>
-
-            <ul>
                 <router-link class="rotes" to="/equipos">
                 <li>
                     <span class="material-symbols-outlined">
@@ -64,23 +57,6 @@
                 </li>
             </router-link>
 
-            </ul>
-            <ul>
-                <li>
-                    <span class="material-symbols-outlined">
-                        group
-                    </span>
-                    <p>Usuarios</p>
-                </li>
-            </ul>
-            <ul>
-
-                <li>
-                    <span class="material-symbols-outlined">
-                        live_help
-                    </span>
-                    <p>Acerca de</p>
-                </li>
             </ul>
         </div>
     </div>

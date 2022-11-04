@@ -18,23 +18,7 @@
                 </router-link>
             </ul>
             <ul>
-                <router-link class="rotes" to="/usuarios">
-                    <li>
-                        <span class="material-symbols-outlined">home</span>
-                        <p>usuarios</p>
-                    </li>
-                </router-link>
-            </ul>
-            <!-- <ul>
-                <router-link class="rotes" to="/usuarios">
-                    <li>
-                        <span class="material-symbols-outlined">home</span>
-                        <p>usuarios</p>
-                    </li>
-                </router-link>
-            </ul> -->
-            <!-- <ul>
-                <router-link class="rotes" to="/clientes">
+                <router-link class="rotes" to="/user/clientes">
                     <li>
                         <span class="material-symbols-outlined">
                             groups
@@ -42,41 +26,17 @@
                         <p>Clientes</p>
                     </li>
                 </router-link>
-            </ul> -->
-            <ul>
-                <li>
-                    <span class="material-symbols-outlined">
-                        diversity_3
-                    </span>
-                    <p>Medicos</p>
-                </li>
             </ul>
-
             <ul>
-                <li>
-                    <span class="material-symbols-outlined">
-                        schedule
-                    </span>
-                    <p>horarios</p>
-                </li>
+                <router-link class="rotes" to="/user/equipos">
+                    <li>
+                        <span class="material-symbols-outlined">
+                            schedule
+                        </span>
+                        <p>Equipos</p>
+                    </li>
+                </router-link>
 
-            </ul>
-            <!-- <ul>
-                <li>
-                    <span class="material-symbols-outlined">
-                        group
-                    </span>
-                    <p>Usuarios</p>
-                </li>
-            </ul> -->
-            <ul>
-
-                <li>
-                    <span class="material-symbols-outlined">
-                        live_help
-                    </span>
-                    <p>Acerca de</p>
-                </li>
             </ul>
         </div>
     </div>

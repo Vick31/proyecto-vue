@@ -11,7 +11,7 @@
                     <span class="material-symbols-outlined icon-nav">
                         notifications
                     </span>
-                    <router-link class="rotes account-logo" to="/account">
+                    <router-link class="rotes account-logo" to="/account/admin/">
                         <span class="material-symbols-outlined icon-nav">
                             person
                         </span>

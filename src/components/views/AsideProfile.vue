@@ -14,7 +14,7 @@
                     <img src="../../../img/logos-cuentas/AccountIcon2.png" alt="">
                 </div>
                 <div class="buttons">
-                    <router-link class="rotes" to="/account">
+                    <router-link class="rotes" to="/account/admin">
                         <span class="material-symbols-outlined">
                             person
                         </span>
@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="buttons">
-                    <router-link class="rotes" to="/account/edit">
+                    <router-link class="rotes" to="/account/admin/edit">
                         <span class="material-symbols-outlined">
                             manage_accounts
                         </span>
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="buttons">
-                    <router-link class="rotes" to="/account/password">
+                    <router-link class="rotes" to="/account/admin/password">
                         <span class="material-symbols-outlined">
                             lock_reset
                         </span>

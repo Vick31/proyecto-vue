@@ -11,12 +11,7 @@
 
       <br />
 
-      <router-link class="rotes" to="/registros/registrar-cliente">
-        <button type="button" id="rotess" class="toggle-btn">
-          Agregar cliente
-          <span class="material-symbols-outlined"> add_reaction </span>
-        </button>
-      </router-link>
+      
     </div>
   </div>
 </template>

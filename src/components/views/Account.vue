@@ -54,10 +54,9 @@ export default {
     },
     mounted() {
 
-        this.get_token();
-        this.get_roles()
         if (localStorage.token) {
             this.token = localStorage.token;
+            this.get_roles()
             this.get_user();
         } else {
             this.$router.push({
@@ -69,11 +68,6 @@ export default {
         }
     },
     methods: {
-
-
-        async get_token() {
-            await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
-        },
 
         async get_user() {
 
@@ -97,7 +91,6 @@ export default {
             try {
                 const response = await axios.get("http://127.0.0.1:8000/api/roles")
                 this.roles = response.data
-
 
             }
 

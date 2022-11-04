@@ -2,16 +2,16 @@ import { createWebHistory, createRouter } from "vue-router";
 
 //Register
 import RegisterClients from "./components/admin/RegisterClients.vue";
-import RegisterUser from "./components/admin/RegisterUser.vue"
-import AgendarCitaUser from "./components/users/AgendarCitaUser.vue"
+import RegisterUser from "./components/admin/RegisterUser.vue";
 import AgendarCita from "./components/admin/AgendarCita.vue";
-import Register from "./components/admin/Register.vue"
+import Register from "./components/admin/Register.vue";
 
 //Acount
 import Login from "./components/views/Login.vue";
 import Account from "./components/views/Account.vue";
 import ForgotPassword from "./components/controllers/ForgotPassword.vue";
 import ResetPassword from "./components/controllers/ResetPassword.vue";
+import ResetPasswordUser from "./components/users/ResetPasswordUser.vue";
 import AccountProfileUser from "./components/users/AccountUser.vue";
 import AsideUser from "./components/users/AsideUser.vue";
 
@@ -22,27 +22,27 @@ import Clientes from "./components/views/Clients.vue";
 import Citas from "./components/views/Citas.vue";
 import Aside from "./components/Aside.vue";
 import NavBar from "./components/NavBar.vue";
-import NavBarUser from "./components/users/NavBarUser.vue"
+import NavBarUser from "./components/users/NavBarUser.vue";
 
 import Reports from "./components/admin/Reports.vue";
 import AsideProfile from "./components/views/AsideProfile.vue";
-import AsideProfileUser from "./components/users/AsideProfileUser.vue"
-import EditProfile from "./components/controllers/EditProfile.vue"
-import Equipos from "./components/admin/Equipos.vue"
-
+import AsideProfileUser from "./components/users/AsideProfileUser.vue";
+import EditProfile from "./components/controllers/EditProfile.vue";
+import EditProfileUser from "./components/users/EditProfileuser.vue";
+import Equipos from "./components/admin/Equipos.vue";
+import EquiposUser from "./components/users/EquiposUser.vue";
 
 const routes = [
+    // -- -- ACCOUNT -- --
 
-
-    // -- -- ACCOUNT -- -- 
-
-    { //admin account
-        path: "/account",
+    {
+        //admin account
+        path: "/account/admin/",
         name: "AccountProfile",
         components: {
             default: AsideProfile,
             aside: Aside,
-            navbar: NavBar
+            navbar: NavBar,
         },
         children: [
             {
@@ -60,59 +60,99 @@ const routes = [
                 name: "ResetPassword",
                 component: ResetPassword,
             },
-        ]
+        ],
     },
 
-    { //user account
+    {
+        //user account
         path: "/account/user/",
         name: "UserAccount",
         components: {
             default: AsideProfileUser,
             aside: AsideUser,
-            navbar: NavBarUser
+            navbar: NavBarUser,
         },
         children: [
             {
                 path: "",
-                name: "Account",
-                component: Account,
+                name: "AccountUser",
+                component: AccountProfileUser,
             },
             {
                 path: "edit",
-                name: "EditProfile",
-                component: EditProfile,
+                name: "EditProfileUser",
+                component: EditProfileUser,
             },
             {
                 path: "password",
-                name: "ResetPassword",
-                component: ResetPassword,
+                name: "ResetPasswordUser",
+                component: ResetPasswordUser,
             },
-        ]
+        ],
     },
 
-    // -- -- EVENTS -- -- 
+    // -- -- EVENTS -- --
 
-    { //admin
+    {
+        //admin
         path: "/agendar/citas",
         name: "AgendarCita",
         components: {
             default: AgendarCita,
             aside: Aside,
             navbar: NavBar,
-        }
+        },
     },
 
-    { //user
+    {
+        //user
         path: "/user/agendar/citas",
         name: "AgendarCitaUser",
         components: {
             default: AgendarCita,
             aside: AsideUser,
-            navbar: NavBarUser
-        }
+            navbar: NavBarUser,
+        },
     },
 
+    {
+        path: "/clientes",
+        name: "Clients",
+        components: {
+            default: Clientes,
+            aside: Aside,
+            navbar: NavBar,
+        },
+    },
+    {
+        path: "/user/clientes",
+        name: "ClientsUser",
+        components: {
+            default: Clientes,
+            aside: AsideUser,
+            navbar: NavBarUser,
+        },
+    },
 
+    {
+        path: "/equipos",
+        name: "Equipos",
+        components: {
+            default: Equipos,
+            aside: Aside,
+            navbar: NavBar,
+        },
+    },
+
+    {
+        path: "/user/equipos",
+        name: "EquiposUser",
+        components: {
+            default: EquiposUser,
+            aside: AsideUser,
+            navbar: NavBarUser,
+        },
+    },
 
     // -- -- USERS CONTROLLERS -- --
 
@@ -122,18 +162,16 @@ const routes = [
         component: ForgotPassword,
     },
 
-
-    // -- -- ADMIN CONTROLLERS -- -- 
-
+    // -- -- ADMIN CONTROLLERS -- --
 
     // REGISTER CLIENT
     {
-        path: "/registros/registrar-cliente",
+        path: "/user/registrar/cliente",
         name: "RegisterClients",
         components: {
             default: RegisterClients,
             navbar: NavBar,
-        }
+        },
     },
 
     // REGISTER REPORTS
@@ -144,7 +182,7 @@ const routes = [
             default: Reports,
             aside: Aside,
             navbar: NavBar,
-        }
+        },
     },
 
     // REGISTER USERS
@@ -155,10 +193,10 @@ const routes = [
             default: RegisterUser,
             aside: Aside,
             navbar: NavBar,
-        }
+        },
     },
 
-    // REGISTER CITAS 
+    // REGISTER CITAS
 
     {
         path: "/listado/citas",
@@ -167,29 +205,22 @@ const routes = [
             default: Citas,
             aside: Aside,
             navbar: NavBar,
-        }
+        },
     },
 
-    
-
-
-
-
-    // -- -- VIEWS -- -- 
+    // -- -- VIEWS -- --
 
     {
         path: "/",
         name: "Home",
         components: {
             default: Home,
-        }
-
+        },
     },
     {
         path: "/Login",
         name: "Login",
         component: Login,
-
     },
     {
         path: "/registros",
@@ -198,7 +229,7 @@ const routes = [
             default: Register,
             navbar: NavBar,
             aside: Aside,
-        }
+        },
     },
     {
         path: "/usuarios",
@@ -207,38 +238,8 @@ const routes = [
             default: Users,
             aside: Aside,
             navbar: NavBar,
-        }
-
+        },
     },
-
-    {
-        path: "/clientes",
-        name: "Clients",
-        components: {
-            default: Clientes,
-            aside: Aside,
-            navbar: NavBar,
-        }
-    },
-    {
-        path: "/equipos",
-        name: "Equipos",
-        components: {
-            default: Equipos,
-            aside: Aside,
-            navbar: NavBar,
-        }
-    },
-
-
-
-
-
-
-
-
-
-
 ];
 
 const _router = createRouter({
@@ -247,4 +248,3 @@ const _router = createRouter({
 });
 
 export default _router;
-

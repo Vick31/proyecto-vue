@@ -62,17 +62,14 @@ export default {
 
                 select: (arg) => {
 
-                    // leemos las fechas de inicio de evento y hoy
                     var check = arg.start;
                     check = check.toLocaleDateString("en-US");
                     var today = new Date();
                     today = today.toLocaleDateString("en-US");
 
+                    console.log( check, today )
 
-
-                    // si el inicio de evento ocurre hoy o en el futuro mostramos el modal
                     if (check >= today) {
-                        
 
                         document.getElementById('modal-cita').style.display = 'flex';
 
