@@ -1,7 +1,7 @@
 <template>
-    <div class="div-form">
+    <div class="div-form " >
         <form>
-            <h1 class="title">Registrar cliente</h1>
+            <h1 class="title" >Registrar cliente</h1>
             <div class="form-floating pb-3">
                 <input type="number" class="form-control" name="name" v-model="form.dni" />
                 <label for="floatingInput">Dni</label>
