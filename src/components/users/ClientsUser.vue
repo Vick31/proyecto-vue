@@ -8,7 +8,7 @@
         Generar reporte
         <span class="material-symbols-outlined"> summarize </span>
       </button>
-      <router-link class="rotes" to="/registrar/cliente">
+      <router-link class="rotes" to="/user/registrar/cliente">
         <button type="button" id="rotess" class="toggle-btn">
           Agregar cliente
           <span class="material-symbols-outlined"> add_reaction </span>

@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 
 //Register
 import RegisterClients from "./components/admin/RegisterClients.vue";
+import RegisterClientsUser from "./components/users/RegisterClientsUser.vue";
 import RegisterUser from "./components/admin/RegisterUser.vue";
 import AgendarCita from "./components/admin/AgendarCita.vue";
 import Register from "./components/admin/Register.vue";
@@ -19,6 +20,7 @@ import AsideUser from "./components/users/AsideUser.vue";
 import Home from "./components/views/Home.vue";
 import Users from "./components/views/Users.vue";
 import Clientes from "./components/views/Clients.vue";
+import ClientesUser from "./components/users/ClientsUser.vue";
 import Citas from "./components/views/Citas.vue";
 import Aside from "./components/Aside.vue";
 import NavBar from "./components/NavBar.vue";
@@ -128,7 +130,7 @@ const routes = [
         path: "/user/clientes",
         name: "ClientsUser",
         components: {
-            default: Clientes,
+            default: ClientesUser,
             aside: AsideUser,
             navbar: NavBarUser,
         },
@@ -166,11 +168,21 @@ const routes = [
 
     // REGISTER CLIENT
     {
-        path: "/user/registrar/cliente",
+        path: "/registrar/cliente",
         name: "RegisterClients",
         components: {
             default: RegisterClients,
+            aside: Aside,
             navbar: NavBar,
+        },
+    },
+    {
+        path: "/user/registrar/cliente",
+        name: "RegisterClientsUser",
+        components: {
+            default: RegisterClientsUser,
+            aside: AsideUser,
+            navbar: NavBarUser,
         },
     },
 
