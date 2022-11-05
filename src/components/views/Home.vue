@@ -25,7 +25,7 @@ export default {
         } else {
             this.$router.push({
                 name: "Login",
-                params: { message: "No estas autorizado para acceder con esta cuenta" }
+                params: { message: "Ingresa tu usuario y contraseña" }
             })
         }
     },
