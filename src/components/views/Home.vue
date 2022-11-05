@@ -17,21 +17,19 @@ export default {
     mounted() {
 
         if (localStorage.token) {
-
-            this.token = localStorage.token;
-
-            this.$router.push({ path: "/account" })
+            this.$router.push({
+                name: "Login",
+                params: { message: "Ingresa tu usuario y contraseña" }
+            })
 
         } else {
             this.$router.push({
                 name: "Login",
-                params: {
-                    message: "No estas autorizado para acceder con esta cuenta"
-                }
+                params: { message: "No estas autorizado para acceder con esta cuenta" }
             })
         }
     },
-
+    
     methods: {
 
     },
