@@ -1,11 +1,13 @@
 <template>
-
+<router-link class="rotes" to="/equipos">
     <div class="container-body">
         <EquipoFoto @picture-taken="imageSrc= $event"/>
-        <img :src="imageSrc" class="vick" />
+        <!-- <img :src="imageSrc" class="vick" /> -->
+        
 
       
     </div>
+</router-link>
 
 </template>
 

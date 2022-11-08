@@ -63,13 +63,13 @@ export default {
                 select: (arg) => {
 
                     var check = arg.start;
-                    check = check.toLocaleDateString("en-US");
+                    check = check.toLocaleDateString("en-GB");
                     var today = new Date();
-                    today = today.toLocaleDateString("en-US");
+                    today = today.toLocaleDateString("en-GB");
 
                     console.log( check, today )
 
-                    if (check >= today) {
+                    if ( today <= check) {
 
                         document.getElementById('modal-cita').style.display = 'flex';
 
@@ -281,7 +281,7 @@ export default {
                 </div>
                 <div class="modal-footer">
                     <button @click="cerrar()" type="button" class="btn btn-secondary"
-                        data-bs-dismiss="modal">Close</button>
+                        >Close</button>
                     <button type="button" @click="register_cita()">aceptar</button>
                 </div>
             </div>
