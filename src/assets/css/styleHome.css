@@ -49,3 +49,32 @@ table tbody tr td span:hover{
 .color-red {
   background-color: #D35400;
 }
+
+.header-button .rotes {
+  color: black;
+  text-decoration: none;
+}
+
+.header-button #rotess{
+  color: blue;
+  border: 1.8px solid #86b7fe;
+}
+.header-button #rotess:hover{
+  color: white;
+}
+
+.header-button .rotes :hover {
+  background-color: blue;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.header-button .rotes button span {
+  position: relative;
+  top: 1px;
+  font-size: 20px;
+}

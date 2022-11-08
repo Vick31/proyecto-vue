@@ -1,19 +1,19 @@
 <template>
   <div class="header">
-    <div>
       <h4>Lista de clientes</h4>
-    </div>
     <div class="header-button">
       <button class="color-button">
         Generar reporte
         <span class="material-symbols-outlined"> summarize </span>
       </button>
+
       <router-link class="rotes" to="/user/registrar/cliente">
         <button type="button" id="rotess" class="toggle-btn">
           Agregar cliente
           <span class="material-symbols-outlined"> add_reaction </span>
         </button>
       </router-link>
+
     </div>
 
     <table class="table table-bordered">

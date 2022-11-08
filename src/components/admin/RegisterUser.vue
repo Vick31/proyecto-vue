@@ -81,7 +81,9 @@
         </router-link>
 
         <router-link class="rotes" to="/usuarios">
-          <button
+         
+        </router-link>
+        <button
             type="button"
             id="rot"
             @click="register_admin()"
@@ -89,7 +91,6 @@
           >
             Guardar
           </button>
-        </router-link>
       </div>
       <p v-if="message">{{ message }}</p>
     </form>
