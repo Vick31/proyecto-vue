@@ -1,7 +1,7 @@
 <template>
-    <div class="div-form " >
+    <div class="div-form ">
         <form>
-            <h1 class="title" >Registrar cliente</h1>
+            <h1 class="title">Registrar cliente</h1>
             <div class="form-floating pb-3">
                 <input type="number" class="form-control" name="name" v-model="form.dni" />
                 <label for="floatingInput">Dni</label>
@@ -80,15 +80,19 @@ export default {
         this.get_token()
 
         if (localStorage.token) {
+
+            if (localStorage.getItem('rol') == 1) {
+                this.$router.push({
+                    name: "Login",
+                    params: {
+                        message: "No estas autorizado para acceder con esta cuenta"
+                    }
+                })
+                this.token = null
+            }
+
             this.token = localStorage.token;
             this.get_user();
-        } else {
-            this.$router.push({
-                name: "Login",
-                params: {
-                    message: "No estas autorizado para acceder con esta cuenta"
-                }
-            })
         }
     },
 

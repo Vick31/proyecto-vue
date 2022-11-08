@@ -7,36 +7,24 @@
           <h3>Iniciar Sesión</h3>
           <form id="form-login">
             <div class="form-floating pb-3">
-              <input
-                type="email"
-                class="form-control"
-                id="floatingInput"
-                name="email"
-                v-model="form.email"
-              />
+              <input type="email" class="form-control" id="floatingInput" name="email" v-model="form.email" />
               <label for="floatingInput">Correo electronico</label>
               <span class="errors-message" v-if="errors.email">{{
-                errors.email[0]
+                  errors.email[0]
               }}</span>
             </div>
 
             <div class="form-floating pb-3">
-              <input
-                type="password"
-                class="form-control"
-                id="floatingPassword"
-                name="password"
-                v-model="form.password"
-              />
-    
+              <input type="password" class="form-control" id="floatingPassword" name="password"
+                v-model="form.password" />
+
               <label for="floatingPassword">Constraseña</label>
-              <span class="errors-message" v-if="errors.password"
-                >{{ errors.password[0] }}
+              <span class="errors-message" v-if="errors.password">{{ errors.password[0] }}
               </span>
-              
+
 
             </div>
-            
+
 
             <p v-if="message">{{ message }}</p>
           </form>
@@ -82,14 +70,21 @@ export default {
     async login() {
       try {
         const rs = await this.axios.post("/api/login", this.form);
-        localStorage.token = rs.data.token;
+
         switch (rs.data.user.roles_id) {
+
           case 1:
             this.$router.push({ path: "/agendar/citas" });
+            localStorage.token = rs.data.token;
+            localStorage.setItem('rol', 1)
+
             break;
 
           case 2:
             this.$router.push({ path: "/account/user" });
+            localStorage.token = rs.data.token;
+            localStorage.setItem('rol', 2)
+
             break;
 
           default:
@@ -106,8 +101,8 @@ export default {
         if (e.response.data.errors) this.errors = e.response.data.errors;
         else if (e.response.data.message) this.errors = e.response.data.message;
       }
-      
-     
+
+
     },
   },
 };

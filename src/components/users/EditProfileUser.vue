@@ -9,7 +9,7 @@
                 <input v-model="user.companies_id" type="text" class="form-control" id="exampleInputEmail1"
                     aria-describedby="emailHelp">
             </div>
-            
+
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Rol de usuario</label>
                 <input v-model="user.roles_id" type="number" class="form-control" id="exampleInputEmail1"
@@ -43,8 +43,8 @@
 </template>
 
 <style scoped>
-    @import "../../assets/css/styleAccount.css";
-    </style>
+@import "../../assets/css/styleAccount.css";
+</style>
             
 
 
@@ -65,26 +65,24 @@ export default {
         }
     },
     mounted() {
-        
-        
+
+
         if (localStorage.token) {
 
-            this.token = localStorage.token;
+            if (localStorage.getItem('rol') == 1) {
+                this.$router.push({
+                    name: "Login",
+                    params: {
+                        message: "No estas autorizado para acceder con esta cuenta"
+                    }
+                })
+                this.token = null
+            }
 
+            this.token = localStorage.token;
             this.get_user()
-            
             this.isLoading = false
 
-        } else {
-            this.$router.push({
-
-                name: "Login",
-                
-                params: {
-                    message: "No estas autorizado para acceder con esta cuenta"
-                }
-
-            })
         }
 
     },

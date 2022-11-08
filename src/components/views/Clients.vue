@@ -37,12 +37,8 @@
               edit_square
             </span>
             <span class="material-symbols-outlined color-red"> delete </span>
-            <span
-              class="material-symbols-outlined"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-              @click="insertar(p.dni)"
-            >
+            <span class="material-symbols-outlined" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              @click="insertar(p.dni)">
               clarify
             </span>
           </td>
@@ -51,33 +47,18 @@
     </table>
 
     <!-- Modal -->
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" v-for="p in datos_client">
             <p>{{ p.name }}</p>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
               Close
             </button>
             <button type="button" class="btn btn-primary">Save changes</button>
@@ -104,16 +85,19 @@ export default {
   },
   mounted() {
     if (localStorage.token) {
-      this.token = localStorage.token;
 
+      if (localStorage.getItem('rol') != 1) {
+        this.$router.push({
+          name: "Login",
+          params: {
+            message: "No estas autorizado para acceder con esta cuenta"
+          }
+        })
+        this.token = null
+      }
+
+      this.token = localStorage.token;
       this.index();
-    } else {
-      this.$router.push({
-        name: "Login",
-        params: {
-          message: "No estas autorizado para acceder con esta cuenta",
-        },
-      });
     }
   },
 
