@@ -22,7 +22,7 @@
                 </span>
             </div>
 
-            <button type="button" @click="change_password" >
+            <button type="button" @click="change_password">
                 Restablecer contraseña
             </button>
             <br />
@@ -60,15 +60,19 @@ export default {
             this.form.token = this.$route.query.token
 
         if (localStorage.token) {
+
+            if (localStorage.getItem('rol') == 1) {
+                this.$router.push({
+                    name: "Login",
+                    params: {
+                        message: "No estas autorizado para acceder con esta cuenta"
+                    }
+                })
+                this.token = null
+            }
+
             this.token = localStorage.token;
             this.get_user();
-        } else {
-            this.$router.push({
-                name: "Login",
-                params: {
-                    message: "No estas autorizado para acceder con esta cuenta"
-                }
-            })
         }
     },
 
