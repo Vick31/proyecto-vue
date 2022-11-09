@@ -1,18 +1,62 @@
 <template>
 
     <div class="container-home">
+        <h1> APP SIGEM </h1>
         <div class="main">
-            <div class="card-home">
-                <div class="img-home">
-                    <span class="material-symbols-outlined icon-home">
-                        event
-                    </span>
+            <router-link to="/agendar/citas" class="rotes">
+                <div class="card-home">
+                    <div class="img-home">
+                        <span class="material-symbols-outlined icon-home">
+                            event
+                        </span>
+                    </div>
+                    <div class="card-content">
+                        <h4>Eventos</h4>
+                        <small></small>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <h4>Gestión de eventos</h4>
-                    <small></small>
+            </router-link>
+
+            <router-link to="/usuarios" class="rotes">
+                <div class="card-home">
+                    <div class="img-home">
+                        <span class="material-symbols-outlined icon-home">
+                            badge
+                        </span>
+                    </div>
+                    <div class="card-content">
+                        <h4>Usuarios</h4>
+                        <small></small>
+                    </div>
                 </div>
-            </div>
+            </router-link>
+
+            <router-link to="/clientes" class="rotes">
+                <div class="card-home">
+                    <div class="img-home">
+                        <span class="material-symbols-outlined icon-home">
+                            group
+                        </span>
+                    </div>
+                    <div class="card-content">
+                        <h4>Clientes</h4>
+                        <small></small>
+                    </div>
+                </div>
+            </router-link>
+            <router-link to="/equipos" class="rotes">
+                <div class="card-home">
+                    <div class="img-home">
+                        <span class="material-symbols-outlined icon-home">
+                            dvr
+                        </span>
+                    </div>
+                    <div class="card-content">
+                        <h4>Equipos</h4>
+                        <small></small>
+                    </div>
+                </div>
+            </router-link>
         </div>
     </div>
 
@@ -33,7 +77,6 @@ export default {
     mounted() {
 
         if (localStorage.token) {
-            alert('Bienvenido')
 
         } else {
             this.$router.push({
