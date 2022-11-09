@@ -57,6 +57,19 @@
                     </div>
                 </div>
             </router-link>
+            <router-link to="/account/admin" class="rotes">
+                <div class="card-home">
+                    <div class="img-home">
+                        <span class="material-symbols-outlined icon-home">
+                            manage_accounts
+                        </span>
+                    </div>
+                    <div class="card-content">
+                        <h4>Tu Cuenta</h4>
+                        <small></small>
+                    </div>
+                </div>
+            </router-link>
         </div>
     </div>
 
