@@ -127,14 +127,15 @@ export default {
 
 
         if (localStorage.token) {
-            if (localStorage.getItem('rol') != 1) {
+            
+            if (localStorage.getItem('rol') == 1) {
                 this.$router.push({
                     name: "Login",
                     params: {
                         message: "No estas autorizado para acceder con esta cuenta"
                     }
                 })
-                this.token = null
+                this.token == null
             }
 
             this.token = localStorage.token;
@@ -143,7 +144,6 @@ export default {
             this.clients()
 
             this.isLoading = false
-
         }
     },
     methods: {

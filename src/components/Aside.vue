@@ -10,6 +10,7 @@
                         <span class="material-symbols-outlined">
                             home
                         </span>
+                        <small>Inicio</small>
                     </li>
                 </router-link>
             </ul>
@@ -19,7 +20,7 @@
                         <span class="material-symbols-outlined">
                             event
                         </span>
-                        <!-- <p>Citas</p> -->
+                        <small>Eventos</small>
                     </li>
                 </router-link>
             </ul>
@@ -28,8 +29,9 @@
                 <router-link class="rotes" to="/usuarios">
                     <li>
                         <span class="material-symbols-outlined">
-                            group
+                            badge
                         </span>
+                        <small>usuarios</small>
                     </li>
                 </router-link>
             </ul>
@@ -40,6 +42,7 @@
                         <span class="material-symbols-outlined">
                             groups
                         </span>
+                        <small>Clientes</small>
                     </li>
                 </router-link>
             </ul>
@@ -50,6 +53,7 @@
                         <span class="material-symbols-outlined">
                             schedule
                         </span>
+                        <small>Equipos</small>
                     </li>
                 </router-link>
 

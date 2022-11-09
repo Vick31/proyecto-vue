@@ -16,7 +16,7 @@
     margin: 0 auto;
     /* max-width: 1300px; */
     display: grid;
-    grid-template-columns: 4rem auto;
+    grid-template-columns: 4.5rem auto;
     gap: 1rem;
 }
 
@@ -67,7 +67,8 @@
     display: flex;
     flex-flow: column;
 
-    border-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     padding: 0 0.5rem;
 }
 
@@ -89,11 +90,18 @@
     margin: 0;
     padding: 0;
     height: max-content;
+    margin-top: 0.5rem;
+
 }
 
 
 .body-aside ul li {
+    border-radius: 10px;
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.3rem;
 }
 
 .body-aside ul li span {
@@ -106,20 +114,21 @@
     justify-content: center;
     align-items: center;
 
-    margin-top: 1rem;
-
-    border-radius: 10px;
 }
 
-.body-aside ul li span:hover {
-    color: #0f172b;
-    font-weight: 600;
-    background-color: rgb(255,255,255);
+.body-aside ul li:hover {
+    color: rgb(15, 23, 43);
+    background-color: rgba(33, 44, 73, 0.9);
 }
 
 .rotes {
     text-decoration: none;    
     /* color: #ABB2B9; */
+}
+
+.rotes small {
+    color: #fff;
+    font-size: 12px;
 }
 
 .body-aside ul li .rotes {

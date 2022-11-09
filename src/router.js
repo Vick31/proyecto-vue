@@ -5,6 +5,7 @@ import RegisterClients from "./components/admin/RegisterClients.vue";
 import RegisterClientsUser from "./components/users/RegisterClientsUser.vue";
 import RegisterUser from "./components/admin/RegisterUser.vue";
 import AgendarCita from "./components/admin/AgendarCita.vue";
+import AgendarCitaUser from "./components/users/AgendarCitaUser.vue";
 import Register from "./components/admin/Register.vue";
 
 //Acount
@@ -111,7 +112,7 @@ const routes = [
         path: "/user/agendar/citas",
         name: "AgendarCitaUser",
         components: {
-            default: AgendarCita,
+            default: AgendarCitaUser,
             aside: AsideUser,
             navbar: NavBarUser,
         },
