@@ -1,52 +1,71 @@
 <template>
 
-    <div class="section">
-        <div class="body">
-            <div class="cards">
-                <b>Rol</b>
-                <p>{{ user.roles_id }}</p>
+    <Loading v-model:active="isLoading" :can-cancel="false" :is-full-page=true />
+
+    <div class="form-body">
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Compañia perteneciente</label>
+                <input v-model="user.companies_id" type="text" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
             </div>
 
-            <div class="cards">
-                <b>Compañia</b>
-                <p>{{ user.companies_id }}</p>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Rol de usuario</label>
+                <input v-model="user.roles_id" type="number" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
             </div>
 
-            <div class="cards">
-                <b>Correo electronico</b>
-                <p>{{ user.email }}</p>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nombre de usuario</label>
+                <input v-model="user.name" type="text" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
             </div>
 
-            <div class="cards">
-                <b>Número de contacto</b>
-                <p>{{ user.phone_number }}</p>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Dirección de correo</label>
+                <input v-model="user.email" type="email" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
             </div>
 
-            <div class="cards">
-                <b>Fecha de creación</b>
-                <p>{{ user.created_at }}</p>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Número de contacto</label>
+                <input v-model="user.phone_number" type="number" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
             </div>
-        </div>
+
+
+
+            <button type="submit">Enviar</button>
+        </form>
     </div>
 
 </template>
 
 <style scoped>
-@import "../../assets/css/styleAccountUser.css";
+@import "../../../assets/css/styleAccount.css";
 </style>
-    
+            
 
 
 <script>
-export default {
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
 
+export default {
+    components: {
+        Loading,
+    },
     data() {
         return {
             token: '',
             user: {},
+            isLoading: true,
+            fullPage: true,
         }
     },
     mounted() {
+
 
         if (localStorage.token) {
 
@@ -57,12 +76,13 @@ export default {
                         message: "No estas autorizado para acceder con esta cuenta"
                     }
                 })
-
                 this.token = null
             }
-            
+
             this.token = localStorage.token;
-            this.get_user();
+            this.get_user()
+            this.isLoading = false
+
         }
 
     },

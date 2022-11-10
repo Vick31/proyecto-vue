@@ -54,7 +54,7 @@
 </template>
 
 <style scoped>
-@import "../../assets/css/styleAccount.css";
+@import "../../../assets/css/styleAccount.css";
 </style>
         
     

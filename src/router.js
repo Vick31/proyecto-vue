@@ -1,39 +1,38 @@
 import { createWebHistory, createRouter } from "vue-router";
 
 //Register
-import RegisterClients from "./components/admin/RegisterClients.vue";
-import RegisterClientsUser from "./components/users/RegisterClientsUser.vue";
-import RegisterUser from "./components/admin/RegisterUser.vue";
-import AgendarCita from "./components/admin/AgendarCita.vue";
-import AgendarCitaUser from "./components/users/AgendarCitaUser.vue";
-import Register from "./components/admin/Register.vue";
+import RegisterClients from "./components/admin/manage/RegisterClients.vue";
+import RegisterClientsUser from "./components/users/manage/RegisterClients.vue";
+import RegisterUser from "./components/admin/manage/RegisterUser.vue";
+import AgendarCita from "./components/admin/manage/AgendarCita.vue";
+import AgendarCitaUser from "./components/users/manage/AgendarCita.vue";
 
 //Acount
 import Login from "./components/views/Login.vue";
-import Account from "./components/views/Account.vue";
+import Account from "./components/admin/account/Account.vue";
 import ForgotPassword from "./components/controllers/ForgotPassword.vue";
 import ResetPassword from "./components/controllers/ResetPassword.vue";
-import ResetPasswordUser from "./components/users/ResetPasswordUser.vue";
-import AccountProfileUser from "./components/users/AccountUser.vue";
-import AsideUser from "./components/users/AsideUser.vue";
+import ResetPasswordUser from "./components/users/account/ResetPassword.vue";
+import AccountProfileUser from "./components/users/account/Account.vue";
+import AsideUser from "./components/users/Aside.vue";
 
 //Inicio y componentes
 import Home from "./components/views/Home.vue";
 import Users from "./components/views/Users.vue";
 import Clientes from "./components/views/Clients.vue";
-import ClientesUser from "./components/users/ClientsUser.vue";
+import ClientesUser from "./components/users/Clients.vue";
 import Citas from "./components/views/Citas.vue";
-import Aside from "./components/Aside.vue";
-import NavBar from "./components/NavBar.vue";
-import NavBarUser from "./components/users/NavBarUser.vue";
+import Aside from "./components/admin/Aside.vue";
+import NavBar from "./components/admin/NavBar.vue";
+import NavBarUser from "./components/users/NavBar.vue";
 
-import Reports from "./components/admin/Reports.vue";
-import AsideProfile from "./components/views/AsideProfile.vue";
-import AsideProfileUser from "./components/users/AsideProfileUser.vue";
+import Reports from "./components/admin/manage/Reports.vue";
+import AsideProfile from "./components/admin/account/AsideProfile.vue";
+import AsideProfileUser from "./components/users/account/AsideProfile.vue";
 import EditProfile from "./components/controllers/EditProfile.vue";
-import EditProfileUser from "./components/users/EditProfileuser.vue";
-import Equipos from "./components/admin/Equipos.vue";
-import EquiposUser from "./components/users/EquiposUser.vue";
+import EditProfileUser from "./components/users/account/EditProfile.vue";
+import Equipos from "./components/admin/manage/Equipos.vue";
+import EquiposUser from "./components/users/manage/Equipos.vue";
 
 const routes = [
     // -- -- ACCOUNT -- --
@@ -235,15 +234,7 @@ const routes = [
         name: "Login",
         component: Login,
     },
-    {
-        path: "/registros",
-        name: "Register",
-        components: {
-            default: Register,
-            navbar: NavBar,
-            aside: Aside,
-        },
-    },
+
     {
         path: "/usuarios",
         name: "Users",

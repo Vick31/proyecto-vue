@@ -54,7 +54,7 @@
 
 
 <style scoped>
-@import "../../assets/css/styleRegisterClients.css";
+@import "../../../assets/css/styleRegisterClients.css";
 </style>
 
 <script>

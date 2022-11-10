@@ -99,7 +99,7 @@
   
   
 <style scoped>
-@import "../../assets/css/styleRegisterClients.css";
+@import "../../../assets/css/styleRegisterClients.css";
 </style>
   
 <script>
@@ -115,7 +115,7 @@ export default {
                 email: "",
                 password: "",
                 password_confirmation: "",
-                companies_id: "2",
+                companies_id: "1",
                 roles_id: "2",
             },
             errors: {},

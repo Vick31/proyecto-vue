@@ -3,11 +3,6 @@
     <div class="section">
         <div class="body">
             <div class="cards">
-                <b>Nombre de usuario</b>
-                <p>{{ user.name }}</p>
-            </div>
-
-            <div class="cards">
                 <b>Rol</b>
                 <p>{{ user.roles_id }}</p>
             </div>
@@ -37,7 +32,7 @@
 </template>
 
 <style scoped>
-@import "../../assets/css/styleAccount.css";
+@import "../../../assets/css/styleAccount.css";
 </style>
     
 
@@ -49,24 +44,26 @@ export default {
         return {
             token: '',
             user: {},
-            roles: []
         }
     },
     mounted() {
 
         if (localStorage.token) {
+
+            if (localStorage.getItem('rol') == 1) {
+                this.$router.push({
+                    name: "Login",
+                    params: {
+                        message: "No estas autorizado para acceder con esta cuenta"
+                    }
+                })
+
+                this.token = null
+            }
+            
             this.token = localStorage.token;
-            this.get_roles()
             this.get_user();
-        } else {
-            this.$router.push({
-                name: "Login",
-                params: {
-                    message: "No estas autorizado para acceder con esta cuenta"
-                }
-            })
         }
-        
 
     },
     methods: {
@@ -89,17 +86,7 @@ export default {
                 })
             }
         },
-        async get_roles() {
-            try {
-                const response = await axios.get("http://127.0.0.1:8000/api/roles")
-                this.roles = response.data
 
-            }
-
-            catch (e) {
-                alert('falla')
-            }
-        },
         async logout() {
             try {
 

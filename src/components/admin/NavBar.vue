@@ -23,7 +23,7 @@
 </template>
 
 <style scoped>
-@import "../assets/css/styleApp.css";
+@import "../../assets/css/styleApp.css";
 </style>
 
 <script>

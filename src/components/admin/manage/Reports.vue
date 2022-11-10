@@ -10,5 +10,5 @@
   </template>
   
   <style scoped>
-  @import "../../assets/css/styleReports.css";
+  @import "../../../assets/css/styleReports.css";
   </style>

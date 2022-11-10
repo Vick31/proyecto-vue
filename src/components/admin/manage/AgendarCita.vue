@@ -210,7 +210,7 @@ export default {
 </script>
 
 <style scoped>
-@import "../../assets/css/styleCitas.css";
+@import "../../../assets/css/styleCitas.css";
 
 </style>
 

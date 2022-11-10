@@ -7,9 +7,8 @@
         </div>
 
         <div class="section">
-            <router-view name="navbar"></router-view>
-
             <div class="container-section">
+                <router-view name="navbar"></router-view>
                 
                 <router-view></router-view>
             </div>

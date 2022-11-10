@@ -57,6 +57,9 @@
 .container-section { 
     border-radius: 10px;
     overflow-y: auto;
+
+    margin: auto;
+    max-width: 1600px;
 }
 
 .aside {
@@ -82,10 +85,12 @@
     cursor: pointer;
 }
 
-.logo {
-    margin-bottom: 3rem;
+.body-aside{
+    height: 98%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-
 .body-aside ul {
     margin: 0;
     padding: 0;
