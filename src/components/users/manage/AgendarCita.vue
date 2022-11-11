@@ -34,7 +34,6 @@ export default {
                 description: "",
                 users_id: "",
                 clients_id: "",
-                reports_id: "",
             },
             token: '',
             user: {},
@@ -267,12 +266,6 @@ export default {
                                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
                                     style="height: 100px" v-model="form.description"></textarea>
                                 <label for="floatingTextarea2">Description</label>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Reporte</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" v-model="form.reports_id">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">color</label>

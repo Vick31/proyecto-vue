@@ -4,7 +4,7 @@
         <button @click="takePicture()">take</button>
         <canvas ref="canvas" style="display:none;" />
 
-       
+
 
     </div>
 
@@ -17,21 +17,23 @@ export default {
         this.video = this.$refs.video
         this.startCapture()
         this.url_img = ""
+
         
+
 
 
     },
     methods: {
         startCapture() {
-            
-                navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then(stream => {
-                    this.video.srcObject = stream
-                    this.video.play()
-                }).catch(error => {
-                    console.log(error)
-                })
-            
-            
+
+            navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then(stream => {
+                this.video.srcObject = stream
+                this.video.play()
+            }).catch(error => {
+                console.log(error)
+            })
+
+
 
         },
         takePicture() {
@@ -41,7 +43,7 @@ export default {
             this.$emit('picture-taken', this.canvas.toDataURL('image/png'))
 
             this.url_img = this.canvas.toDataURL('image/png')
-            
+
             this.video.srcObject.getTracks().forEach((track) => {
                 track.stop();
             });
@@ -60,7 +62,7 @@ export default {
         return {
             video: null,
             canvas: null,
-            url_img: ""         
+            url_img: ""
         }
     },
 }
