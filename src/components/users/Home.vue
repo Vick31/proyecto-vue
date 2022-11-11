@@ -3,7 +3,7 @@
     <div class="container-home">
         <h1> APP SIGEM </h1>
         <div class="main">
-            <router-link to="/agendar/citas" class="rotes">
+            <router-link to="/user/agendar/citas" class="rotes">
                 <div class="card-home">
                     <div class="img-home">
                         <span class="material-symbols-outlined icon-home">
@@ -17,21 +17,7 @@
                 </div>
             </router-link>
 
-            <router-link to="/usuarios" class="rotes">
-                <div class="card-home">
-                    <div class="img-home">
-                        <span class="material-symbols-outlined icon-home">
-                            badge
-                        </span>
-                    </div>
-                    <div class="card-content">
-                        <h4>Usuarios</h4>
-                        <small></small>
-                    </div>
-                </div>
-            </router-link>
-
-            <router-link to="/clientes" class="rotes">
+            <router-link to="/user/clientes" class="rotes">
                 <div class="card-home">
                     <div class="img-home">
                         <span class="material-symbols-outlined icon-home">
@@ -44,7 +30,7 @@
                     </div>
                 </div>
             </router-link>
-            <router-link to="/equipos" class="rotes">
+            <router-link to="/user/equipos" class="rotes">
                 <div class="card-home">
                     <div class="img-home">
                         <span class="material-symbols-outlined icon-home">
@@ -57,7 +43,7 @@
                     </div>
                 </div>
             </router-link>
-            <router-link to="/account/admin" class="rotes">
+            <router-link to="/account/user" class="rotes">
                 <div class="card-home">
                     <div class="img-home">
                         <span class="material-symbols-outlined icon-home">
@@ -91,11 +77,16 @@ export default {
 
         if (localStorage.token) {
 
-        } else {
-            this.$router.push({
-                name: "Login",
-                params: { message: "Ingresa tu usuario y contraseña" }
-            })
+            if (localStorage.getItem('rol') == 1) {
+                this.$router.push({
+                    name: "Login",
+                    params: {
+                        message: "No estas autorizado para acceder con esta cuenta"
+                    }
+                })
+                this.token == null
+            }
+            this.token = localStorage.token;
         }
     },
 

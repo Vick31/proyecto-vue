@@ -81,7 +81,7 @@ export default {
             break;
 
           case 2:
-            this.$router.push({ path: "/account/user" });
+            this.$router.push({ path: "/user" });
             localStorage.token = rs.data.token;
             localStorage.setItem('rol', 2)
 

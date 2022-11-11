@@ -17,7 +17,8 @@ import AccountProfileUser from "./components/users/account/Account.vue";
 import AsideUser from "./components/users/Aside.vue";
 
 //Inicio y componentes
-import Home from "./components/views/Home.vue";
+import Home from "./components/admin/Home.vue";
+import HomeUser from "./components/users/Home.vue"
 import Users from "./components/views/Users.vue";
 import Clientes from "./components/views/Clients.vue";
 import ClientesUser from "./components/users/Clients.vue";
@@ -227,6 +228,13 @@ const routes = [
         name: "Home",
         components: {
             default: Home,
+        },
+    },
+    {
+        path: "/user",
+        name: "HomeUser",
+        components: {
+            default: HomeUser,
         },
     },
     {
