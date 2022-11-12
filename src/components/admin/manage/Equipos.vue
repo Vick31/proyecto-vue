@@ -1,33 +1,38 @@
 <template>
-    <router-link class="rotes" to="/equipos">
-        <div class="container-body">
-            <EquipoFoto @picture-taken="imageSrc = $event" />
-            <!-- <img :src="imageSrc" class="vick" /> -->
-
-
-
+    <router-link to="/equipos/captura">hola </router-link>
+    <div class="container-section" v-for="p in equipment">
+        <div class="card" style="width: 18rem;">
+            <img :src="p.img" class="card-img-top" alt="...">
+            <div class="card-body">
+                <div class="title-body">
+                    <h5 class="card-title"> {{ p.name }} </h5>
+                    <span class="material-symbols-outlined icon-equipo">
+                        visibility
+                    </span>
+                </div>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+            </div>
         </div>
-    </router-link>
+    </div>
+
+
 
 </template>
 
 
 
-<style>
-
+<style scoped>
+@import "../../../assets/css/styleEquipos.css";
 </style>
 
 
 <script>
-import EquipoFoto from "./EquipoFoto.vue"
 export default {
 
-    components: {
-        EquipoFoto
-    },
     data() {
         return {
-            imageSrc: null,
+            equipment: []
         };
     },
     mounted() {
@@ -44,10 +49,16 @@ export default {
             }
 
             this.token = localStorage.token;
+            this.equipments()
+
         }
     },
 
     methods: {
+        async equipments() {
+            const rs = await this.axios.get('/api/equipos');
+            this.equipment = rs.data;
+        },
     },
 };
 

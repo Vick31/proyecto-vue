@@ -1,29 +1,40 @@
 <template>
-    <div>
-        <video ref="video" @canplay="initCanvas()">stream unavailable</video>
-        <button @click="takePicture()">take</button>
-        <canvas ref="canvas" style="display:none;" />
+    <div class="container-section">
+        <button @click="startCapture()">Capturar imagen</button>
 
-
-
+        <div class="section">
+            <video class="video" ref="video" @canplay="initCanvas()">stream unavailable</video>
+            <button id="myModal" @click="takePicture()">take</button>
+            <canvas ref="canvas" style="display:none;" />
+        </div>
     </div>
 
+    
 </template>
+
+<style scoped>
+@import "../../../assets/css/styleEquipos.css";
+</style>
+
 <script>
 export default {
-
+    data() {
+        return {
+            video: null,
+            canvas: null,
+            url_img: "",
+        }
+    },
     mounted() {
         this.canvas = this.$refs.canvas
         this.video = this.$refs.video
-        this.startCapture()
         this.url_img = ""
-
-        
-
-
 
     },
     methods: {
+
+
+
         startCapture() {
 
             navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then(stream => {
@@ -58,13 +69,7 @@ export default {
             this.canvas.setAttribute('height', this.video.videoHeight)
         }
     },
-    data() {
-        return {
-            video: null,
-            canvas: null,
-            url_img: ""
-        }
-    },
+
 }
 </script>
 
