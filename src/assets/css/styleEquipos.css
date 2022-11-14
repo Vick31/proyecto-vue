@@ -9,10 +9,11 @@ button{
 }
 .container-section {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
 
+    flex-flow: row wrap;
     padding: 2rem;
+
+    gap: 2rem;
 }
 
 .section{
@@ -32,15 +33,16 @@ button{
 
 }
 .card:hover::before {
-    content: 'Hola';
+    content: 'Presiona para inspeccionar';
 
     position: absolute;
-    top: -2rem;
-    right: -2rem;   
+    top: 0rem;
+    right: 0rem;   
 
-    /* content: 'presiona para inspeccionar'; */
-    /* transform: scale(1.02); */
+    background: #fff;
+    padding: 0.3rem;
 
+    
 }
 
 .title-body {

@@ -9,7 +9,52 @@
         </div>
     </div>
 
-    
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form>
+                        <div class="mb-3">
+                            <!-- <label for="exampleInputEmail1" class="form-label">image</label> -->
+                            <!-- <input v-model="form.img" type="image" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp"> -->
+
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2dM2rpp1m8GOXl9CEKJ5KrQEA7-2ihbmRFg&usqp=CAU" alt="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">name</label>
+                            <input v-model="form.name" type="text" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">serial</label>
+                            <input v-model="form.serial" type="number" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <button @click="register_equipment()" type="button" data-bs-dismiss="modal" class="btn btn-primary">Submit</button>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </template>
 
 <style scoped>
@@ -17,19 +62,26 @@
 </style>
 
 <script>
+
 export default {
     data() {
         return {
             video: null,
             canvas: null,
             url_img: "",
+            form: {
+                img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2dM2rpp1m8GOXl9CEKJ5KrQEA7-2ihbmRFg&usqp=CAU',
+                name: '',
+                serial: ''
+            },
+
+            defaults: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2dM2rpp1m8GOXl9CEKJ5KrQEA7-2ihbmRFg&usqp=CAU'
         }
     },
     mounted() {
         this.canvas = this.$refs.canvas
         this.video = this.$refs.video
         this.url_img = ""
-
     },
     methods: {
 
@@ -43,6 +95,7 @@ export default {
             }).catch(error => {
                 console.log(error)
             })
+
 
 
 
@@ -67,7 +120,42 @@ export default {
         initCanvas() {
             this.canvas.setAttribute('width', this.video.videoWidth)
             this.canvas.setAttribute('height', this.video.videoHeight)
-        }
+        },
+
+
+        async register_equipment() {
+            // if(this.form.img = '') {
+            //         this.form.img = this.defaults
+            // }
+
+            try {
+
+                
+                const rs = await this.axios.post("/api/equipos", this.form);
+
+                this.$router.push({
+                    path: '/equipos',
+                    params: { message: rs.data.message, },
+
+                });
+            }
+            catch (e) {
+
+                this.errors = {},
+                    this.message = null;
+
+                if (e.response.data.errors)
+                    this.errors = e.response.data.errors;
+
+                else if (e.response.data.message)
+                    this.errors = e.response.data.message;
+
+                console.log(e)
+            }
+
+        },
+
+
     },
 
 }

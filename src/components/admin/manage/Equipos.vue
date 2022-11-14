@@ -1,7 +1,10 @@
 <template>
-    <router-link to="/equipos/captura">hola </router-link>
-    <div class="container-section" v-for="p in equipment">
-        <div class="card" style="width: 18rem;">
+
+    <Loading v-model:active="isLoading" :can-cancel="false" :is-full-page=true />
+
+    <router-link to="/equipos/captura"> Registrar nuevo equipo </router-link>
+    <div class="container-section">
+        <div class="card" style="width: 18rem;" v-for="p in equipment">
             <img :src="p.img" class="card-img-top" alt="...">
             <div class="card-body">
                 <div class="title-body">
@@ -28,14 +31,23 @@
 
 
 <script>
+
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
+
 export default {
+    components: {
+        Loading,
+    },
 
     data() {
         return {
-            equipment: []
+            equipment: [],
+            isLoading: true,
+            fullPage: true,
         };
     },
-    mounted() {
+    mounted: async function () {
         if (localStorage.token) {
 
             if (localStorage.getItem('rol') != 1) {
@@ -49,7 +61,8 @@ export default {
             }
 
             this.token = localStorage.token;
-            this.equipments()
+            await this.equipments()
+            this.isLoading = false
 
         }
     },
