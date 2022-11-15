@@ -153,9 +153,6 @@ export default {
 
             this.calendarOptions.events = response.data.events_list;
 
-            // for (let index = 0; index < this.calendarOptions.events.length; index++) {
-            //     this.calendarOptions.events[index].title = this.calendarOptions.events[index].title + ' ' + this.calendarOptions.events[index].time
-            // }
         },
 
         async clients() {

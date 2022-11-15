@@ -28,8 +28,8 @@
                     <form>
                         <div class="mb-3">
                             <!-- <label for="exampleInputEmail1" class="form-label">image</label> -->
-                            <!-- <input v-model="form.img" type="image" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp"> -->
+                            <input v-model="form.img" type="text" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
 
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2dM2rpp1m8GOXl9CEKJ5KrQEA7-2ihbmRFg&usqp=CAU" alt="">
                         </div>

@@ -3,22 +3,21 @@
     /* border: 1px solid; */
     transition: 200ms;
 }
-button{
-    padding: 2rem;
-    width: max-content;
-}
-.container-section {
-    display: flex;
 
+.container-section {
+    overflow-y: auto;
+
+    height: calc(100vh - 6rem);
+}
+
+
+.section{
+    display: flex;
+    
     flex-flow: row wrap;
     padding: 2rem;
 
     gap: 2rem;
-}
-
-.section{
-    display: flex;
-    flex-direction: column;
 }
 
 .card {
@@ -55,4 +54,11 @@ button{
 
     width: 40rem;
     height: 40rem;
+}
+
+.card-img-top {
+    width: 17.9rem;
+    height: 17.9rem;
+
+    object-fit: contain;
 }
