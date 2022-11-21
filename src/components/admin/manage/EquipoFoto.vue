@@ -4,16 +4,19 @@
 
         <div class="section">
             <video class="video" ref="video" @canplay="initCanvas()">stream unavailable</video>
-            <button id="myModal" @click="takePicture()">take</button>
+            
+            <button @click="takePicture()" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                Capturar
+            </button>
+
             <canvas ref="canvas" style="display:none;" />
         </div>
     </div>
 
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Launch demo modal
-    </button>
+
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -26,12 +29,10 @@
                 <div class="modal-body">
 
                     <form>
-                        <div class="mb-3">
-                            <!-- <label for="exampleInputEmail1" class="form-label">image</label> -->
+                        <div class="mb-3" id="img-modal">
                             <input v-model="form.img" type="text" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp">
 
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2dM2rpp1m8GOXl9CEKJ5KrQEA7-2ihbmRFg&usqp=CAU" alt="">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">name</label>
@@ -43,7 +44,8 @@
                             <input v-model="form.serial" type="number" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp">
                         </div>
-                        <button @click="register_equipment()" type="button" data-bs-dismiss="modal" class="btn btn-primary">Submit</button>
+                        <button @click="register_equipment()" type="button" data-bs-dismiss="modal"
+                            class="btn btn-primary">Submit</button>
                     </form>
 
                 </div>
@@ -70,7 +72,7 @@ export default {
             canvas: null,
             url_img: "",
             form: {
-                img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2dM2rpp1m8GOXl9CEKJ5KrQEA7-2ihbmRFg&usqp=CAU',
+                img: '',
                 name: '',
                 serial: ''
             },
@@ -115,6 +117,15 @@ export default {
 
             console.log(this.url_img)
 
+            let img = document.getElementById('img-modal')
+
+            img.innerHTML = `
+            <img class="card-img-top" src="${this.url_img}" alt="">
+
+            `
+
+            this.form.img = this.url_img
+
         },
 
         initCanvas() {
@@ -130,7 +141,7 @@ export default {
 
             try {
 
-                
+
                 const rs = await this.axios.post("/api/equipos", this.form);
 
                 this.$router.push({
