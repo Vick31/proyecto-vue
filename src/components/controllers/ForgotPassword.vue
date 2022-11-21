@@ -1,20 +1,14 @@
 <template>
   <div class="container-body">
-    
+
     <br />
     <div class="body">
-      <form id="te">        
+      <form id="te">
         <h3 class="n3 mb-3 fw">Confirma tu correo electrónico</h3>
         <h5>¿Olvidaste tu contraseña?</h5>
         <div class="form-floating pb-3">
-          <input
-            type="email"
-            class="form-control"
-            id="floatingInput"
-            placeholder="name@example.com"
-            name="email"
-            v-model="email"
-          />
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email"
+            v-model="email" />
           <label for="floatingInput">Correo electronico</label>
           <span v-if="errors.email">{{ errors.email[0] }}</span>
         </div>
@@ -41,7 +35,7 @@ export default {
       errors: {},
     };
   },
-  mounted() {},
+  mounted() { },
 
   methods: {
     async send_email() {
