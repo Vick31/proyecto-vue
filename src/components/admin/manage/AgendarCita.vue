@@ -149,7 +149,7 @@ export default {
 
         async index() {
 
-            let response = await axios.get("http://127.0.0.1:8000/api/citas")
+            let response = await this.axios.get("/api/citas")
 
             this.calendarOptions.events = response.data.events_list;
 
@@ -157,14 +157,14 @@ export default {
 
         async clients() {
 
-            let response = await axios.get("http://127.0.0.1:8000/api/clientes")
+            let response = await this.axios.get("/api/clientes")
 
             this.clients_list = response.data
         },
 
         async biomedics() {
 
-            let response = await axios.get("http://127.0.0.1:8000/api/user")
+            let response = await this.axios.get("/api/user")
 
             this.biomedics_list = response.data
         },

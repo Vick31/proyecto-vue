@@ -44,6 +44,11 @@
                             <input v-model="form.serial" type="number" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp">
                         </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">cliente</label>
+                            <input v-model="form.clients_id" type="number" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                        </div>
                         <button @click="register_equipment()" type="button" data-bs-dismiss="modal"
                             class="btn btn-primary">Submit</button>
                     </form>
@@ -74,7 +79,8 @@ export default {
             form: {
                 img: '',
                 name: '',
-                serial: ''
+                serial: '',
+                clients_id: ''
             },
 
             defaults: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2dM2rpp1m8GOXl9CEKJ5KrQEA7-2ihbmRFg&usqp=CAU'

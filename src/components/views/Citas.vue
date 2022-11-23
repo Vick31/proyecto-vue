@@ -128,7 +128,7 @@ export default {
     methods: {
 
         async index() {
-            let response = await axios.get("http://127.0.0.1:8000/api/citas")
+            let response = await this.axios.get("http://192.168.105.207:8000/api/citas")
             this.citas_list = response.data
         },
 
@@ -136,11 +136,11 @@ export default {
             this.cita_delete = p
         },
 
-        async destroy() {
-            let id = this.cita_delete.id
-            let response = await axios.delete("http://127.0.0.1:8000/api/citas/" + id)
-            this.index()
-        },
+        // async destroy() {
+        //     let id = this.cita_delete.id
+        //     let response = await this.axios.delete("/api/citas/" + id)
+        //     this.index()
+        // },
         iniciador() {
             const toastTrigger = document.getElementById('liveToastBtn')
             const toastLiveExample = document.getElementById('liveToast')

@@ -91,7 +91,7 @@ export default {
         },
         async get_roles() {
             try {
-                const response = await axios.get("http://127.0.0.1:8000/api/roles")
+                const response = await this.axios.get("/api/roles")
                 this.roles = response.data
 
             }

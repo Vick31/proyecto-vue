@@ -33,13 +33,9 @@ export default {
         };
     },
     async mounted() {
-        this.get_token();
     },
 
     methods: {
-        async get_token() {
-            await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
-        },
         show_aside() {
             document.getElementById('aside-app').style.transform = "scale(1)"
         },

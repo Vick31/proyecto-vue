@@ -53,9 +53,7 @@ export default {
         };
     },
     mounted() {
-
-        this.get_token()
-
+        
         if (this.$route.query.token)
             this.form.token = this.$route.query.token
 
@@ -73,10 +71,6 @@ export default {
     },
 
     methods: {
-
-        async get_token() {
-            await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
-        },
 
         async get_user() {
 

@@ -77,8 +77,6 @@ export default {
     },
     mounted() {
 
-        this.get_token()
-
         if (localStorage.token) {
 
             if (localStorage.getItem('rol') == 1) {
@@ -97,10 +95,6 @@ export default {
     },
 
     methods: {
-
-        async get_token() {
-            await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
-        },
 
         async get_user() {
 

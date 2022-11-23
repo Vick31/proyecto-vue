@@ -32,13 +32,6 @@
                 <span v-if="errors.email">{{ errors.email[0] }}</span>
             </div>
 
-            <div class="div-row">
-                <div class="form-floating pb-3">
-                    <input type="text" class="form-control" name="" v-model="form.equipment_id" />
-                    <label for="floatingInput">Equipo</label>
-                    <span v-if="errors.equipment_id">{{ errors.equipment_id[0] }} </span>
-                </div>
-            </div>
             <div class="form-footer">
                 <router-link class="rotes" to="/clientes">
                     <button class="btn btn-primary save"> Regresar </button>
@@ -68,7 +61,6 @@ export default {
                 name: "",
                 phone_number: "",
                 email: "",
-                equipment_id: "",
             },
             errors: {},
             token: '',
@@ -76,8 +68,6 @@ export default {
         };
     },
     mounted() {
-
-        this.get_token()
 
         if (localStorage.token) {
             this.token = localStorage.token;
@@ -93,10 +83,6 @@ export default {
     },
 
     methods: {
-
-        async get_token() {
-            await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie")
-        },
 
         async get_user() {
 

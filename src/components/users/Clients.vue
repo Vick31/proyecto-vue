@@ -8,9 +8,8 @@
       </button>
 
       <router-link class="rotes" to="/user/registrar/cliente">
-        <button type="button" id="rotess" class="toggle-btn">
+        <button>
           Agregar cliente
-          <span class="material-symbols-outlined"> add_reaction </span>
         </button>
       </router-link>
 
@@ -102,7 +101,7 @@ export default {
 
   methods: {
     async index() {
-      let response = await axios.get("http://127.0.0.1:8000/api/clientes");
+      let response = await this.axios.get("/api/clientes");
       this.clients_list = response.data;
     },
 
