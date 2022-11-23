@@ -7,7 +7,7 @@ import VueAxios from "vue-axios";
 import {LoadingPlugin} from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
 
-axios.defaults.baseURL = "http://192.168.105.207:8000"
+axios.defaults.baseURL = "http://127.0.0.1:8000"
 
 
 createApp(App)
