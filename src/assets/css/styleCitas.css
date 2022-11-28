@@ -110,3 +110,20 @@
     border: 1px solid blue;
     background-color: gray;
 }
+
+.client{
+    /* display: ; */
+
+    z-index: 100;
+    width: 14rem;
+    height: 10rem;
+
+
+    border: 1px solid;
+
+}
+.sear:hover {
+    cursor: pointer;
+
+    background-color: rgb(230, 230, 230);
+}

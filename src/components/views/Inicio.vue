@@ -1,18 +1,20 @@
 <template>
-    <div class="body-inicio">
-        <div class="header-inicio">
-            <h1>BIENVENIDO</h1>
-        </div>
+    <div class="body">
+        <div class="body-inicio">
+            <div class="header-inicio">
+                <h1>BIENVENIDO</h1>
+            </div>
 
-        <div class="section-inicio">
-            <router-link class="rotes-inicio" to="/Login">
-                <button type="button" class="btn btn-inicio btn-primary">Sing In</button>
+            <div class="section-inicio">
+                <router-link class="rotes-inicio" to="/Login">
+                    <button type="button" class="btn btn-inicio btn-primary">Sing In</button>
+                </router-link>
                 <p>Lorem ipsum dolor sit amet.</p>
-            </router-link>
 
-            <div class="footer-inicio">
-                <button type="button" class="btn btn-inicio"><small>ACERCA DE</small></button>
-                <button type="button" class="btn btn-inicio"><small>CONTACTO</small></button>
+                <div class="footer-inicio">
+                    <button type="button" class="btn btn-inicio"><small>ACERCA DE</small></button>
+                    <button type="button" class="btn btn-inicio"><small>CONTACTO</small></button>
+                </div>
             </div>
         </div>
     </div>
@@ -31,7 +33,7 @@
     left: 0;
 }
 
-.btn-inicio{
+.btn-inicio {
     border-radius: 20px;
     padding: 0.6rem 4rem;
 
@@ -51,14 +53,14 @@
     height: 60vh;
 }
 
-.section-inicio{
+.section-inicio {
     height: 40vh;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    
+
     padding: 2rem 1.3rem;
 }
 
@@ -68,7 +70,7 @@
     gap: 2rem;
 }
 
-.footer-inicio > .btn {
+.footer-inicio>.btn {
     padding: 0.2rem 1.5rem !important;
     font-weight: 400;
     border: 0.4px solid blue;
@@ -79,8 +81,7 @@
     color: #000;
 }
 
-.rotes-inicio > p {
+.rotes-inicio>p {
     margin-top: 1.5rem;
 }
-
 </style>

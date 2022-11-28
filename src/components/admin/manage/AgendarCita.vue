@@ -25,8 +25,9 @@ export default {
     },
     data() {
         return {
+            search: '',
+            copy_clients_list: [],
             clients_list: [],
-            biomedics_list: [],
             form: {
                 title: "",
                 start: "",
@@ -66,9 +67,9 @@ export default {
                     var today = new Date();
                     today = today.toLocaleDateString("en-GB");
 
-                    console.log( check, today )
+                    console.log(check, today)
 
-                    if ( today <= check) {
+                    if (today <= check) {
 
                         document.getElementById('modal-cita').style.display = 'flex';
 
@@ -86,7 +87,7 @@ export default {
 
                     if (eventObj.title) {
 
-                        
+
                         const event_modal = document.getElementById('event-modal')
                         event_modal.style.display = 'flex'
 
@@ -100,18 +101,18 @@ export default {
 
                         content_event_modal.innerHTML = `
 
-                            <h2>${ eventObj.title }</h2>
+                            <h2>${eventObj.title}</h2>
 
                             <div class="content-modal">   
 
-                                <p class="text-event"> <b> Biomedico </b>: ${ eventObj.extendedProps.user } </p>
-                                <p class="text-event"> <b> Nombre del cliente: </b> ${ eventObj.extendedProps.client } </p>
-                                <p class="text-event"> <b>Fecha de inicio: </b> ${ eventObj.start.toLocaleDateString("en-US") } </p>
-                                <p class="text-event"> <b>Fecha de fin: </b> ${ eventObj.end.toLocaleDateString("en-US") } </p>
-                                <p class="text-event"> <b>Hora inicial: </b> ${ eventObj.extendedProps.time } </p>
+                                <p class="text-event"> <b> Biomedico </b>: ${eventObj.extendedProps.user} </p>
+                                <p class="text-event"> <b> Nombre del cliente: </b> ${eventObj.extendedProps.client} </p>
+                                <p class="text-event"> <b>Fecha de inicio: </b> ${eventObj.start.toLocaleDateString("en-US")} </p>
+                                <p class="text-event"> <b>Fecha de fin: </b> ${eventObj.end.toLocaleDateString("en-US")} </p>
+                                <p class="text-event"> <b>Hora inicial: </b> ${eventObj.extendedProps.time} </p>
 
                             </div>
-                        `   
+                        `
                         cont_modal.appendChild(content_event_modal)
 
                     } else {
@@ -198,16 +199,19 @@ export default {
 
         },
 
-        datos(){
+        filtrar() {
 
-        }
+            this.clients_list = this.copy_clients_list.filter(
+                (pro) => (pro.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1) |
+                    (pro.dni.toString().indexOf(this.search) > -1)
+            )
+        },
     },
 }
 </script>
 
 <style scoped>
 @import "../../../assets/css/styleCitas.css";
-
 </style>
 
 <template>
@@ -237,8 +241,18 @@ export default {
                             <div class="div-row">
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Cliente</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1"
-                                        v-model="form.clients_id">
+                                    <!-- <input type="text" class="form-control" id="exampleInputPassword1"
+                                        v-model="form.clients_id"> -->
+
+                                    <input class="input-search form-control" id="exampleInputPassword1" type="text"
+                                        placeholder="Buscar" v-model="search" @keyup="filtrarClient">
+                                        <div class="client">
+                                            <div id="searchClient" v-for="p in clients_list"> 
+                                                <p class="sear">
+                                                    {{p.name}}
+                                                </p>
+                                            </div>
+                                        </div>
                                     <select name="" id="clients"></select>
                                 </div>
                                 <div class="mb-3">
@@ -274,8 +288,7 @@ export default {
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button @click="cerrar()" type="button" class="btn btn-secondary"
-                        >Close</button>
+                    <button @click="cerrar()" type="button" class="btn btn-secondary">Close</button>
                     <button type="button" @click="register_cita()">aceptar</button>
                 </div>
             </div>
