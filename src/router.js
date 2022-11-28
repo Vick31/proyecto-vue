@@ -36,6 +36,7 @@ import EquipoFoto from "./components/admin/manage/EquipoFoto.vue";
 import Equipos from "./components/admin/manage/Equipos.vue";
 import EquiposUser from "./components/users/manage/Equipos.vue";
 
+import Inicio from "./components/views/Inicio.vue"
 const routes = [
     // -- -- ACCOUNT -- --
 
@@ -231,12 +232,19 @@ const routes = [
     },
 
     // -- -- VIEWS -- --
-
     {
-        path: "/",
+        path: "/home",
         name: "Home",
         components: {
             default: Home,
+        },
+    },
+
+    {
+        path: "/",
+        name: "inicio",
+        components: {
+            default: Inicio,
         },
     },
     {

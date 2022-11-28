@@ -74,7 +74,7 @@ export default {
         switch (rs.data.user.roles_id) {
 
           case 1:
-            this.$router.push({ path: "/" });
+            this.$router.push({ path: "/home" });
             localStorage.token = rs.data.token;
             localStorage.setItem('rol', 1)
 

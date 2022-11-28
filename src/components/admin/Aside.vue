@@ -5,7 +5,7 @@
                 close
             </span>
             <ul>
-                <router-link class="rotes" to="/">
+                <router-link class="rotes" to="/home">
                     <li class="logo">
                         <span class="material-symbols-outlined">
                             home
