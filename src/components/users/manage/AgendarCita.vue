@@ -25,15 +25,20 @@ export default {
     },
     data() {
         return {
+            search: '',
+            searchU: '',
+            copy_clients_list: [],
             clients_list: [],
-            biomedics_list: [],
+            copy_users_list: [],
+            users_list: [],
+            datos_client: [],
             form: {
                 title: "",
                 start: "",
                 end: "",
                 description: "",
-                users_id: "",
-                clients_id: "",
+                users_id: '',
+                clients_id: '',
             },
             token: '',
             user: {},
@@ -62,18 +67,20 @@ export default {
                 select: (arg) => {
 
                     var check = arg.start;
-                    check = check.toLocaleDateString("en-GB");
+                    check = check.toISOString();
                     var today = new Date();
-                    today = today.toLocaleDateString("en-GB");
+                    today = today.toISOString();
 
-                    console.log( check, today )
+                    console.log(check, today)
 
-                    if ( today <= check) {
+                    if (today <= check) {
 
                         document.getElementById('modal-cita').style.display = 'flex';
 
                         this.form.start = arg.startStr
                         this.form.end = arg.endStr
+
+
                     }
                     // si no, mostramos una alerta de error
                     else {
@@ -86,7 +93,7 @@ export default {
 
                     if (eventObj.title) {
 
-                        
+
                         const event_modal = document.getElementById('event-modal')
                         event_modal.style.display = 'flex'
 
@@ -100,18 +107,18 @@ export default {
 
                         content_event_modal.innerHTML = `
 
-                            <h2>${ eventObj.title }</h2>
+                            <h2>${eventObj.title}</h2>
 
                             <div class="content-modal">   
 
-                                <p class="text-event"> <b> Biomedico </b>: ${ eventObj.extendedProps.user } </p>
-                                <p class="text-event"> <b> Nombre del cliente: </b> ${ eventObj.extendedProps.client } </p>
-                                <p class="text-event"> <b>Fecha de inicio: </b> ${ eventObj.start.toLocaleDateString("en-US") } </p>
-                                <p class="text-event"> <b>Fecha de fin: </b> ${ eventObj.end.toLocaleDateString("en-US") } </p>
-                                <p class="text-event"> <b>Hora inicial: </b> ${ eventObj.extendedProps.time } </p>
+                                <p class="text-event"> <b> Biomedico </b>: ${eventObj.extendedProps.user} </p>
+                                <p class="text-event"> <b> Nombre del cliente: </b> ${eventObj.extendedProps.client} </p>
+                                <p class="text-event"> <b>Fecha de inicio: </b> ${eventObj.start.toLocaleDateString("en-US")} </p>
+                                <p class="text-event"> <b>Fecha de fin: </b> ${eventObj.end.toLocaleDateString("en-US")} </p>
+                                <p class="text-event"> <b>Hora inicial: </b> ${eventObj.extendedProps.time} </p>
 
                             </div>
-                        `   
+                        `
                         cont_modal.appendChild(content_event_modal)
 
                     } else {
@@ -126,7 +133,6 @@ export default {
 
 
         if (localStorage.token) {
-            
             if (localStorage.getItem('rol') == 1) {
                 this.$router.push({
                     name: "Login",
@@ -134,42 +140,42 @@ export default {
                         message: "No estas autorizado para acceder con esta cuenta"
                     }
                 })
-                this.token == null
+                this.token = null
             }
 
             this.token = localStorage.token;
 
             await this.index()
             this.clients()
+            this.biomedics()
 
             this.isLoading = false
+
         }
     },
     methods: {
 
         async index() {
 
-            let response = await axios.get("/api/citas")
+            let response = await this.axios.get("/api/citas")
 
             this.calendarOptions.events = response.data.events_list;
 
-            // for (let index = 0; index < this.calendarOptions.events.length; index++) {
-            //     this.calendarOptions.events[index].title = this.calendarOptions.events[index].title + ' ' + this.calendarOptions.events[index].time
-            // }
         },
 
         async clients() {
 
-            let response = await axios.get("api/clientes")
+            let response = await this.axios.get("/api/clientes")
 
-            this.clients_list = response.data
+            this.copy_clients_list = response.data
+            this.clients_list = this.copy_clients_list
         },
 
         async biomedics() {
 
-            let response = await axios.get("/api/user")
-
-            this.biomedics_list = response.data
+            let response = await this.axios.get("/api/users");
+            this.copy_users_list = response.data.users_list;
+            this.users_list = this.copy_users_list
         },
 
         async register_cita() {
@@ -201,16 +207,39 @@ export default {
 
         },
 
-        datos(){
+        filtrarClient() {
 
-        }
+            this.clients_list = this.copy_clients_list.filter(
+                (pro) => (pro.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1) |
+                    (pro.dni.toString().indexOf(this.search) > -1)
+            )
+        },
+        insertar(buscar) {
+            let item = this.clients_list.find((pro) => pro.dni == buscar);
+            this.search = item.name
+            this.form.clients_id = item.id
+            console.log(this.form.clients_id)
+        },
+
+
+        filtrarUser() {
+
+            this.users_list = this.copy_users_list.filter(
+                (pro) => (pro.name.toLowerCase().indexOf(this.searchU.toLowerCase()) > -1) |
+                    (pro.dni.toString().indexOf(this.searchU) > -1)
+            )
+        },
+        insertarU(buscar) {
+            let item = this.users_list.find((pro) => pro.dni == buscar);
+            this.searchU = item.name
+            this.form.users_id = item.id
+        },
     },
 }
 </script>
 
 <style scoped>
 @import "../../../assets/css/styleCitas.css";
-
 </style>
 
 <template>
@@ -240,26 +269,47 @@ export default {
                             <div class="div-row">
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Cliente</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1"
-                                        v-model="form.clients_id">
-                                    <select name="" id="clients"></select>
+                                    <!-- <input type="text" class="form-control" id="exampleInputPassword1"
+                                        v-model="form.clients_id"> -->
+
+                                    <input class="input-search form-control" type="text" placeholder="Buscar"
+                                        v-model="search" @keyup="filtrarClient">
+                                    <div class="client">
+                                        <div id="searchClient" v-for="p in clients_list">
+                                            <p class="sear" @click="insertar(p.dni)">
+                                                {{ p.name }}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Biomedico</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" v-model="form.users_id">
+                                    <input class="input-search form-control" type="text" placeholder="Buscar"
+                                        v-model="searchU" @keyup="filtrarUser">
+                                    <div class="client">
+                                        <div id="searchClient" v-for="p in users_list">
+                                            <p class="sear" @click="insertarU(p.dni)">
+                                                {{ p.name }}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="div-row">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">nombre</label>
+                                    <label for="exampleInputEmail1" class="form-label">Nombre del evento</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
                                         aria-describedby="emailHelp" v-model="form.title">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">hora de inicio</label>
+                                    <label for="exampleInputEmail1" class="form-label">Hora de inicio</label>
                                     <input type="time" class="form-control" id="exampleInputEmail1"
                                         aria-describedby="emailHelp" v-model="form.time">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Color</label>
+                                    <input type="color" class="form-control color" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" v-model="form.color">
                                 </div>
                             </div>
                             <div class="form-floating">
@@ -267,18 +317,14 @@ export default {
                                     style="height: 100px" v-model="form.description"></textarea>
                                 <label for="floatingTextarea2">Description</label>
                             </div>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">color</label>
-                                <input type="color" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" v-model="form.color">
-                            </div>
+
+
                         </form>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button @click="cerrar()" type="button" class="btn btn-secondary"
-                        >Close</button>
-                    <button type="button" @click="register_cita()">aceptar</button>
+                    <button @click="cerrar()" type="button" class="btn btn-secondary">Close</button>
+                    <button type="button" class="btn btn-primary" @click="register_cita()">aceptar</button>
                 </div>
             </div>
         </div>

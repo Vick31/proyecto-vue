@@ -1,7 +1,7 @@
 <template>
-    <div class="div-form ">
+    <div class="div-form " >
         <form>
-            <h1 class="title">Registrar cliente</h1>
+            <h1 class="title" >Registrar cliente</h1>
             <div class="form-floating pb-3">
                 <input type="number" class="form-control" name="name" v-model="form.dni" />
                 <label for="floatingInput">Dni</label>
@@ -32,15 +32,8 @@
                 <span v-if="errors.email">{{ errors.email[0] }}</span>
             </div>
 
-            <div class="div-row">
-                <div class="form-floating pb-3">
-                    <input type="text" class="form-control" name="" v-model="form.equipment_id" />
-                    <label for="floatingInput">Equipo</label>
-                    <span v-if="errors.equipment_id">{{ errors.equipment_id[0] }} </span>
-                </div>
-            </div>
             <div class="form-footer">
-                <router-link class="rotes" to="/user/clientes">
+                <router-link class="rotes" to="/clientes">
                     <button class="btn btn-primary save"> Regresar </button>
                 </router-link>
                 <button type="button" id="rote" @click="register_user()" class="btn btn-primary save">
@@ -68,7 +61,6 @@ export default {
                 name: "",
                 phone_number: "",
                 email: "",
-                equipment_id: "",
             },
             errors: {},
             token: '',
@@ -78,19 +70,15 @@ export default {
     mounted() {
 
         if (localStorage.token) {
-
-            if (localStorage.getItem('rol') == 1) {
-                this.$router.push({
-                    name: "Login",
-                    params: {
-                        message: "No estas autorizado para acceder con esta cuenta"
-                    }
-                })
-                this.token = null
-            }
-
             this.token = localStorage.token;
             this.get_user();
+        } else {
+            this.$router.push({
+                name: "Login",
+                params: {
+                    message: "No estas autorizado para acceder con esta cuenta"
+                }
+            })
         }
     },
 
@@ -120,7 +108,7 @@ export default {
                 const rs = await this.axios.post("/api/clientes", this.form);
 
                 this.$router.push({
-                    name: 'Clients',
+                    path: '/user/clientes',
                     params: { message: rs.data.message, },
 
                 });
