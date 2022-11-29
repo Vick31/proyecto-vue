@@ -1,7 +1,11 @@
 <template>
 
     <div class="container-home">
-        <h1> APP SIGEM </h1>
+        <div class="title">
+            <h1> APP SIGEM </h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quasi non tenetur dolorem libero recusandae modi harum repudiandae placeat debitis!</p>
+            <img class="img-header" src="../../../img/mantenimiento-01.jpg" alt="">
+        </div>
         <div class="main">
             <router-link to="/user/agendar/citas" class="rotes">
                 <div class="card-home">

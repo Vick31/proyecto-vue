@@ -35,7 +35,7 @@ import EditProfileUser from "./components/users/account/EditProfile.vue";
 import EquipoFoto from "./components/admin/manage/EquipoFoto.vue";
 import Equipos from "./components/admin/manage/Equipos.vue";
 import EquiposUser from "./components/users/manage/Equipos.vue";
-
+import Roles from "./components/admin/manage/Roles.vue"
 import Inicio from "./components/views/Inicio.vue"
 const routes = [
     // -- -- ACCOUNT -- --
@@ -59,6 +59,11 @@ const routes = [
                 path: "edit",
                 name: "EditProfile",
                 component: EditProfile,
+            },
+            {
+                path: "roles",
+                name: "CreateRoles",
+                component: Roles,
             },
             {
                 path: "password",
@@ -88,6 +93,7 @@ const routes = [
                 name: "EditProfileUser",
                 component: EditProfileUser,
             },
+            
             {
                 path: "password",
                 name: "ResetPasswordUser",

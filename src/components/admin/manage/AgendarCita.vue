@@ -26,15 +26,19 @@ export default {
     data() {
         return {
             search: '',
+            searchU:'',
             copy_clients_list: [],
             clients_list: [],
+            copy_users_list: [],
+            users_list: [],
+            datos_client: [],
             form: {
                 title: "",
                 start: "",
                 end: "",
                 description: "",
-                users_id: "",
-                clients_id: "",
+                users_id: '',
+                clients_id: '',
             },
             token: '',
             user: {},
@@ -141,6 +145,7 @@ export default {
 
             await this.index()
             this.clients()
+            this.biomedics()
 
             this.isLoading = false
 
@@ -165,9 +170,9 @@ export default {
 
         async biomedics() {
 
-            let response = await this.axios.get("/api/user")
-
-            this.biomedics_list = response.data
+            let response = await this.axios.get("/api/users");
+            this.copy_users_list = response.data.users_list;
+            this.users_list = this.copy_users_list
         },
 
         async register_cita() {
@@ -205,6 +210,26 @@ export default {
                 (pro) => (pro.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1) |
                     (pro.dni.toString().indexOf(this.search) > -1)
             )
+        },
+        insertar(buscar) {
+            let item = this.clients_list.find((pro) => pro.dni == buscar);
+            this.search = item.name
+            this.form.clients_id = item.id
+            console.log(this.form.clients_id)
+        },
+
+
+        filtrarUser() {
+
+            this.users_list = this.copy_users_list.filter(
+                (pro) => (pro.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1) |
+                    (pro.dni.toString().indexOf(this.search) > -1)
+            )
+        },
+        insertarU(buscar) {
+            let item = this.users_list.find((pro) => pro.dni == buscar);
+            this.searchU = item.name
+            this.form.users_id = item.id
         },
     },
 }
@@ -244,21 +269,27 @@ export default {
                                     <!-- <input type="text" class="form-control" id="exampleInputPassword1"
                                         v-model="form.clients_id"> -->
 
-                                    <input class="input-search form-control" id="exampleInputPassword1" type="text"
-                                        placeholder="Buscar" v-model="search" @keyup="filtrarClient">
-                                        <div class="client">
-                                            <div id="searchClient" v-for="p in clients_list"> 
-                                                <p class="sear">
-                                                    {{p.name}}
-                                                </p>
-                                            </div>
+                                    <input class="input-search form-control" type="text" placeholder="Buscar"
+                                        v-model="search" @keyup="filtrarClient">
+                                    <div class="client">
+                                        <div id="searchClient" v-for="p in clients_list">
+                                            <p class="sear" @click="insertar(p.dni)">
+                                                {{ p.name }}
+                                            </p>
                                         </div>
-                                    <select name="" id="clients"></select>
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Biomedico</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" v-model="form.users_id">
+                                    <input class="input-search form-control" type="text" placeholder="Buscar"
+                                        v-model="searchU" @keyup="filtrarUser">
+                                    <div class="client">
+                                        <div id="searchClient" v-for="p in users_list">
+                                            <p class="sear" @click="insertarU(p.dni)">
+                                                {{ p.name }}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="div-row">

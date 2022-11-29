@@ -40,6 +40,15 @@
                     </router-link>
                 </div>
 
+                <div class="buttons">
+                    <router-link class="rotes" to="/account/admin/roles">
+                        <span class="material-symbols-outlined">
+                            assignment_ind
+                        </span>
+                        <button>Administrar roles</button>
+                    </router-link>
+                </div>
+
                 <div @click="logout()" class="buttons">
                     <span class="material-symbols-outlined">
                         logout
