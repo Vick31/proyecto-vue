@@ -1,6 +1,6 @@
 <template>
     <div class="container-section">
-        <button @click="startCapture()">Capturar imagen</button>
+        <button @click="startCapture()" id="cap">Capturar imagen</button>
 
         <div class="section">
             <video class="video" ref="video" @canplay="initCanvas()">stream unavailable</video>
@@ -55,8 +55,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="clos">Close</button>
+                    <button type="button" class="btn btn-primary" id="save">Save changes</button>
                 </div>
             </div>
         </div>

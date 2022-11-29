@@ -66,7 +66,6 @@
 
 .footer-inicio {
     display: flex;
-
     gap: 2rem;
 }
 
@@ -74,6 +73,17 @@
     padding: 0.2rem 1.5rem !important;
     font-weight: 400;
     border: 0.4px solid blue;
+}
+
+.footer-inicio>.btn:hover{
+    background-color: blue;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.2s;
+    cursor: pointer;
+    border-radius: 19px;
 }
 
 .rotes-inicio {
