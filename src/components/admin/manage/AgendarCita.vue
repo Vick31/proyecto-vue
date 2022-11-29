@@ -26,7 +26,7 @@ export default {
     data() {
         return {
             search: '',
-            searchU:'',
+            searchU: '',
             copy_clients_list: [],
             clients_list: [],
             copy_users_list: [],
@@ -67,9 +67,9 @@ export default {
                 select: (arg) => {
 
                     var check = arg.start;
-                    check = check.toLocaleDateString("en-GB");
+                    check = check.toISOString();
                     var today = new Date();
-                    today = today.toLocaleDateString("en-GB");
+                    today = today.toISOString();
 
                     console.log(check, today)
 
@@ -79,6 +79,8 @@ export default {
 
                         this.form.start = arg.startStr
                         this.form.end = arg.endStr
+
+
                     }
                     // si no, mostramos una alerta de error
                     else {
@@ -165,7 +167,8 @@ export default {
 
             let response = await this.axios.get("/api/clientes")
 
-            this.clients_list = response.data
+            this.copy_clients_list = response.data
+            this.clients_list = this.copy_clients_list
         },
 
         async biomedics() {
@@ -204,7 +207,7 @@ export default {
 
         },
 
-        filtrar() {
+        filtrarClient() {
 
             this.clients_list = this.copy_clients_list.filter(
                 (pro) => (pro.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1) |
@@ -222,8 +225,8 @@ export default {
         filtrarUser() {
 
             this.users_list = this.copy_users_list.filter(
-                (pro) => (pro.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1) |
-                    (pro.dni.toString().indexOf(this.search) > -1)
+                (pro) => (pro.name.toLowerCase().indexOf(this.searchU.toLowerCase()) > -1) |
+                    (pro.dni.toString().indexOf(this.searchU) > -1)
             )
         },
         insertarU(buscar) {
@@ -294,14 +297,19 @@ export default {
                             </div>
                             <div class="div-row">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">nombre</label>
+                                    <label for="exampleInputEmail1" class="form-label">Nombre del evento</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
                                         aria-describedby="emailHelp" v-model="form.title">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">hora de inicio</label>
+                                    <label for="exampleInputEmail1" class="form-label">Hora de inicio</label>
                                     <input type="time" class="form-control" id="exampleInputEmail1"
                                         aria-describedby="emailHelp" v-model="form.time">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Color</label>
+                                    <input type="color" class="form-control color" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" v-model="form.color">
                                 </div>
                             </div>
                             <div class="form-floating">
@@ -310,17 +318,13 @@ export default {
                                 <label for="floatingTextarea2">Description</label>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">color</label>
-                                <input type="color" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" v-model="form.color">
-                            </div>
+
                         </form>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button @click="cerrar()" type="button" class="btn btn-secondary">Close</button>
-                    <button type="button" @click="register_cita()">aceptar</button>
+                    <button type="button" class="btn btn-primary" @click="register_cita()">aceptar</button>
                 </div>
             </div>
         </div>

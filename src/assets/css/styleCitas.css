@@ -10,9 +10,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem;
-    background: #fff;   
     border-radius: 15px;
-    box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.1);
 
 }
 
@@ -40,18 +38,23 @@
 }
 
 .modal-content{
-    width: 500px;
+
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
 }
 
 .container-body{
-    background: #fff;
-    height: calc(100vh - 9rem);
+    /* height: calc(100vh - 9rem); */
     border-radius:18px;
-    margin-top: 1rem;
     padding: 1rem;
-    box-shadow: 1px 1px 7px rgba(171, 178, 185, 0.1);
     overflow-y: auto;
 
+}
+
+.modal-footer > button{
+    margin-left: 1rem;
+    padding: 0.4rem 1rem;
 }
 
 .calendario {
@@ -74,7 +77,7 @@
 
     display: none;
 
-    background-color: rgb(165, 162, 162);
+    background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -89,14 +92,12 @@
 
 .event-modal{
     width: 25rem;
-    height: 40rem;
+    /* height: 40rem; */
     padding: 0.7rem;
 
     position: absolute;
     top: 10rem;
     right: 2rem;
-
-    background: #fff;
 
     border-radius: 10px;
     box-shadow: 1px 1px 15px rgba(0,0,0,0.1 );
@@ -112,18 +113,28 @@
 }
 
 .client{
-    /* display: ; */
-
     z-index: 100;
     width: 14rem;
-    height: 10rem;
+    height: 4rem;
 
+    overflow: auto;
 
-    border: 1px solid;
-
+    margin: none ;
+    border: 1px solid rgba(0,0,0, 0.1);
+    border-radius: 10px;
 }
+.sear{
+    margin: 0 0 0 !important;
+    padding: 0.3rem;
+}
+
 .sear:hover {
     cursor: pointer;
 
     background-color: rgb(230, 230, 230);
+}
+
+.color{
+    width: 4rem;
+    height: 2.4rem;
 }
