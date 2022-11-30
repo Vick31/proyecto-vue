@@ -167,7 +167,7 @@ export default {
 
             let response = await this.axios.get("/api/clientes")
 
-            this.copy_clients_list = response.data
+            this.copy_clients_list = response.data.clients
             this.clients_list = this.copy_clients_list
         },
 
