@@ -32,14 +32,16 @@
                 <td>{{ p.email }}</td>
                 <td>{{ p.rol }}</td>
                 <td class="action">
-                    <span class="material-symbols-outlined icon azul">
+                    <span class="material-symbols-outlined icon azul" data-bs-toggle="modal"
+                        data-bs-target="#editModal" @click="edit(p)">
                         edit
                     </span>
                     <span class="material-symbols-outlined icon gris" data-bs-toggle="modal"
                         data-bs-target="#exampleModal" @click="insertar(p.dni)">
                         clarify
                     </span>
-                    <span class="material-symbols-outlined icon red"> delete </span>
+                    <span class="material-symbols-outlined icon red" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal" @click="delete_users(p)"> delete </span>
                 </td>
             </tr>
         </tbody>
@@ -47,7 +49,7 @@
 
 
 
-    <!-- Modal -->
+    <!-- Modal ver -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -62,6 +64,100 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal  EDITAR-->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edicion cliente</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal-content">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nombre cliente</label>
+                            <input disabled v-model="datos_client.name" type="text" class="form-control" id="exampleInputEmail1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Documento Cliente</label>
+                            <input v-model="datos_client.dni" type="number" class="form-control"
+                                id="exampleInputEmail1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Telefono</label>
+                            <input v-model="datos_client.phone_number" type="number" class="form-control"
+                                id="exampleInputEmail1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Direccion</label>
+                            <input v-model="datos_client.address" type="text" class="form-control"
+                                id="exampleInputPassword1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Email</label>
+                            <input v-model="datos_client.email" type="email" class="form-control"
+                                id="exampleInputPassword1">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button id="liveToastBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                @click="update()">Save
+                                changes</button>
+
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal  ELIMINAR-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edicion cliente</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal-content">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nombre cliente</label>
+                            <input v-model="del_client.name" type="text" class="form-control" id="exampleInputEmail1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Documento Cliente</label>
+                            <input v-model="del_client.dni" type="number" class="form-control" id="exampleInputEmail1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Telefono</label>
+                            <input v-model="del_client.phone_number" type="number" class="form-control"
+                                id="exampleInputEmail1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Direccion</label>
+                            <input v-model="del_client.address" type="text" class="form-control"
+                                id="exampleInputPassword1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Email</label>
+                            <input v-model="del_client.email" type="email" class="form-control"
+                                id="exampleInputPassword1">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                @click="destroy()">ELIMINAR</button>
+
+                        </div>
+                    </form>
+                </div>
+
             </div>
         </div>
     </div>
@@ -82,6 +178,10 @@ export default {
             datos_client: [],
             token: "",
             user: {},
+            del_client: [],
+            modal: {},
+            errors: {},
+            toas: ''
         };
     },
     created() {
@@ -141,6 +241,48 @@ export default {
                     (pro.dni.toString().indexOf(this.search) > -1)
             )
         },
+        edit(p) {
+            this.datos_client = p;
+            console.log(this.datos_client)
+            // Object.assign(this.datos_client, this.clients_list)
+        },
+        async update() {
+
+            this.errors = {
+                name: "",
+                dni: "",
+                phone_number: "",                
+                email: "",
+                companies_id: "",
+                roles_id:"",
+                
+            }
+            this.toas = 'Editado correctamente'
+            try {
+                let id = this.datos_client.id;
+                let response = await this.axios.put("/api/users/" + id, this.datos_client);
+                this.index();
+            }
+            catch (e) {
+                console.log(e)
+                this.errors = e.response.data.errors
+            }
+
+        },
+
+        delete_users(p) {
+            this.del_client = p;
+            console.log(p)
+        },
+        async destroy() {
+            let id = this.del_client.id;
+            let response = await this.axios.delete("/api/users/" + id);
+            this.index()
+
+            this.toas = 'Eliminado correctamente'
+
+        },
+
     },
 };
 </script>
