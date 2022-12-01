@@ -67,10 +67,16 @@ const routes = [
                 component: Roles,
             },
             {
+                path: "clientes-eliminados",
+                name: "ClientsDelete",
+                component: ClientsDelete,
+            },
+            {
                 path: "password",
                 name: "ResetPassword",
                 component: ResetPassword,
             },
+
         ],
     },
 
@@ -137,15 +143,7 @@ const routes = [
         },
     },
 
-    {
-        path: "/clientes-eliminados",
-        name: "ClientsDelete",
-        components: {
-            default: ClientsDelete,
-            aside: Aside,
-            navbar: NavBar,
-        },
-    },
+    
     {
         path: "/user/clientes",
         name: "ClientsUser",

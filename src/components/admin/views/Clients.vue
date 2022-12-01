@@ -11,9 +11,7 @@
             <router-link class="rotes" to="/registrar/cliente">
                 <button type="button" class="btn btn-primary">Registrar cliente</button>
             </router-link>
-            <router-link class="rotes" to="/clientes-eliminados">
-                <button type="button" class="btn btn-primary">Clientes eliminados</button>
-            </router-link>
+            
         </div>
     </div>
     <table class="table table-hover">
