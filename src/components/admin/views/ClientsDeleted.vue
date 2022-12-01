@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div>
-            <h2>Listado de clientes</h2>
+            <h2>Listado de clientes eliminados</h2>
         </div>
         <div class="header-button">
             <div class="search">
@@ -10,9 +10,6 @@
             </div>
             <router-link class="rotes" to="/registrar/cliente">
                 <button type="button" class="btn btn-primary">Registrar cliente</button>
-            </router-link>
-            <router-link class="rotes" to="/clientes-eliminados">
-                <button type="button" class="btn btn-primary">Clientes eliminados</button>
             </router-link>
         </div>
     </div>
@@ -49,6 +46,7 @@
     </table>
 
 
+
     <!-- Modal ver -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -67,7 +65,6 @@
             </div>
         </div>
     </div>
-
     <!-- Modal  EDITAR-->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -104,9 +101,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button id="liveToastBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                                @click="update()">Save
-                                changes</button>
+                            <button type="button" class="btn btn-primary" @click="update()">Save changes</button>
 
                         </div>
                     </form>
@@ -115,7 +110,6 @@
             </div>
         </div>
     </div>
-
     <!-- Modal  ELIMINAR-->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -132,7 +126,8 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Documento Cliente</label>
-                            <input v-model="del_client.dni" type="number" class="form-control" id="exampleInputEmail1">
+                            <input v-model="del_client.dni" type="number" class="form-control"
+                                id="exampleInputEmail1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Telefono</label>
@@ -151,8 +146,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                                @click="destroy()">ELIMINAR</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="destroy()">ELIMINAR</button>
 
                         </div>
                     </form>
@@ -162,24 +156,6 @@
         </div>
     </div>
 
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <img src="..." class="rounded me-2" alt="...">
-                <strong class="me-auto">Bootstrap</strong>
-                <small>11 mins ago</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body" id="body-toast"></div>
-        </div>
-    </div>
-
-
-    <div class="cargar">
-        <div class="body-cargar">
-
-        </div>
-    </div>
 
 
 </template>
@@ -200,8 +176,7 @@ export default {
             user: {},
             del_client: [],
             modal: {},
-            errors: {},
-            toas: ''
+            errors: {}
         }
     },
     created() {
@@ -220,18 +195,6 @@ export default {
                 this.token = null
             }
 
-            let toastTrigger = document.getElementById('liveToastBtn')
-            const toastLiveExample = document.getElementById('liveToast')
-            if (toastTrigger) {
-                toastTrigger.addEventListener('click', () => {
-                    const toast = new bootstrap.Toast(toastLiveExample)
-
-                    toast.show()
-                    let tostada = document.getElementById('body-toast')
-                    tostada.innerHTML = this.toas
-                })
-            }
-
             this.index();
             this.token = localStorage.token;
         }
@@ -240,7 +203,7 @@ export default {
     methods: {
         async index() {
             let response = await this.axios.get("/api/clientes");
-            this.copy_clients_list = response.data.clients;
+            this.copy_clients_list = response.data.clients_delete;
 
             this.clients_list = this.copy_clients_list
 
@@ -277,7 +240,7 @@ export default {
         edit(p) {
             this.datos_client = p;
             console.log(this.datos_client)
-            // Object.assign(this.datos_client, this.clients_list)
+            Object.assign(this.datos_client, this.clients_list)
         },
         async update() {
 
@@ -287,9 +250,7 @@ export default {
                 phone_number: "",
                 address: "",
                 email: "",
-                deleted_at: ""
             }
-            this.toas = 'Editado correctamente'
             try {
                 let id = this.datos_client.id;
                 let response = await this.axios.put("/api/clientes/" + id, this.datos_client);
@@ -310,9 +271,6 @@ export default {
             let id = this.del_client.id;
             let response = await this.axios.delete("/api/clientes/" + id);
             this.index()
-
-            this.toas = 'Eliminado correctamente'
-
         },
 
 
