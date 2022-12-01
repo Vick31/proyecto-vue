@@ -32,8 +32,8 @@
                 <td>{{ p.email }}</td>
                 <td>{{ p.rol }}</td>
                 <td class="action">
-                    <span class="material-symbols-outlined icon azul" data-bs-toggle="modal"
-                        data-bs-target="#editModal" @click="edit(p)">
+                    <span class="material-symbols-outlined icon azul" data-bs-toggle="modal" data-bs-target="#editModal"
+                        @click="edit(p)">
                         edit
                     </span>
                     <span class="material-symbols-outlined icon gris" data-bs-toggle="modal"
@@ -80,7 +80,8 @@
                     <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nombre cliente</label>
-                            <input disabled v-model="datos_client.name" type="text" class="form-control" id="exampleInputEmail1">
+                            <input disabled v-model="datos_client.name" type="text" class="form-control"
+                                id="exampleInputEmail1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Documento Cliente</label>
@@ -251,11 +252,11 @@ export default {
             this.errors = {
                 name: "",
                 dni: "",
-                phone_number: "",                
+                phone_number: "",
                 email: "",
                 companies_id: "",
-                roles_id:"",
-                
+                roles_id: "",
+
             }
             this.toas = 'Editado correctamente'
             try {
