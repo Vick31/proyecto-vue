@@ -49,6 +49,15 @@
                     </router-link>
                 </div>
 
+                <div class="buttons">
+                    <router-link class="rotes" to="/account/admin/clientes-eliminados">
+                        <span class="material-symbols-outlined">
+                            delete_forever
+                        </span>
+                        <button>Clientes eliminados</button>
+                    </router-link>
+                </div>
+
                 <div @click="logout()" class="buttons">
                     <span class="material-symbols-outlined">
                         logout
