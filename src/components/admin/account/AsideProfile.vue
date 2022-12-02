@@ -41,15 +41,6 @@
                 </div>
 
                 <div class="buttons">
-                    <router-link class="rotes" to="/account/admin/roles">
-                        <span class="material-symbols-outlined">
-                            assignment_ind
-                        </span>
-                        <button>Administrar roles</button>
-                    </router-link>
-                </div>
-
-                <div class="buttons">
                     <router-link class="rotes" to="/account/admin/clientes-eliminados">
                         <span class="material-symbols-outlined">
                             delete_forever

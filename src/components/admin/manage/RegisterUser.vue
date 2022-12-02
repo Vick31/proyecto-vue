@@ -80,7 +80,7 @@ export default {
                 password: "",
                 password_confirmation: "",
                 companies_id: "1",
-                roles_id: "2",
+                roles_id: "3",
             },
             errors: {},
             token: '',

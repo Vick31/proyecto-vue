@@ -38,6 +38,7 @@ import Equipos from "./components/admin/manage/Equipos.vue";
 import EquiposUser from "./components/users/manage/Equipos.vue";
 import Inicio from "./components/views/Inicio.vue"
 
+import AsideSuperAdmin from "./components/super_admin/Aside.vue"
 import NavSuperAdmin from "./components/super_admin/NavSuperAdmin.vue"
 import HomeSuperAdmin from "./components/super_admin/HomeSuperAdmin.vue"
 import ListAdmin from "./components/super_admin/Admins.vue"
@@ -51,8 +52,10 @@ const routes = [
     {
         path: "/super-admin",
         name: "SuperAdmin",
-        component: NavSuperAdmin,
-
+        components: {
+            default: NavSuperAdmin,
+            aside: AsideSuperAdmin
+        },
         children: [
             {
                 path: "home",
@@ -131,7 +134,7 @@ const routes = [
                 name: "EditProfileUser",
                 component: EditProfileUser,
             },
-            
+
             {
                 path: "password",
                 name: "ResetPasswordUser",
@@ -174,7 +177,7 @@ const routes = [
         },
     },
 
-    
+
     {
         path: "/user/clientes",
         name: "ClientsUser",
