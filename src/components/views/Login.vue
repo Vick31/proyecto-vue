@@ -74,19 +74,25 @@ export default {
         switch (rs.data.user.roles_id) {
 
           case 1:
-            this.$router.push({ path: "/home" });
+            this.$router.push({ path: "/super-admin" });
             localStorage.token = rs.data.token;
             localStorage.setItem('rol', 1)
 
             break;
 
           case 2:
-            this.$router.push({ path: "/user" });
+            this.$router.push({ path: "/home" });
             localStorage.token = rs.data.token;
             localStorage.setItem('rol', 2)
 
             break;
 
+          case 3:
+            this.$router.push({ path: "/user" });
+            localStorage.token = rs.data.token;
+            localStorage.setItem('rol', 3)
+
+            break;
           default:
             this.$router.push({
               name: "Login",

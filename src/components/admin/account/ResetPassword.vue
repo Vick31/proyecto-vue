@@ -64,7 +64,7 @@ export default {
 
         if (localStorage.token) {
 
-            if (localStorage.getItem('rol') != 1) {
+            if (localStorage.getItem('rol') != 2) {
                 this.$router.push({
                     name: "Login",
                     params: {
