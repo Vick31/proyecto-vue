@@ -5,7 +5,7 @@
                 close
             </span>
             <ul>
-                <router-link class="rotes" to="/super-admin/home">
+                <router-link class="rotes" to="/super-admin">
                     <li class="logo">
                         <span class="material-symbols-outlined">
                             home

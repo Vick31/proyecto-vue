@@ -12,11 +12,6 @@
             <router-link class="rotes" to="/super-admin/companies/registrar">
                 <button type="button" class="btn btn-primary">Registrar compania</button>
             </router-link>
-
-            <router-link class="rotes" to="/super-admin/companies/restaurar">
-                <button style="margin-left: 1rem;" type="button" class="btn btn-danger">Restaurar</button>
-            </router-link>
-            
         </div>
     </div>
 
@@ -36,16 +31,9 @@
                 <td>{{ p.phone_number }}</td>
                 <td>{{ p.email }}</td>
                 <td class="action">
-                    <span class="material-symbols-outlined icon azul" data-bs-toggle="modal" data-bs-target="#editModal"
-                        @click="edit(p)">
-                        edit
-                    </span>
-                    <span class="material-symbols-outlined icon gris" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal" @click="insertar(p.name)">
-                        clarify
-                    </span>
+
                     <span class="material-symbols-outlined icon red" data-bs-toggle="modal"
-                        data-bs-target="#deleteModal" @click="delete_companie(p)"> delete </span>
+                        data-bs-target="#Modal" @click="restore_companie(p)"> autorenew </span>
                 </td>
             </tr>
         </tbody>
@@ -71,52 +59,8 @@
         </div>
     </div>
 
-    <!-- Modal  EDITAR-->
-    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar datos de compañia</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="modal-content">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Nombre cliente:</label>
-                            <input v-model="datos_companie.name" type="text" class="form-control"
-                                id="exampleInputEmail1">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Telefono:</label>
-                            <input v-model="datos_companie.phone_number" type="number" class="form-control"
-                                id="exampleInputEmail1">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Dirección:</label>
-                            <input v-model="datos_companie.address" type="text" class="form-control"
-                                id="exampleInputPassword1">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">E-mail:</label>
-                            <input v-model="datos_companie.email" type="email" class="form-control"
-                                id="exampleInputPassword1">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button id="liveToastBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                                @click="update()">Save
-                                changes</button>
-
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal  ELIMINAR-->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal  RESTORE-->
+    <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -127,27 +71,27 @@
                     <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nombre cliente</label>
-                            <input v-model="del_companie.name" type="text" class="form-control" id="exampleInputEmail1">
+                            <input v-model="datos_companie.name" type="text" class="form-control" id="exampleInputEmail1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Telefono</label>
-                            <input v-model="del_companie.phone_number" type="number" class="form-control"
+                            <input v-model="datos_companie.phone_number" type="number" class="form-control"
                                 id="exampleInputEmail1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Direccion</label>
-                            <input v-model="del_companie.address" type="text" class="form-control"
+                            <input v-model="datos_companie.address" type="text" class="form-control"
                                 id="exampleInputPassword1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Email</label>
-                            <input v-model="del_companie.email" type="email" class="form-control"
+                            <input v-model="datos_companie.email" type="email" class="form-control"
                                 id="exampleInputPassword1">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                                @click="destroy()">ELIMINAR</button>
+                                @click="restores()">Restaurar</button>
 
                         </div>
                     </form>
@@ -156,6 +100,7 @@
             </div>
         </div>
     </div>
+
 
 
 
@@ -187,7 +132,6 @@ export default {
     mounted() {
 
         this.index()
-        console.log('s')
     },
 
     methods: {
@@ -196,7 +140,7 @@ export default {
 
 
             let response = await this.axios.get("api/companies")
-            this.copy_companies = response.data.companies_list
+            this.copy_companies = response.data.companies_delete
 
             this.companies = this.copy_companies
         },
@@ -226,50 +170,29 @@ export default {
                 (pro) => (pro.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1)
             )
         },
-        edit(p) {
+        restore_companie(p) {
             this.datos_companie = p;
+            this.datos_companie.deleted_at = null
+
             console.log(this.datos_companie)
-            // Object.assign(this.datos_client, this.clients_list)
+
         },
-        async update() {
+        async restores() {
 
-            this.errors = {
-                name: "",
-                dni: "",
-                phone_number: "",
-                email: "",
-                companies_id: "",
-                roles_id: "",
-
-            }
-            this.toas = 'Editado correctamente'
             try {
                 let id = this.datos_companie.id;
-                let response = await this.axios.put("/api/companies/" + id, this.datos_companie);
+                let response = await this.axios.delete(`/api/companies/restore/${id}`);
                 this.index();
+
+                console.log(response.data.message)
             }
             catch (e) {
-                console.log(e)
+                console.log(e.response.data.message)
                 this.errors = e.response.data.errors
             }
 
         },
-
-        delete_companie(p) {
-            this.del_companie = p;
-            console.log(p)
-        },
-        async destroy() {
-            let id = this.del_companie.id;
-            let response = await this.axios.delete("/api/companies/" + id);
-            this.index()
-
-            this.toas = 'Eliminado correctamente'
-
-        },
-
     }
-
 }
 
 </script>

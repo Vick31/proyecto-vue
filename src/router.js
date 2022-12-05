@@ -4,6 +4,8 @@ import { createWebHistory, createRouter } from "vue-router";
 import RegisterClients from "./components/admin/manage/RegisterClients.vue";
 import RegisterClientsUser from "./components/users/manage/RegisterClients.vue";
 import RegisterUser from "./components/admin/manage/RegisterUser.vue";
+import RegisterAdmin from "./components/super_admin/RegisterAdmin.vue";
+import RegisterCompanie from "./components/super_admin/RegisterCompanie.vue";
 import AgendarCita from "./components/admin/manage/AgendarCita.vue";
 import AgendarCitaUser from "./components/users/manage/AgendarCita.vue";
 
@@ -44,6 +46,7 @@ import HomeSuperAdmin from "./components/super_admin/HomeSuperAdmin.vue"
 import ListAdmin from "./components/super_admin/Admins.vue"
 import ListCompanies from "./components/super_admin/Companies.vue"
 import Roles from "./components/super_admin/Roles.vue"
+import CompaniesDeleted from "./components/super_admin/CompaniesDeleted.vue"
 const routes = [
     // -- -- ACCOUNT -- --
 
@@ -58,7 +61,7 @@ const routes = [
         },
         children: [
             {
-                path: "home",
+                path: "",
                 name: "HomeSuperAdmin",
                 component: HomeSuperAdmin
             },
@@ -72,6 +75,18 @@ const routes = [
                 name: "ListCompanies",
                 component: ListCompanies
             },
+            
+            {
+                path: "companies/registrar",
+                name: "RegisterCompanie",
+                component: RegisterCompanie
+            },
+            {
+                path: "companies/restaurar",
+                name: "DeleteCompanie",
+                component: CompaniesDeleted
+            },
+
             {
                 path: "roles",
                 name: "Roles",
