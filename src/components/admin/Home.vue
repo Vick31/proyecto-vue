@@ -1,11 +1,33 @@
 <template>
 
     <div class="container-home">
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <h1 class="navbar-brand">SIGEM<b>.</b></h1>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    </ul>
+                    <div class="nav-profile">
+                        <p>{{ user.name }}</p>
+                        <img src="../../../img/logos-cuentas/ac.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </nav>
+
         <div class="title">
-            <h1> APP SIGEM </h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quasi non tenetur dolorem libero recusandae modi harum repudiandae placeat debitis!</p>
+            <h1> Sistema Integrado de Gestión de Equipos Medicos </h1>
+
             <img class="img-header" src="../../../img/mantenimiento-01.jpg" alt="">
         </div>
+
         <div class="main">
             <router-link to="/agendar/citas" class="rotes">
                 <div class="card-home">
@@ -106,11 +128,31 @@ export default {
             }
 
             this.token = localStorage.token;
+            this.get_user()
         }
     },
 
     methods: {
+        async get_user() {
 
+            try {
+                const rs = await this.axios.get('/api/user', {
+                    headers: { Authorization: `Bearer ${this.token}` },
+                });
+                this.user = rs.data.user;
+            }
+
+            catch (e) {
+                console.log(e)
+                console.log(this.token)
+                this.$router.push({
+                    name: "Login",
+                    params: {
+                        message: "No estas autorizado para acceder con esta cuenta"
+                    }
+                })
+            }
+        },
     },
 };
 </script>

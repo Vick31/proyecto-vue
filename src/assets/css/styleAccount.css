@@ -23,25 +23,43 @@
 
 .container-body {
     display: grid;
-    grid-template-columns: auto 16rem;
+    grid-template-rows: 5rem auto;
     gap: 1rem;
+
 }
 
 .body {
-    width: 900px;
-    height: calc(100vh - 9rem);
+    width: 100%;
+    height: calc(100vh - 15rem);
     border-radius: 10px;
     background: #fff;
     padding: 2rem 0.5rem;
     overflow-y: auto;
     margin:auto;
-}
 
-.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.content-cards{
+    background-color: #f5f5f5;
+    padding: 0.7rem;
+    border-radius: 15px;
+
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+    flex-wrap: wrap;
+    
+}
+.cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin: 0 0.5rem;
+
+    width: 48%;
+    gap: 1rem;
+
 }
 
 .cards>b {
@@ -51,17 +69,17 @@
     padding: 1rem 0;
 }
 
-.cards>p {
-    padding: 1rem 0;
-}
 
 .body-aside {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+
     gap: 1.5rem;
-    padding: 0.5rem;
-    background: #fff;
+
+    padding: 1rem;
+
+    background: #f5f5f5;
     border-radius: 10px;
 }
 
@@ -85,17 +103,20 @@
 }
 
 .buttons {
-    padding: 0.3rem 0.7rem;
-    border-radius: 2rem;
-    border: 1px solid #86b7fe;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    color: #000;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 1px solid #e8e8e8;
+    display: flex;
+    justify-content: center;
 }
 
-.buttons:hover {
+.buttons:hover{
     cursor: pointer;
-}
-
-.buttons:hover {
-    background: #86b6fe54;
+    border: 1px solid blue;
+    color: #0000ff !important;
 }
 
 .body-aside img {
@@ -124,9 +145,7 @@
     cursor: pointer;
     border-radius: 4px;
 }
-.buttons:target {
-    border: 1px solid blue;
-}
+
 .mb-3 {
     display: flex;
     justify-content: space-between;
@@ -139,6 +158,17 @@ input {
 
     padding: 0.5rem;
     text-align: right;
+}
+
+.input-p{
+    background-color: #fff;
+    border: 1px solid #e8e8e8;
+    width:100%;
+    padding: 1rem 1.4rem !important;
+
+    border-radius: 10px;
+
+    margin-bottom: 1.5rem;
 }
 
 

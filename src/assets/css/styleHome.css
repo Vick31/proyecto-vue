@@ -14,65 +14,99 @@
 
     /* padding: 3rem; */
 
-    background-color: #f6f5f8;
+    background-color: #ffffff;
 
     overflow: auto;
+}
+
+.navbar {
+    max-width: 1400px;
+    margin: auto;
+}
+
+.nav-profile {
+    display: flex;
+    align-items: center;
+}
+
+.nav-profile>img {
+    width: 2rem;
+    border-radius: 100%;
+}
+
+.nav-profile>p {
+    margin: 0 1rem;
+
+}
+
+.navbar-brand {
+    font-size: 40px;
+}
+
+.navbar-brand b {
+    color: #000;
+    font-size: 40px;
 }
 
 .main {
     max-width: 1400px;
     margin: auto;
 
+    padding: 1.3rem;
+    border-radius: 20px;
+
+    background-color: #f3f5f7;
+
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
 
-    gap: 2rem;
     margin-top: 2rem;
 }
 
-.title{
+.title {
     max-width: 1400px;
-    height: 35vh;
+    height: 55%;
     padding: 3rem;
-    background-color: #0d6efd;
 
-    color: #fff;
+    color: #000;
     margin: auto;
 
-    position: relative;
+    display: flex;
+    justify-content: space-between;
 }
-.title > h1{
+
+.title>h1 {
     text-shadow: 0 0 8px #fff;
+    font-size: 4vw;
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
 }
-.title > p {
+
+.title>p {
     width: 30rem;
 }
-.img-header{
-    position: absolute;
 
-    top: 0;
-    right: 0;
-
-    width: 30rem;
-    height: 33vh;
-
-    border-bottom-left-radius: 80px;
-
-    object-fit: cover;
+.img-header {
+    width: 50%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .card-home {
-    border-radius: 20px;
-    background-color: #fff;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #f3f5f7;
 
-    width: 18rem;
+    width: 13vw;
     height: 8rem;
 
     padding: 1rem;
 
     display: grid;
+    align-items: center;
     grid-template-columns: 4rem 1fr;
 }
 
@@ -81,7 +115,8 @@
 
     transform: scale(1.04);
 
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.05);
 }
 
 .header {
@@ -177,15 +212,20 @@
 } */
 
 .icon-home {
-    color: blue;
+    color: #c47474;  
     text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3);
 
-    font-size: 3rem;
+    font-size: 3vw;
+}
+
+.card-content>h4 {
+    font-size: 1.4vw;
 }
 
 .rotes {
     color: black;
     text-decoration: none;
+    width: 20;
 }
 
 

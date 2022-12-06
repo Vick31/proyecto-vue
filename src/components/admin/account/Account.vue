@@ -2,34 +2,44 @@
 
     <div class="section">
         <div class="body">
-            <div class="cards">
-                <b>Nombre de usuario</b>
-                <p>{{ user.name }}</p>
+            <h3>Información personal</h3>
+
+            <div class="content-cards">
+
+                <div class="cards">
+                    <small>Nombre de usuario</small>
+                    <p class="input-p">{{ user.name }}</p>
+                </div>
+
+                <div class="cards">
+                    <small>Rol</small>
+                    <p class="input-p">{{ user.roles_id }}</p>
+                </div>
+
             </div>
 
-            <div class="cards">
-                <b>Rol</b>
-                <p>{{ user.roles_id }}</p>
-            </div>
+            <h3>Información de contacto</h3>
 
-            <div class="cards">
-                <b>Compañia</b>
-                <p>{{ user.companies_id }}</p>
-            </div>
+            <div class="content-cards">
+                <div class="cards">
+                    <small>Compañia</small>
+                    <p class="input-p">{{ user.companies_id }}</p>
+                </div>
 
-            <div class="cards">
-                <b>Correo electronico</b>
-                <p>{{ user.email }}</p>
-            </div>
+                <div class="cards">
+                    <small>Correo electronico</small>
+                    <p class="input-p">{{ user.email }}</p>
+                </div>
 
-            <div class="cards">
-                <b>Número de contacto</b>
-                <p>{{ user.phone_number }}</p>
-            </div>
+                <div class="cards">
+                    <small>Número de contacto</small>
+                    <p class="input-p">{{ user.phone_number }}</p>
+                </div>
 
-            <div class="cards">
-                <b>Fecha de creación</b>
-                <p>{{ user.created_at }}</p>
+                <div class="cards">
+                    <small>Fecha de registro</small>
+                    <p class="input-p">{{ user.created_at }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -66,7 +76,7 @@ export default {
                 }
             })
         }
-        
+
 
     },
     methods: {
