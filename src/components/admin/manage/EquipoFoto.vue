@@ -50,7 +50,7 @@
                                 aria-describedby="emailHelp">
                         </div>
                         <button @click="register_equipment()" type="button" data-bs-dismiss="modal"
-                            class="btn btn-primary">Submit</button>
+                            class="btn btn-primary" id="sub">Submit</button>
                     </form>
 
                 </div>
