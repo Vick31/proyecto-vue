@@ -80,8 +80,7 @@
                     <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nombre cliente</label>
-                            <input disabled v-model="datos_client.name" type="text" class="form-control"
-                                id="exampleInputEmail1">
+                            <input v-model="datos_client.name" type="text" class="form-control" id="exampleInputEmail1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Documento Cliente</label>
@@ -94,9 +93,13 @@
                                 id="exampleInputEmail1">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Direccion</label>
-                            <input v-model="datos_client.address" type="text" class="form-control"
-                                id="exampleInputPassword1">
+                            <label for="exampleInputPassword1">Rol</label>
+                            <!-- <input v-model="datos_client.rol" type="text" class="form-control"
+                                id="exampleInputPassword1"> -->
+                            <select class="form-select" multiple aria-label="multiple select example"
+                                >
+                                <option id="op" v-for="l in roles" @click="rol()"> {{ l.name }}</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Email</label>
@@ -129,25 +132,27 @@
                     <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nombre cliente</label>
-                            <input v-model="del_client.name" type="text" class="form-control" id="exampleInputEmail1">
+                            <input disabled v-model="del_client.name" type="text" class="form-control"
+                                id="exampleInputEmail1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Documento Cliente</label>
-                            <input v-model="del_client.dni" type="number" class="form-control" id="exampleInputEmail1">
+                            <input disabled v-model="del_client.dni" type="number" class="form-control"
+                                id="exampleInputEmail1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Telefono</label>
-                            <input v-model="del_client.phone_number" type="number" class="form-control"
+                            <input disabled v-model="del_client.phone_number" type="number" class="form-control"
                                 id="exampleInputEmail1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Direccion</label>
-                            <input v-model="del_client.address" type="text" class="form-control"
+                            <input disabled v-model="del_client.address" type="text" class="form-control"
                                 id="exampleInputPassword1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Email</label>
-                            <input v-model="del_client.email" type="email" class="form-control"
+                            <input disabled v-model="del_client.email" type="email" class="form-control"
                                 id="exampleInputPassword1">
                         </div>
                         <div class="modal-footer">
@@ -178,6 +183,7 @@ export default {
             users_list: [],
             datos_client: [],
             token: "",
+            roles: [],
             user: {},
             del_client: [],
             modal: {},
@@ -201,8 +207,10 @@ export default {
                 this.token = null
             }
             this.index();
+            this.get_roles();
             this.token = localStorage.token;
         }
+        console.log(this.roles)
     },
 
     methods: {
@@ -217,7 +225,7 @@ export default {
         insertar(buscar) {
             let item = this.users_list.find((pro) => pro.dni == buscar);
             if (buscar != undefined) {
-                // this.datos_client.push(item)
+                
                 this.datos_client.push(item);
                 let modal = document.getElementById('modal-content')
                 modal.innerHTML = `
@@ -283,7 +291,24 @@ export default {
             this.toas = 'Eliminado correctamente'
 
         },
+        async get_roles() {
+            try {
+                const response = await this.axios.get("/api/roles")
+                this.roles = response.data
+                console.log(this.roles)
 
-    },
+            }
+
+            catch (e) {
+                alert('falla')
+            }
+        },
+
+        rol() {
+            let item = this.roles.find((pro) => pro.name == buscar)
+            console.log(this.roles)
+
+        },
+    }
 };
 </script>

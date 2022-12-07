@@ -2,7 +2,8 @@
 
     <Loading v-model:active="isLoading" :can-cancel="false" :is-full-page=true />
 
-    <router-link to="/equipos/captura"> Registrar nuevo equipo </router-link>
+    <router-link to="/equipos/captura" >
+        <button id="reg"> Registrar nuevo equipo </button> </router-link>
 
     <div class="container-section">
         <div class="section">
