@@ -11,9 +11,13 @@
             <div class="form-floating pb-3">
                 <input type="name" class="form-control" name="name" v-model="form.name" />
                 <label for="floatingInput">Nombre</label>
-                <span v-if="errors.name">{{ errors.name[0] }}</span>
+                <span v-if="errors.first_name">{{ errors.name[0] }}</span>
             </div>
-
+            <div class="form-floating pb-3">
+                <input type="name" class="form-control" name="name" v-model="form.name" />
+                <label for="floatingInput">Nombre</label>
+                <span v-if="errors.last_name">{{ errors.name[0] }}</span>
+            </div>
             <div class="form-floating pb-3">
                 <input type="number" class="form-control" name="name" v-model="form.phone_number" />
                 <label for="floatingInput">Numero de telefono</label>
@@ -74,7 +78,8 @@ export default {
             message: '',
             form: {
                 dni: '',
-                name: "",
+                first_name: "",
+                last_name: "",
                 phone_number: "",
                 email: "",
                 password: "",

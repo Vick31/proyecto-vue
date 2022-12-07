@@ -30,14 +30,37 @@
 export default {
     data() {
         return {
+            user: {},
+            token: ''
         };
     },
-    async mounted() {
+    mounted() {
+        this.token = localStorage.token;
+        this.get_user()
     },
 
     methods: {
         show_aside() {
             document.getElementById('aside-app').style.transform = "scale(1)"
+        },
+
+        async get_user() {
+
+            try {
+                const rs = await this.axios.get('/api/user', {
+                    headers: { Authorization: `Bearer ${this.token}` },
+                });
+                this.user = rs.data.user;
+            }
+
+            catch (e) {
+                this.$router.push({
+                    name: "Login",
+                    params: {
+                        message: "No estas autorizado para acceder con esta cuenta"
+                    }
+                })
+            }
         },
     },
 };

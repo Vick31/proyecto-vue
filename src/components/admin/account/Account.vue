@@ -4,11 +4,17 @@
         <div class="body">
             <h3>Información personal</h3>
 
-            <div class="content-cards">
 
+            <div class="content-cards">
+                
                 <div class="cards">
                     <small>Nombre de usuario</small>
-                    <p class="input-p">{{ user.name }}</p>
+                    <p class="input-p">{{ user.first_name }}</p>
+                </div>
+
+                <div class="cards">
+                    <small>Apellidos</small>
+                    <p class="input-p">{{ user.last_name }}</p>
                 </div>
 
                 <div class="cards">
@@ -41,6 +47,7 @@
                     <p class="input-p">{{ user.created_at }}</p>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -99,6 +106,7 @@ export default {
                 })
             }
         },
+
         async get_roles() {
             try {
                 const response = await this.axios.get("/api/roles")

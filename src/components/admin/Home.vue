@@ -4,7 +4,7 @@
 
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <h1 class="navbar-brand">SIGEM<b>.</b></h1>
+                <h1 class="navbar-brand">SIGEM</h1>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
 
                     </ul>
                     <div class="nav-profile">
-                        <p>{{ user.name }}</p>
+                        <p>{{ user.first_name }}</p>
                         <img src="../../../img/logos-cuentas/ac.png" alt="">
                     </div>
                 </div>

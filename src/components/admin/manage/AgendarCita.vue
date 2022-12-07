@@ -231,7 +231,7 @@ export default {
         },
         insertarU(buscar) {
             let item = this.users_list.find((pro) => pro.dni == buscar);
-            this.searchU = item.name
+            this.searchU = item.first_name
             this.form.users_id = item.id
         },
     },
@@ -289,7 +289,7 @@ export default {
                                     <div class="client">
                                         <div id="searchClient" v-for="p in users_list">
                                             <p class="sear" @click="insertarU(p.dni)">
-                                                {{ p.name }}
+                                                {{ p.first_name }}
                                             </p>
                                         </div>
                                     </div>
