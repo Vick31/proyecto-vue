@@ -2,7 +2,7 @@
 
     <Loading v-model:active="isLoading" :can-cancel="false" :is-full-page=true />
     <div class="section">
-        <form>
+        <form enctype="multipart/form-data">
             <div class="body">
 
 
@@ -11,9 +11,9 @@
                 <div class="content-cards">
                     <div class="cards">
                         <figure>
-                            <img class="img-card" :src="imagen" alt="">
+                            <!-- <img class="img-card" :src="imagen"> -->
                         </figure>
-                        <input type="file" @change="obtenerImagen">
+                        <input type="file" name="file" @change="show_image" accept="image/*">
 
                     </div>
                 </div>
@@ -94,7 +94,7 @@ export default {
             imagenMiniatura: '',
             id: '',
             datos_user: '',
-            form:{
+            form: {
                 img: '',
                 dni: '',
                 first_name: '',
@@ -141,12 +141,11 @@ export default {
                     headers: { Authorization: `Bearer ${this.token}` },
                 });
                 this.user = rs.data.user;
-                this.id = this.user.id
-                this.form.roles_id = this.user.roles_id
-                this.form.companies_id = this.user.companies_id
-                
-                this.datos_user = this.user
-                
+                // this.id = this.user.id
+                // this.form.roles_id = this.user.roles_id
+                // this.form.companies_id = this.user.companies_id
+
+                this.form = this.user
                 console.log(this.form)
             }
 
@@ -162,33 +161,34 @@ export default {
 
         },
 
-        obtenerImagen(e) {
-            let file = e.target.files[0]
-            this.form.imagen = file
+        show_image(e) {
+            if (e.target.files[0]) {
+                console.log("updated!");
 
-            this.cargarImagen(file)
-        },
-
-        cargarImagen(file) {
-            let reader = new FileReader()
-
-            reader.onload = (e) => {
-                this.imagenMiniatura = e.target.result
+                this.form.img = e.target.files[0];
+                // this.form.url = URL.createObjectURL(e.target.files[0]);
+                console.log(this.form)
+            } else {
+                console.log("No se seleccionó ninguna imagen!!");
             }
 
-            reader.readAsDataURL(file)
+
         },
 
         async editProfile() {
-            try{
-                let response = await this.axios.put("/api/users/" + this.id, this.datos_user);
+
+            try {
+
+                console.log(this.form)
+                const id = this.form.id;
+                const response = await this.axios.put("/api/users/" + id, this.form);
+
                 this.get_user()
-                alert('yes')
             }
 
-            catch(e){
-            
-                console.log(e)
+            catch (e) {
+
+                console.log(e.response.data.errors)
             }
         },
 
@@ -220,10 +220,6 @@ export default {
         },
 
     },
-    computed: {
-        imagen() {
-            return this.imagenMiniatura
-        }
-    },
+
 }
 </script>
