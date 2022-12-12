@@ -3,13 +3,17 @@
     <Loading v-model:active="isLoading" :can-cancel="false" :is-full-page=true />
 
     <router-link to="/equipos/captura" >
-        <button id="reg"> Registrar nuevo equipo </button> </router-link>
+        <button id="reg"> Registrar nuevo equipo con captura de imagen </button> 
+    </router-link>
+    <router-link to="/equipos/imagenes" >
+        <button id="reg"> Registrar nuevo equipo con imagen</button> 
+    </router-link>
 
     <div class="container-section">
         <div class="section">
             <div class="card" style="width: 18rem;" v-for="p in equipment" @click="inspeccionar(p.serial)"
                 data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <img :src="p.img" class="card-img-top" alt="...">
+                <img :src="axios.defaults.baseURL + p.img" class="card-img-top" alt="...">
                 <div class="card-body">
                     <div class="title-body">
                         <h5 class="card-title"> {{ p.name }} </h5>

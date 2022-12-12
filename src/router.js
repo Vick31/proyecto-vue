@@ -36,6 +36,7 @@ import AsideProfileUser from "./components/users/account/AsideProfile.vue";
 import EditProfile from "./components/admin/account/EditProfile.vue";
 import EditProfileUser from "./components/users/account/EditProfile.vue";
 import EquipoFoto from "./components/admin/manage/EquipoFoto.vue";
+import ImgEquipo from "./components/admin/manage/ImgEquipo.vue";
 import Equipos from "./components/admin/manage/Equipos.vue";
 import EquiposUser from "./components/users/manage/Equipos.vue";
 import Inicio from "./components/views/Inicio.vue"
@@ -217,6 +218,15 @@ const routes = [
         name: "EquipoFoto",
         components: {
             default: EquipoFoto,
+            aside: Aside,
+            navbar: NavBar,
+        },
+    },
+    {
+        path: "/equipos/imagenes",
+        name: "EquipoFoto",
+        components: {
+            default: ImgEquipo,
             aside: Aside,
             navbar: NavBar,
         },

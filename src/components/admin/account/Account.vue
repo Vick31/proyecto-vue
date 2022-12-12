@@ -4,9 +4,14 @@
         <div class="body">
             <h3>Información personal</h3>
 
+            <div class="content-cards">
+                <div class="cards">
+                    <small>Imagen de perfil</small>
+                    <img :src="axios.defaults.baseURL + user.img" class="image-profile" />
+                </div>
+            </div>
 
             <div class="content-cards">
-                
                 <div class="cards">
                     <small>Nombre de usuario</small>
                     <p class="input-p">{{ user.first_name }}</p>

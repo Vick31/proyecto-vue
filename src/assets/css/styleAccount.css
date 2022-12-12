@@ -86,7 +86,14 @@
     background: #f5f5f5;
     border-radius: 10px;
 }
+.image-profile{
+    width: 5rem;
+    height: 5rem;
+    
+    border-radius: 100%;
 
+    object-fit: cover;
+}
 .rotes,
 .buttons span {
     text-decoration: none;

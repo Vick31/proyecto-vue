@@ -140,6 +140,49 @@ export default {
         },
 
 
+        cancel_form() {
+            // Object.assign(this.client, this.client_copy);
+            this.loading = false;
+            this.form.updated = null;
+        },
+
+        open_browser(input_name) {
+            const input = document.getElementById(input_name);
+            input.click();
+            this.loading = true;
+            this.form.updated = null;
+            this.image_text = "Loading...";
+        },
+
+        show_image(e) {
+            if (e.target.files[0]) {
+                console.log("updated!");
+                this.form.updated = true;
+
+                this.form.img = e.target.files[0];
+                this.form.url = URL.createObjectURL(e.target.files[0]);
+            } else {
+                console.log("No se seleccionó ninguna imagen!!");
+                this.form.url = this.client_copy.url;
+            }
+
+            this.loading = false;
+        },
+
+        clear_image(input_name) {
+            this.form.img = null;
+            this.form.updated = true;
+            this.form.url = null;
+            document.getElementById(input_name).value = null; //clear input file
+        },
+
+        stop_loading() {
+            console.log("cancelaste la carga!!");
+            this.form.url = this.client_copy.url;
+            this.loading = false;
+        },
+
+
         async register_equipment() {
             // if(this.form.img = '') {
             //         this.form.img = this.defaults
@@ -181,3 +224,16 @@ export default {
 <style scoped>
 
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+

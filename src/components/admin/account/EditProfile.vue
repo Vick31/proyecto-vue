@@ -2,7 +2,7 @@
 
     <Loading v-model:active="isLoading" :can-cancel="false" :is-full-page=true />
     <div class="section">
-        <form enctype="multipart/form-data">
+        <form>
             <div class="body">
 
 
@@ -10,19 +10,41 @@
 
                 <div class="content-cards">
                     <div class="cards">
-                        <!-- Image client exist and is not loading a new image -->
-                        <img v-if="user.img && !user.url" :src="axios.defaults.baseURL + user.img" class="image-profile"
-                            :id="'client' + user.id" />
-                        <!-- Image client exist and uploaded a new image -->
-                        <img v-if="user.url && !loading" :src="user.url" class="image-profile"
-                            :id="'client' + user.id" />
 
-                        <!-- Image client not exist and is not loading a new image -->
-                        <span v-if="!user.img && !loading" :id="'client' + user.id"
-                            class="material-symbols-outlined default-profile">
-                            account_circle
-                        </span>
-                        <input type="file" name="file" @change="show_image" accept="image/*">
+                        <section class="photo-container">
+                            <div class="photo-prev">
+                                <input type="file" id="new-client-input" style="display: none" />
+                                <!-- Image client exist and is not loading a new image -->
+                                <div class="preview" v-if="form.url && !loading">
+                                    <span class="material-symbols-outlined clear-image"
+                                        @click="clear_image('new-client-input')">
+                                        close
+                                    </span>
+                                    <img style="width: 20rem;" @click="open_browser('new-client-input')"
+                                        :src="form.url" />
+                                </div>
+                                <!-- Image client not exist and is not loading a new image -->
+                                <div style="display: flex; align-items: center; gap: 1rem; color: blue;">
+                                    <img @click="open_browser('new-client-input')"
+                                        :src="axios.defaults.baseURL + user.img" v-if="!form.url && !loading"
+                                        class="image-profile" />
+
+                                    <p v-if="!form.url && !loading">Click en la imagen para actualizarla</p>
+                                </div>
+
+                                <div v-if="loading" class="loading" @click="open_browser('new-client-input')"></div>
+                                <!-- User can stop the image loading -->
+                                <span v-if="loading" class="image_text" :class="{ stop: loading }"
+                                    @click="stop_loading()" @mouseover="image_text = 'Stop loading!'"
+                                    @mouseleave="image_text = 'Loading...'">{{
+                                            image_text
+                                    }}</span>
+                                <!-- <span v-if="!loading" class="image_text">Your profile photo</span> -->
+                            </div>
+                            <div class="form-text" v-if="errors.img">
+                                {{ errors.img[0] }}
+                            </div>
+                        </section>
 
                     </div>
                 </div>
@@ -74,8 +96,9 @@
 
 
                 </div>
+                
+                <button style="width: max-content;" type="button" class="btn btn-primary" @click="editProfile()">Enviar</button>
             </div>
-            <button type="button" @click="editProfile()">Enviar</button>
         </form>
     </div>
 </template>
@@ -159,12 +182,7 @@ export default {
                     headers: { Authorization: `Bearer ${this.token}` },
                 });
                 this.user = rs.data.user;
-                // this.id = this.user.id
-                // this.form.roles_id = this.user.roles_id
-                // this.form.companies_id = this.user.companies_id
-
                 this.form = this.user
-                console.log(this.form)
             }
 
             catch (e) {
@@ -179,36 +197,8 @@ export default {
 
         },
 
-        show_image(e) {
-            if (e.target.files[0]) {
-                console.log("updated!");
-
-                this.form.img = e.target.files[0];
-                // this.form.url = URL.createObjectURL(e.target.files[0]);
-                console.log(this.form)
-            } else {
-                console.log("No se seleccionó ninguna imagen!!");
-            }
 
 
-        },
-
-        async editProfile() {
-
-            try {
-
-                console.log(this.form)
-                const id = this.form.id;
-                const response = await this.axios.put("/api/users/" + id, this.form);
-
-                this.get_user()
-            }
-
-            catch (e) {
-
-                console.log(e.response.data.errors)
-            }
-        },
 
         async logout() {
             try {
@@ -237,60 +227,66 @@ export default {
             }
         },
 
-        edit(user) {
-            this.form = user;
-            this.form.preview = false;
+        cancel_form() {
+            // Object.assign(this.client, this.client_copy);
+            this.loading = false;
             this.form.updated = null;
-            this.form.url = this.form.img
-                ? this.axios.defaults.baseURL + this.form.img
-                : null;
-            this.client_copy = Object.assign({}, this.form);
+        },
 
-            this.image_text = "You profile photo";
+        open_browser(input_name) {
+            const input = document.getElementById(input_name);
+            input.click();
+            this.loading = true;
+            this.form.updated = null;
+            this.image_text = "Loading...";
+        },
+
+        show_image(e) {
+            if (e.target.files[0]) {
+                console.log("updated!");
+                this.form.updated = true;
+
+                this.form.img = e.target.files[0];
+                this.form.url = URL.createObjectURL(e.target.files[0]);
+            } else {
+                console.log("No se seleccionó ninguna imagen!!");
+                this.form.url = this.client_copy.url;
+            }
+
             this.loading = false;
         },
-        cancel_form() {
-         Object.assign(this.form, this.client_copy);
-         this.loading = false;
-         this.form.updated = null;
-      },
 
-      open_browser(input_name) {
-         const input = document.getElementById(input_name);
-         input.click();
-         this.loading = true;
-         this.form.updated = null;
-         this.image_text = "Loading...";
-      },
-
-      show_image(e) {
-         if (e.target.files[0]) {
-            console.log("updated!");
+        clear_image(input_name) {
+            this.form.img = null;
             this.form.updated = true;
+            this.form.url = null;
+            document.getElementById(input_name).value = null; //clear input file
+        },
 
-            this.form.img = e.target.files[0];
-            this.form.url = URL.createObjectURL(e.target.files[0]);
-         } else {
-            console.log("No se seleccionó ninguna imagen!!");
+        stop_loading() {
+            console.log("cancelaste la carga!!");
             this.form.url = this.client_copy.url;
-         }
+            this.loading = false;
+        },
 
-         this.loading = false;
-      },
 
-      clear_image(input_name) {
-         this.form.img = null;
-         this.form.updated = true;
-         this.form.url = null;
-         document.getElementById(input_name).value = null; //clear input file
-      },
-
-      stop_loading() {
-         console.log("cancelaste la carga!!");
-         this.form.url = this.client_copy.url;
-         this.loading = false;
-      },
-
+        async editProfile() {
+            try {
+                const id = this.user.id;
+                console.log(this.form)
+                const res = await this.axios.post(`/api/user/update/${id}`, this.form,
+                    {
+                        headers: {
+                            Authorization: "Bearer " + this.token,
+                            "Content-Type": "multipart/form-data", //Permite enviar imágenes
+                        },
+                    }
+                );
+                console.log('yes')
+            } catch (e) {
+                console.log(e.response.data.errors)
+            }
+        },
     },
 
 }
