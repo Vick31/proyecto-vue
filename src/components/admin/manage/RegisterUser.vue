@@ -9,12 +9,12 @@
                 <span v-if="errors.dni">{{ errors.dni[0] }}</span>
             </div>
             <div class="form-floating pb-3">
-                <input type="name" class="form-control" name="name" v-model="form.name" />
+                <input type="name" class="form-control" name="name" v-model="form.first_name" />
                 <label for="floatingInput">Nombre</label>
                 <span v-if="errors.first_name">{{ errors.name[0] }}</span>
             </div>
             <div class="form-floating pb-3">
-                <input type="name" class="form-control" name="name" v-model="form.name" />
+                <input type="name" class="form-control" name="name" v-model="form.last_name" />
                 <label for="floatingInput">Nombre</label>
                 <span v-if="errors.last_name">{{ errors.name[0] }}</span>
             </div>
