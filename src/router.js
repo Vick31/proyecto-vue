@@ -225,7 +225,7 @@ const routes = [
     },
     {
         path: "/equipos/imagenes",
-        name: "EquipoFoto",
+        name: "EquipoImg",
         components: {
             default: ImgEquipo,
             aside: Aside,

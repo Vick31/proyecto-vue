@@ -100,6 +100,7 @@ export default {
                     headers: { Authorization: `Bearer ${this.token}` },
                 });
                 this.user = rs.data.user;
+                console.log(this.user)
             }
 
             catch (e) {

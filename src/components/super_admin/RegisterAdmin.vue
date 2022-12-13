@@ -1,7 +1,7 @@
 <template>
-    <div class="div-form">
+    <h1 class="title">Registrar administrador</h1>
+    <div class="div-form-r">
         <form>
-            <h1 class="title">Registrar usuario</h1>
 
             <div class="form-floating pb-3">
                 <input type="number" class="form-control" name="name" v-model="form.dni" />
@@ -65,8 +65,28 @@
 </template>
   
   
-<style scoped>
-/* @import "../../../assets/css/styleRegisterClients.css"; */
+<style>
+.div-form-r{
+    width: 50%;
+    height: calc(100vh - 8rem);
+    margin: auto;
+    overflow: auto;
+
+}
+::-webkit-scrollbar {
+    display: none;
+}
+form{
+    overflow: auto;
+
+}
+
+.title{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
 </style>
   
 <script>
@@ -134,15 +154,13 @@ export default {
         async register_admin() {
             try {
                 const rs = await this.axios.post("/api/register-admins", this.form);
-                this.form = {
-                    dni: '',
-                    name: "",
-                    phone_number: "",
-                    email: "",
-                    password: "",
-                    password_confirmation: "",
-                }
-                this.index()
+
+                this.$router.push({
+                    path: "/super-admin",
+                    params: {
+                        message: "No estas autorizado para acceder con esta cuenta"
+                    }
+                })
 
             }
             catch (e) {

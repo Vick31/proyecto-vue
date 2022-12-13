@@ -15,14 +15,13 @@
                         </div>
                         <div class="cards">
                             <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                            <input v-model="form.password" type="password" class="input-p" id="exampleInputPassword1">
+                            <input v-model="form.password" type="password" class="input-p">
                             <span v-if="errors.password">{{ errors.password[0] }} </span>
                         </div>
 
                         <div class="cards">
                             <label for="exampleInputPassword1" class="form-label">Confirmar contraseña</label>
-                            <input v-model="form.password_confirmation" type="password" class="input-p"
-                                id="exampleInputPassword1">
+                            <input v-model="form.password_confirmation" type="password" class="input-p">
                             <span v-if="errors.password_confirmation">{{ errors.password_confirmation[0] }}
                             </span>
                         </div>
@@ -33,6 +32,7 @@
                     </button>
                     <br />
                     <p v-if="message">{{ message }}</p>
+                    <p v-if="errors">{{ errors }}</p>
                 </form>
             </div>
         </div>
@@ -61,10 +61,6 @@ export default {
         };
     },
     mounted() {
-
-        if (this.$route.query.token)
-            this.form.token = this.$route.query.token
-
         if (localStorage.token) {
 
             if (localStorage.getItem('rol') != 2) {
@@ -91,6 +87,8 @@ export default {
                     headers: { Authorization: `Bearer ${this.token}` },
                 });
                 this.user = rs.data.user;
+                this.form.token = localStorage.token
+
             }
 
             catch (e) {
@@ -104,24 +102,22 @@ export default {
         },
         async change_password() {
             try {
-                const rs = await this.axios.post("/api/reset-password", this.form);
-
-                this.$router.push({
-                    name: 'Home',
-                    params: { message: rs.data.message, },
-
-                });
+                const rs = await this.axios.post("/api/reset-password", this.form)
+                alert('Contraseña cambiada correctamente')
             }
             catch (e) {
 
-                this.errors = {},
-                    this.message = null;
-
-                if (e.response.data.errors)
+                if (e.response.data.errors) {
                     this.errors = e.response.data.errors;
+                }
 
-                if (e.response.data.message)
-                    this.errors = e.response.data.message;
+                if (e.response.data.message) {
+                    this.message = e.response.data.message;
+                }
+
+                console.log(this.errors, this.message, this.token)
+                alert('Error al cambiar contraseña')
+
             }
 
         },

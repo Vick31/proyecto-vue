@@ -1,7 +1,7 @@
 <template>
-    <div class="div-form">
+    <h1 class="title">Registrar compania</h1>
+    <div class="div-form-r">
         <form>
-            <h1 class="title">Registrar compania</h1>
 
             <div class="form-floating pb-3">
                 <input type="text" class="form-control" name="name" v-model="form.name" />
@@ -43,8 +43,28 @@
 </template>
   
   
-<style scoped>
-/* @import "../../../assets/css/styleRegisterClients.css"; */
+<style>
+.div-form-r{
+    width: 50%;
+    height: calc(100vh - 8rem);
+    margin: auto;
+    overflow: auto;
+
+}
+::-webkit-scrollbar {
+    display: none;
+}
+form{
+    overflow: auto;
+
+}
+
+.title{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
 </style>
   
 <script>

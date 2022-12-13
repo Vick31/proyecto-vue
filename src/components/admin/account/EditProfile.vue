@@ -13,14 +13,14 @@
 
                         <section class="photo-container">
                             <div class="photo-prev">
-                                <input type="file" id="new-client-input" style="display: none" />
+                                <input type="file" @change="show_image" id="new-client-input" style="display: none" />
                                 <!-- Image client exist and is not loading a new image -->
                                 <div class="preview" v-if="form.url && !loading">
                                     <span class="material-symbols-outlined clear-image"
                                         @click="clear_image('new-client-input')">
                                         close
                                     </span>
-                                    <img style="width: 20rem;" @click="open_browser('new-client-input')"
+                                    <img style="width: 5rem;" @click="open_browser('new-client-input')"
                                         :src="form.url" />
                                 </div>
                                 <!-- Image client not exist and is not loading a new image -->
@@ -96,8 +96,9 @@
 
 
                 </div>
-                
-                <button style="width: max-content;" type="button" class="btn btn-primary" @click="editProfile()">Enviar</button>
+
+                <button style="width: max-content;" type="button" class="btn btn-primary"
+                    @click="editProfile()">Enviar</button>
             </div>
         </form>
     </div>
