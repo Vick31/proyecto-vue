@@ -112,7 +112,7 @@ export default {
 
             let context = this.canvas.getContext('2d')
             context.drawImage(this.video, 0, 0, this.video.videoWidth, this.video.videoHeight)
-            this.$emit('picture-taken', this.canvas.toDataURL('image/png'))
+            this.$emit('picture-taken')
 
             this.url_img = this.canvas.toDataURL('image/png')
 

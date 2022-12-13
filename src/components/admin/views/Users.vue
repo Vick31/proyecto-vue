@@ -80,7 +80,7 @@
                     <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nombre cliente</label>
-                            <input v-model="datos_client.name" type="text" class="form-control" id="exampleInputEmail1">
+                            <input v-model="datos_client.first_name" type="text" class="form-control" id="exampleInputEmail1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Documento Cliente</label>
@@ -91,16 +91,7 @@
                             <label for="exampleInputEmail1">Telefono</label>
                             <input v-model="datos_client.phone_number" type="number" class="form-control"
                                 id="exampleInputEmail1">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Rol</label>
-                            <!-- <input v-model="datos_client.rol" type="text" class="form-control"
-                                id="exampleInputPassword1"> -->
-                            <select class="form-select" multiple aria-label="multiple select example"
-                                >
-                                <option id="op" v-for="l in roles" @click="rol()"> {{ l.name }}</option>
-                            </select>
-                        </div>
+                        </div>  
                         <div class="form-group">
                             <label for="exampleInputPassword1">Email</label>
                             <input v-model="datos_client.email" type="email" class="form-control"
@@ -266,14 +257,18 @@ export default {
                 roles_id: "",
 
             }
-            this.toas = 'Editado correctamente'
+
+            this.datos_client.roles_id = 3
+            
             try {
                 let id = this.datos_client.id;
                 let response = await this.axios.put("/api/users/" + id, this.datos_client);
                 this.index();
+                alert('Actualizado correctamente')
             }
             catch (e) {
                 console.log(e)
+                alert('Error al actualizar')
                 this.errors = e.response.data.errors
             }
 

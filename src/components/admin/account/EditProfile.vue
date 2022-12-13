@@ -283,8 +283,9 @@ export default {
                         },
                     }
                 );
-                console.log('yes')
+                alert('Perfil actualizado correctamente')
             } catch (e) {
+                alert('Error al actualizar perfil')
                 console.log(e.response.data.errors)
             }
         },

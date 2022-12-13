@@ -32,7 +32,6 @@
                     </button>
                     <br />
                     <p v-if="message">{{ message }}</p>
-                    <p v-if="errors">{{ errors }}</p>
                 </form>
             </div>
         </div>

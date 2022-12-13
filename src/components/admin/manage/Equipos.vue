@@ -2,11 +2,12 @@
 
     <Loading v-model:active="isLoading" :can-cancel="false" :is-full-page=true />
 
-    <router-link to="/equipos/captura" >
-        <button id="reg"> Registrar nuevo equipo con captura de imagen </button> 
-    </router-link>
     <router-link to="/equipos/imagenes" >
         <button id="reg"> Registrar nuevo equipo con imagen</button> 
+    </router-link>
+    
+    <router-link to="/equipos/captura" >
+        <button id="reg"> ESTAMOS MEJORANDO PARA TI </button> 
     </router-link>
 
     <div class="container-section">
