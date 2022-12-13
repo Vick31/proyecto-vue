@@ -27,7 +27,7 @@
         <tbody>
             <tr v-for="p in clients_list">
                 <td>C.C. {{ p.dni }}</td>
-                <td>{{ p.name }}</td>
+                <td>{{ p.first_name }}</td>
                 <td>{{ p.phone_number }}</td>
                 <td>{{ p.email }}</td>
                 <td class="action">

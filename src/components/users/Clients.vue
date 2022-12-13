@@ -26,15 +26,15 @@
         <tbody>
             <tr v-for="p in clients_list">
                 <td>C.C. {{ p.dni }}</td>
-                <td>{{ p.name }}</td>
+                <td>{{ p.first_name }}</td>
                 <td>{{ p.phone_number }}</td>
                 <td>{{ p.email }}</td>
                 <td class="action">
+
                     <span class="material-symbols-outlined icon gris" data-bs-toggle="modal"
                         data-bs-target="#exampleModal" @click="insertar(p.dni)">
                         clarify
                     </span>
-
                 </td>
             </tr>
         </tbody>
@@ -117,7 +117,7 @@ export default {
     methods: {
         async index() {
             let response = await this.axios.get("/api/clientes");
-            this.copy_clients_list = response.data;
+            this.copy_clients_list = response.data.clients;
 
             this.clients_list = this.copy_clients_list
 

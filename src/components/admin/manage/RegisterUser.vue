@@ -11,13 +11,15 @@
             <div class="form-floating pb-3">
                 <input type="name" class="form-control" name="name" v-model="form.first_name" />
                 <label for="floatingInput">Nombre</label>
-                <span v-if="errors.first_name">{{ errors.name[0] }}</span>
+                <span v-if="errors.first_name">{{ errors.first_name[0] }}</span>
             </div>
+            
             <div class="form-floating pb-3">
                 <input type="name" class="form-control" name="name" v-model="form.last_name" />
-                <label for="floatingInput">Nombre</label>
-                <span v-if="errors.last_name">{{ errors.name[0] }}</span>
+                <label for="floatingInput">apellido</label>
+                <span v-if="errors.last_name">{{ errors.last_name[0] }}</span>
             </div>
+
             <div class="form-floating pb-3">
                 <input type="number" class="form-control" name="name" v-model="form.phone_number" />
                 <label for="floatingInput">Numero de telefono</label>
@@ -29,11 +31,6 @@
                 <label for="floatingInput">Correo electronico</label>
                 <span v-if="errors.email">{{ errors.email[0] }}</span>
             </div>
-            <!-- <div class="form-floating pb-3">
-                <input type="text" class="form-control" name="email" v-model="form.companies_id" />
-                <label for="floatingInput">compania</label>
-                <span v-if="errors.companies_id">{{ errors.companies_id[0] }}</span>
-            </div> -->
 
             <div class="div-row">
                 <div class="form-floating pb-3">
@@ -63,11 +60,13 @@
             <p v-if="message">{{ message }}</p>
         </form>
     </div>
+
+    
 </template>
   
   
 <style scoped>
-@import "../../../assets/css/styleRegisterClients.css";
+/* @import "../../../assets/css/styleRegisterClients.css"; */
 </style>
   
 <script>
@@ -135,12 +134,16 @@ export default {
         async register_admin() {
             try {
                 const rs = await this.axios.post("/api/register-admins", this.form);
+                this.form = {
+                    dni: '',
+                    name: "",
+                    phone_number: "",
+                    email: "",
+                    password: "",
+                    password_confirmation: "",
+                }
+                this.index()
 
-                this.$router.push({
-                    name: 'Users',
-                    params: { message: rs.data.message, },
-
-                });
             }
             catch (e) {
 

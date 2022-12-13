@@ -167,7 +167,7 @@ export default {
 
             let response = await this.axios.get("/api/clientes")
 
-            this.copy_clients_list = response.data
+            this.copy_clients_list = response.data.clients
             this.clients_list = this.copy_clients_list
         },
 
@@ -185,7 +185,7 @@ export default {
                 document.getElementById('modal-cita').style.display = "none"
 
                 this.$router.push({
-                    name: 'AgendarCita',
+                    name: 'AgendarCitaUser',
                     params: { message: rs.data.message, },
                 });
 
@@ -231,7 +231,7 @@ export default {
         },
         insertarU(buscar) {
             let item = this.users_list.find((pro) => pro.dni == buscar);
-            this.searchU = item.name
+            this.searchU = item.first_name
             this.form.users_id = item.id
         },
     },
@@ -289,7 +289,7 @@ export default {
                                     <div class="client">
                                         <div id="searchClient" v-for="p in users_list">
                                             <p class="sear" @click="insertarU(p.dni)">
-                                                {{ p.name }}
+                                                {{ p.first_name }}
                                             </p>
                                         </div>
                                     </div>

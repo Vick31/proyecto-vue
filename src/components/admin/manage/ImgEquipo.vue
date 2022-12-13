@@ -8,7 +8,7 @@
 
                 <section class="photo-container">
                     <div class="photo-prev">
-                        <input type="file" id="new-client-input" @change="show_image" style="display: none" />
+                        <input accept="image/*" type="file" id="new-client-input" @change="show_image" style="display: none" />
                         <!-- Image client exist and is not loading a new image -->
                         <div class="preview" v-if="form.url && !loading">
                             <span class="material-symbols-outlined clear-image"

@@ -4,20 +4,11 @@
             <span @click="remove_aside()" class="material-symbols-outlined" id="close">
                 close
             </span>
-            <ul>
-                <router-link class="rotes" to="/super-admin">
-                    <li class="logo">
-                        <span class="material-symbols-outlined">
-                            home
-                        </span>
-                        <small>Inicio</small>
-                    </li>
-                </router-link>
-            </ul>
+
             <div>
 
                 <ul>
-                    <router-link class="rotes" to="/super-admin/admin">
+                    <router-link class="rotes" to="/super-admin">
                         <li>
                             <span class="material-symbols-outlined">
                                 groups

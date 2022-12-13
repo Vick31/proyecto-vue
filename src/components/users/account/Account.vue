@@ -2,30 +2,57 @@
 
     <div class="section">
         <div class="body">
-            <div class="cards">
-                <b>Rol</b>
-                <p>{{ user.roles_id }}</p>
+            <h3>Información personal</h3>
+
+            <div class="content-cards">
+                <div class="cards">
+                    <small>Imagen de perfil</small>
+                    <img :src="axios.defaults.baseURL + user.img" class="image-profile" />
+                </div>
             </div>
 
-            <div class="cards">
-                <b>Compañia</b>
-                <p>{{ user.companies_id }}</p>
+            <div class="content-cards">
+                <div class="cards">
+                    <small>Nombre de usuario</small>
+                    <p class="input-p">{{ user.first_name }}</p>
+                </div>
+
+                <div class="cards">
+                    <small>Apellidos</small>
+                    <p class="input-p">{{ user.last_name }}</p>
+                </div>
+
+                <div class="cards">
+                    <small>Rol</small>
+                    <p class="input-p">{{ user.roles_id }}</p>
+                </div>
+
             </div>
 
-            <div class="cards">
-                <b>Correo electronico</b>
-                <p>{{ user.email }}</p>
+            <h3>Información de contacto</h3>
+
+            <div class="content-cards">
+                <div class="cards">
+                    <small>Compañia</small>
+                    <p class="input-p">{{ user.companies_id }}</p>
+                </div>
+
+                <div class="cards">
+                    <small>Correo electronico</small>
+                    <p class="input-p">{{ user.email }}</p>
+                </div>
+
+                <div class="cards">
+                    <small>Número de contacto</small>
+                    <p class="input-p">{{ user.phone_number }}</p>
+                </div>
+
+                <div class="cards">
+                    <small>Fecha de registro</small>
+                    <p class="input-p">{{ user.created_at }}</p>
+                </div>
             </div>
 
-            <div class="cards">
-                <b>Número de contacto</b>
-                <p>{{ user.phone_number }}</p>
-            </div>
-
-            <div class="cards">
-                <b>Fecha de creación</b>
-                <p>{{ user.created_at }}</p>
-            </div>
         </div>
     </div>
 
@@ -44,26 +71,24 @@ export default {
         return {
             token: '',
             user: {},
+            roles: []
         }
     },
     mounted() {
 
         if (localStorage.token) {
-
-            if (localStorage.getItem('rol') == 1) {
-                this.$router.push({
-                    name: "Login",
-                    params: {
-                        message: "No estas autorizado para acceder con esta cuenta"
-                    }
-                })
-
-                this.token = null
-            }
-            
             this.token = localStorage.token;
+            this.get_roles()
             this.get_user();
+        } else {
+            this.$router.push({
+                name: "Login",
+                params: {
+                    message: "No estas autorizado para acceder con esta cuenta"
+                }
+            })
         }
+
 
     },
     methods: {
@@ -87,6 +112,17 @@ export default {
             }
         },
 
+        async get_roles() {
+            try {
+                const response = await this.axios.get("/api/roles")
+                this.roles = response.data
+
+            }
+
+            catch (e) {
+                alert('falla')
+            }
+        },
         async logout() {
             try {
 

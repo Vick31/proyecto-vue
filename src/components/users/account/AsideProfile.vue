@@ -4,51 +4,47 @@
         <h2>Datos de usuario</h2>
 
         <div class="container-body">
+            <div class="body-aside">
+                <router-link class="rotes" to="/account/user">
+                    <div class="buttons">
+                        <p class="material-symbols-outlined">
+                            person
+                        </p>
+                        <p>Información personal</p>
+                    </div>
+                </router-link>
+
+                <router-link class="rotes" to="/account/user/edit">
+                    <div class="buttons">
+                        <p class="material-symbols-outlined">
+                            manage_accounts
+                        </p>
+                        <p>Editar información</p>
+                    </div>
+                </router-link>
+
+                <router-link class="rotes" to="/account/user/password">
+                    <div class="buttons">
+                        <p class="material-symbols-outlined">
+                            lock_reset
+                        </p>
+                        <p>Cambiar contraseña</p>
+                    </div>
+                </router-link>
+
+
+                <div @click="logout()" class="buttons rotes">
+                    <p class="material-symbols-outlined">
+                        logout
+                    </p>
+                    <p>Cerrar sesión</p>
+                </div>
+
+            </div>
 
             <div class="form-body">
                 <router-view></router-view>
             </div>
-
-            <div class="body-aside">
-                <div>
-                    <img src="../../../img/logos-cuentas/AccountIcon2.png" alt="">
-                </div>
-                <div class="buttons">
-                    <router-link class="rotes" to="/account/user">
-                        <span class="material-symbols-outlined">
-                            person
-                        </span>
-                        <button>Información personal</button>
-                    </router-link>
-                </div>
-
-                <div class="buttons">
-                    <router-link class="rotes" to="/account/user/edit">
-                        <span class="material-symbols-outlined">
-                            manage_accounts
-                        </span>
-                        <button>Editar información</button>
-                    </router-link>
-                </div>
-
-                <div class="buttons">
-                    <router-link class="rotes" to="/account/user/password">
-                        <span class="material-symbols-outlined">
-                            lock_reset
-                        </span>
-                        <button>Cambiar contraseña</button>
-                    </router-link>
-                </div>
-
-                <div @click="logout()" class="buttons">
-                    <span class="material-symbols-outlined">
-                        logout
-                    </span>
-                    <button>Cerrar sesión</button>
-                </div>
-
-            </div>
-
         </div>
     </div>
 </template>
@@ -80,8 +76,9 @@ export default {
                         message: "No estas autorizado para acceder con esta cuenta"
                     }
                 })
-                this.token == null
+                this.token = null
             }
+
             this.token = localStorage.token;
         }
 

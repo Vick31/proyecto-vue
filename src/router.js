@@ -41,9 +41,9 @@ import Equipos from "./components/admin/manage/Equipos.vue";
 import EquiposUser from "./components/users/manage/Equipos.vue";
 import Inicio from "./components/views/Inicio.vue"
 
+// import NavSuperAdmin from "./components/super_admin/NavBar.vue"
 import AsideSuperAdmin from "./components/super_admin/Aside.vue"
-import NavSuperAdmin from "./components/super_admin/NavSuperAdmin.vue"
-import HomeSuperAdmin from "./components/super_admin/HomeSuperAdmin.vue"
+import NavSuperAdmin from "./components/super_admin/NavSuperAdmin.vue"   
 import ListAdmin from "./components/super_admin/Admins.vue"
 import ListCompanies from "./components/super_admin/Companies.vue"
 import Roles from "./components/super_admin/Roles.vue"
@@ -58,18 +58,19 @@ const routes = [
         name: "SuperAdmin",
         components: {
             default: NavSuperAdmin,
-            aside: AsideSuperAdmin
+            aside: AsideSuperAdmin,
         },
         children: [
+
             {
                 path: "",
-                name: "HomeSuperAdmin",
-                component: HomeSuperAdmin
-            },
-            {
-                path: "admin",
                 name: "ListAdmins",
                 component: ListAdmin
+            },
+            {
+                path: "register/admin",
+                name: "Admins",
+                component: RegisterAdmin
             },
             {
                 path: "companies",
