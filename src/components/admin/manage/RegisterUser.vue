@@ -162,6 +162,12 @@ export default {
                     password: "",
                     password_confirmation: "",
                 }
+                this.$router.push({
+                    path: "/usuarios",
+                    params: {
+                        message: "No estas autorizado para acceder con esta cuenta"
+                    }
+                })
                 this.index()
 
             }
