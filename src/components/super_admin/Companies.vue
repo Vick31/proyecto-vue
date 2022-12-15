@@ -187,7 +187,6 @@ export default {
     mounted() {
 
         this.index()
-        console.log('s')
     },
 
     methods: {

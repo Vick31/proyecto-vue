@@ -27,7 +27,7 @@
         <tbody>
             <tr v-for="p in users_list">
                 <td>C.C. {{ p.dni }}</td>
-                <td>{{ p.name }}</td>
+                <td>{{ p.first_name + ' ' + p.last_name }}</td>
                 <td>{{ p.phone_number }}</td>
                 <td>{{ p.email }}</td>
                 <td>{{ p.rol }}</td>
@@ -54,7 +54,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Datos del cliente</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Datos de usuario</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="modal-content">
@@ -80,7 +80,13 @@
                     <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nombre cliente</label>
-                            <input v-model="datos_client.first_name" type="text" class="form-control" id="exampleInputEmail1">
+                            <input v-model="datos_client.first_name" type="text" class="form-control"
+                                id="exampleInputEmail1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Apellido</label>
+                            <input v-model="datos_client.last_name" type="text" class="form-control"
+                                id="exampleInputEmail1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Documento Cliente</label>
@@ -91,17 +97,16 @@
                             <label for="exampleInputEmail1">Telefono</label>
                             <input v-model="datos_client.phone_number" type="number" class="form-control"
                                 id="exampleInputEmail1">
-                        </div>  
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Email</label>
                             <input v-model="datos_client.email" type="email" class="form-control"
                                 id="exampleInputPassword1">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             <button id="liveToastBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                                @click="update()">Save
-                                changes</button>
+                                @click="update()">Guardar cambios</button>
 
                         </div>
                     </form>
@@ -116,14 +121,19 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edicion cliente</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar usuario</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="modal-content">
                     <form>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nombre cliente</label>
-                            <input disabled v-model="del_client.name" type="text" class="form-control"
+                            <input disabled v-model="del_client.first_name" type="text" class="form-control"
+                                id="exampleInputEmail1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Apellido</label>
+                            <input disabled v-model="del_client.last_name" type="text" class="form-control"
                                 id="exampleInputEmail1">
                         </div>
                         <div class="form-group">
@@ -135,11 +145,6 @@
                             <label for="exampleInputEmail1">Telefono</label>
                             <input disabled v-model="del_client.phone_number" type="number" class="form-control"
                                 id="exampleInputEmail1">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Direccion</label>
-                            <input disabled v-model="del_client.address" type="text" class="form-control"
-                                id="exampleInputPassword1">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Email</label>
@@ -188,7 +193,7 @@ export default {
     mounted() {
         if (localStorage.token) {
 
-            if (localStorage.getItem('rol') != 2) {
+            if (localStorage.rol != 2) {
                 this.$router.push({
                     name: "Login",
                     params: {
@@ -201,7 +206,6 @@ export default {
             this.get_roles();
             this.token = localStorage.token;
         }
-        console.log(this.roles)
     },
 
     methods: {
@@ -216,13 +220,13 @@ export default {
         insertar(buscar) {
             let item = this.users_list.find((pro) => pro.dni == buscar);
             if (buscar != undefined) {
-                
+
                 this.datos_client.push(item);
                 let modal = document.getElementById('modal-content')
                 modal.innerHTML = `
                 <p> <b>Rol:</b> ${item.rol}</p>
                 <p> <b>Documento de identidad:</b> ${item.dni}</p>
-                <p> <b>Nombre:</b> ${item.name}</p>
+                <p> <b>Nombre:</b> ${item.first_name + ' ' + item.last_name}</p>
                 <p> <b>Número de celular:</b> ${item.phone_number}</p>
                 <p> <b>Correo electrónico:</b> ${item.email}</p>
               `
@@ -237,13 +241,13 @@ export default {
         filtrar() {
 
             this.users_list = this.copy_users_list.filter(
-                (pro) => (pro.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1) |
+                (pro) => (pro.first_name.toLowerCase().indexOf(this.search.toLowerCase()) > -1) |
+                    (pro.last_name.toLowerCase().indexOf(this.search.toLowerCase()) > -1) |
                     (pro.dni.toString().indexOf(this.search) > -1)
             )
         },
         edit(p) {
             this.datos_client = p;
-            console.log(this.datos_client)
             // Object.assign(this.datos_client, this.clients_list)
         },
         async update() {
@@ -259,7 +263,7 @@ export default {
             }
 
             this.datos_client.roles_id = 3
-            
+
             try {
                 let id = this.datos_client.id;
                 let response = await this.axios.put("/api/users/" + id, this.datos_client);
@@ -267,7 +271,6 @@ export default {
                 alert('Actualizado correctamente')
             }
             catch (e) {
-                console.log(e)
                 alert('Error al actualizar')
                 this.errors = e.response.data.errors
             }
@@ -276,33 +279,28 @@ export default {
 
         delete_users(p) {
             this.del_client = p;
-            console.log(p)
         },
         async destroy() {
-            let id = this.del_client.id;
-            let response = await this.axios.delete("/api/users/" + id);
-            this.index()
+            try {
 
-            this.toas = 'Eliminado correctamente'
+                let id = this.del_client.id;
+                let response = await this.axios.delete("/api/users/" + id);
+                this.index()
+
+            } catch {
+                alert('No se puede eliminar el usuario')
+            }
 
         },
         async get_roles() {
             try {
                 const response = await this.axios.get("/api/roles")
                 this.roles = response.data
-                console.log(this.roles)
-
             }
 
             catch (e) {
                 alert('falla')
             }
-        },
-
-        rol() {
-            let item = this.roles.find((pro) => pro.name == buscar)
-            console.log(this.roles)
-
         },
     }
 };

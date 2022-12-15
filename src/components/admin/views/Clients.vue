@@ -27,7 +27,7 @@
         <tbody>
             <tr v-for="p in clients_list">
                 <td>C.C. {{ p.dni }}</td>
-                <td>{{ p.first_name }}</td>
+                <td>{{ p.name }}</td>
                 <td>{{ p.phone_number }}</td>
                 <td>{{ p.email }}</td>
                 <td class="action">
@@ -59,8 +59,7 @@
                     ...
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
@@ -119,7 +118,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edicion cliente</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar cliente</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="modal-content">
@@ -208,7 +207,7 @@ export default {
     mounted() {
         if (localStorage.token) {
 
-            if (localStorage.getItem('rol') != 2) {
+            if (localStorage.rol != 2) {
                 this.$router.push({
                     name: "Login",
                     params: {

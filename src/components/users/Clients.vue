@@ -91,7 +91,7 @@ export default {
     mounted() {
         if (localStorage.token) {
 
-            if (localStorage.getItem('rol') != 3) {
+            if (localStorage.rol != 3) {
                 this.$router.push({
                     name: "Login",
                     params: {

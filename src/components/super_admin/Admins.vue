@@ -8,7 +8,7 @@
                 <input class="input-search" type="text" placeholder="Buscar" v-model="search" @keyup="filtrar">
                 <span @click="limpiar()" class="material-symbols-outlined close-search">close</span>
             </div>
-            <router-link class="rotes" to="/usuarios/register-user">
+            <router-link class="rotes" to="/super-admin/register/admin">
                 <button type="button" class="btn btn-primary">Registrar usuario</button>
             </router-link>
         </div>
@@ -27,7 +27,7 @@
         <tbody>
             <tr v-for="p in users_list">
                 <td>C.C. {{ p.dni }}</td>
-                <td>{{ p.name }}</td>
+                <td>{{ p.first_name + ' ' + p.last_name }}</td>
                 <td>{{ p.phone_number }}</td>
                 <td>{{ p.email }}</td>
                 <td>{{ p.rol }}</td>
@@ -206,7 +206,7 @@ export default {
     mounted() {
         if (localStorage.token) {
 
-            if (localStorage.getItem('rol') != 1) {
+            if (localStorage.rol != 1) {
                 this.$router.push({
                     name: "Login",
                     params: {

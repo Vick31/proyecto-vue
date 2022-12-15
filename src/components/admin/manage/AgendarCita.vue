@@ -133,7 +133,7 @@ export default {
 
 
         if (localStorage.token) {
-            if (localStorage.getItem('rol') != 2) {
+            if (localStorage.rol != 2) {
                 this.$router.push({
                     name: "Login",
                     params: {
@@ -225,13 +225,13 @@ export default {
         filtrarUser() {
 
             this.users_list = this.copy_users_list.filter(
-                (pro) => (pro.name.toLowerCase().indexOf(this.searchU.toLowerCase()) > -1) |
+                (pro) => (pro.first_name.toLowerCase().indexOf(this.searchU.toLowerCase()) > -1) |
                     (pro.dni.toString().indexOf(this.searchU) > -1)
             )
         },
         insertarU(buscar) {
             let item = this.users_list.find((pro) => pro.dni == buscar);
-            this.searchU = item.first_name
+            this.searchU = item.first_name + ' ' + item.last_name
             this.form.users_id = item.id
         },
     },
@@ -253,7 +253,7 @@ export default {
     </div>
 
     <div id="event-modal" class="event-modal">
-        <button @click="cerrar()">X</button>
+        <button class="btn btn-primary" @click="cerrar()">X</button>
         <div id="cont"></div>
     </div>
 
@@ -289,7 +289,7 @@ export default {
                                     <div class="client">
                                         <div id="searchClient" v-for="p in users_list">
                                             <p class="sear" @click="insertarU(p.dni)">
-                                                {{ p.first_name }}
+                                                {{ p.first_name + ' ' + p.last_name }}
                                             </p>
                                         </div>
                                     </div>

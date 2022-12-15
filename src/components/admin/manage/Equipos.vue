@@ -6,9 +6,9 @@
         <button id="reg"> Registrar nuevo equipo con imagen</button> 
     </router-link>
     
-    <router-link to="/equipos/captura" >
-        <button id="reg"> ESTAMOS MEJORANDO PARA TI </button> 
-    </router-link>
+    <!-- <router-link to="/equipos/captura" > -->
+        <button @click="mensaje()" id="reg"> ESTAMOS MEJORANDO PARA TI </button> 
+    <!-- </router-link> -->
 
     <div class="container-section">
         <div class="section">
@@ -38,9 +38,13 @@
                     <h1 id="title-modal" class="modal-title fs-5">Modal title</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" id="body-modal-container"></div>
+                <div style="font-size: 1.3rem;" class="modal-body" id="body-modal-container">
+                    <img style="width: 29rem;" :src="axios.defaults.baseURL + item.img" alt=""><br><br>
+                    <p><b>Serial</b>: {{item.serial}} </p>
+                    <p><b>Nombre</b>: {{item.name}}</p>
+                </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Editar datos</button>
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Editar datos</button> -->
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
                 </div>
             </div>
@@ -72,12 +76,13 @@ export default {
             equipment: [],
             isLoading: true,
             fullPage: true,
+            item: ''
         };
     },
     mounted: async function () {
         if (localStorage.token) {
 
-            if (localStorage.getItem('rol') != 2) {
+            if (localStorage.rol != 2) {
                 this.$router.push({
                     name: "Login",
                     params: {
@@ -103,16 +108,10 @@ export default {
         inspeccionar(search_serial) {
             let content = document.getElementById('body-modal-container')
             let title = document.getElementById('title-modal')
-            let item = this.equipment.find(pro => pro.serial == search_serial)
-
-            title.innerHTML = `
-                <p> ${item.name}</p>
-            
-            `
-            content.innerHTML = `
-                <img src="${item.img}" class="card-img-top">
-                <p><b> Serial: </b> ${item.serial}</p>
-            `
+            this.item = this.equipment.find(pro => pro.serial == search_serial)
+        },
+        mensaje(){
+            alert('Estamos mejorando, por lo tanto muy pronto tendremos nuevas funciones para ti <3')
         }
     },
 };

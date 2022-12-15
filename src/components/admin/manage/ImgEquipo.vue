@@ -1,8 +1,6 @@
 
 <template>
     <div class="container-section">
-        <button @click="startCapture()" id="cap">Capturar imagen</button>
-
         <div class="section">
             <div class="modal-body">
 
@@ -10,18 +8,21 @@
                     <div class="photo-prev">
                         <input accept="image/*" type="file" id="new-client-input" @change="show_image" style="display: none" />
                         <!-- Image client exist and is not loading a new image -->
-                        <div class="preview" v-if="form.url && !loading">
-                            <span class="material-symbols-outlined clear-image"
-                                @click="clear_image('new-client-input')">
-                                close
-                            </span>
-                            <img style="width: 20rem;" @click="open_browser('new-client-input')" :src="form.url" />
-                        </div>
+                        
                         <!-- Image client not exist and is not loading a new image -->
-                        <span v-if="!form.url && !loading" class="material-symbols-outlined"
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span style="font-size: 5rem; cursor: pointer;" v-if="!form.url && !loading" class="material-symbols-outlined"
                             @click="open_browser('new-client-input')">
                             account_circle
                         </span>
+
+                        <div class="preview" v-if="form.url && !loading">
+                            <img style="width:10rem;" @click="open_browser('new-client-input')" :src="form.url" />
+                            <span style="cursor: pointer;" class="material-symbols-outlined clear-image"
+                                @click="clear_image('new-client-input')">
+                                close
+                            </span>
+                        </div>
 
                         <div v-if="loading" class="loading" @click="open_browser('new-client-input')"></div>
                         <!-- User can stop the image loading -->
@@ -30,6 +31,7 @@
                                     image_text
                             }}</span>
                         <span v-if="!loading" class="image_text">Your profile photo</span>
+                        </div>
                     </div>
                     <div class="form-text" v-if="errors.img">
                         {{ errors.img[0] }}

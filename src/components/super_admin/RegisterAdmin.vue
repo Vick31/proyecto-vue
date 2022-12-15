@@ -46,12 +46,8 @@
                 </div>
             </div>
             <div class="form-footer">
-                <router-link class="rotes" to="/usuarios">
+                <router-link class="rotes" to="/super-admin">
                     <button type="button" class="btn btn-primary save">Regresar</button>
-                </router-link>
-
-                <router-link class="rotes" to="/usuarios">
-
                 </router-link>
                 <button type="button" id="rot" @click="register_admin()" class="btn btn-primary save">
                     Guardar

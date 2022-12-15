@@ -9,7 +9,7 @@
 
                         <div class="cards">
                             <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
-                            <input v-model="form.email" type="email" class="input-p" id="exampleInputEmail1"
+                            <input disabled v-model="form.email" type="email" class="input-p" id="exampleInputEmail1"
                                 aria-describedby="emailHelp">
                             <span v-if="errors.email">{{ errors.email[0] }}</span>
                         </div>
@@ -62,7 +62,7 @@ export default {
     mounted() {
         if (localStorage.token) {
 
-            if (localStorage.getItem('rol') != 2) {
+            if (localStorage.rol != 2) {
                 this.$router.push({
                     name: "Login",
                     params: {
@@ -71,34 +71,14 @@ export default {
                 })
                 this.token = null
             }
-
             this.token = localStorage.token;
-            this.get_user();
+            this.user = JSON.parse(localStorage.user);
+            this.form = this.user
         }
     },
 
     methods: {
 
-        async get_user() {
-
-            try {
-                const rs = await this.axios.get('/api/user', {
-                    headers: { Authorization: `Bearer ${this.token}` },
-                });
-                this.user = rs.data.user;
-                this.form.token = localStorage.token
-
-            }
-
-            catch (e) {
-                this.$router.push({
-                    name: "Login",
-                    params: {
-                        message: "No estas autorizado para acceder con esta cuenta"
-                    }
-                })
-            }
-        },
         async change_password() {
             try {
                 const rs = await this.axios.post("/api/reset-password", this.form)

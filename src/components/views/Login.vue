@@ -69,27 +69,28 @@ export default {
         async login() {
             try {
                 const rs = await this.axios.post("/api/login", this.form);
+                localStorage.user = JSON.stringify(rs.data.user);
 
                 switch (rs.data.user.roles_id) {
 
                     case 1:
                         this.$router.push({ path: "/super-admin" });
+                        localStorage.rol = rs.data.user.roles_id
                         localStorage.token = rs.data.token;
-                        localStorage.setItem('rol', 1)
 
                         break;
 
                     case 2:
                         this.$router.push({ path: "/home" });
+                        localStorage.rol = rs.data.user.roles_id
                         localStorage.token = rs.data.token;
-                        localStorage.setItem('rol', 2)
 
                         break;
 
                     case 3:
                         this.$router.push({ path: "/user" });
+                        localStorage.rol = rs.data.user.roles_id
                         localStorage.token = rs.data.token;
-                        localStorage.setItem('rol', 3)
 
                         break;
                     default:

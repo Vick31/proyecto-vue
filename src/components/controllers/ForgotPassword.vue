@@ -44,7 +44,7 @@ export default {
           email: this.email,
         });
         this.$router.push({
-          name: "Home",
+          path: "/Login",
           params: { message: rs.data.message },
         });
       } catch (e) {

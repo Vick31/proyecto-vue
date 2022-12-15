@@ -153,7 +153,7 @@ export default {
 
         if (localStorage.token) {
 
-            if (localStorage.getItem('rol') != 2) {
+            if (localStorage.rol != 2) {
                 this.$router.push({
                     name: "Login",
                     params: {
@@ -164,7 +164,8 @@ export default {
             }
 
             this.token = localStorage.token;
-            this.get_user()
+            this.user = JSON.parse(localStorage.user);
+            this.form = this.user
 
 
 
@@ -176,27 +177,6 @@ export default {
     },
     methods: {
 
-        async get_user() {
-
-            try {
-                const rs = await this.axios.get('/api/user', {
-                    headers: { Authorization: `Bearer ${this.token}` },
-                });
-                this.user = rs.data.user;
-                this.form = this.user
-            }
-
-            catch (e) {
-                this.$router.push({
-                    name: "Login",
-                    params: {
-                        message: "No estas autorizado para acceder con esta cuenta"
-                    }
-                })
-            }
-
-
-        },
 
 
 
@@ -218,7 +198,6 @@ export default {
                     },
                 });
             } catch (e) {
-                // console.log(e)
                 this.$router.push({
                     name: "Login",
                     params: {
@@ -244,13 +223,12 @@ export default {
 
         show_image(e) {
             if (e.target.files[0]) {
-                console.log("updated!");
                 this.form.updated = true;
 
                 this.form.img = e.target.files[0];
                 this.form.url = URL.createObjectURL(e.target.files[0]);
             } else {
-                console.log("No se seleccionó ninguna imagen!!");
+                alert("No se seleccionó ninguna imagen!!");
                 this.form.url = this.client_copy.url;
             }
 
@@ -265,7 +243,7 @@ export default {
         },
 
         stop_loading() {
-            console.log("cancelaste la carga!!");
+            alert("cancelaste la carga!!");
             this.form.url = this.client_copy.url;
             this.loading = false;
         },
@@ -274,7 +252,6 @@ export default {
         async editProfile() {
             try {
                 const id = this.user.id;
-                console.log(this.form)
                 const res = await this.axios.post(`/api/user/update/${id}`, this.form,
                     {
                         headers: {
@@ -283,7 +260,13 @@ export default {
                         },
                     }
                 );
+
                 alert('Perfil actualizado correctamente')
+
+                this.$router.push({
+                    path: "/account/admin",
+                });
+
             } catch (e) {
                 alert('Error al actualizar perfil')
                 console.log(e.response.data.errors)

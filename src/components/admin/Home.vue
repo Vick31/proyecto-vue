@@ -16,7 +16,7 @@
                     </ul>
                     <div class="nav-profile">
                         <p>{{ user.first_name }}</p>
-                        <img src="../../../img/logos-cuentas/ac.png" alt="">
+                        <img style="width: 2rem; height: 2rem; object-fit: cover;" :src="axios.defaults.baseURL + user.img" alt="">
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@ export default {
 
         if (localStorage.token) {
 
-            if (localStorage.getItem('rol') != 2) {
+            if (localStorage.rol != 2) {
                 this.$router.push({
                     name: "Login",
                     params: {
